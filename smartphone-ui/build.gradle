@@ -1,0 +1,121 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
+    defaultConfig {
+        applicationId "com.tzion.openmoviesdatabase"
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        dev {
+            dimension "default"
+            applicationId 'com.tzion.openmoviesdatabase.dev'
+            versionNameSuffix '-dev'
+        }
+        prod {
+            dimension "default"
+            applicationId 'com.tzion.openmoviesdatabase.prod'
+            versionNameSuffix '-prod'
+        }
+        mock {
+            dimension "default"
+            applicationId 'com.tzion.openmoviesdatabase.mock'
+            versionNameSuffix '-mock'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+kapt {
+    correctErrorTypes = true
+    generateStubs = true
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    def smartphoneUiDependencies = rootProject.ext.smartphoneUiDependencies
+    def smartphoneUiTestDependencies = rootProject.ext.smartphoneUiTestDependencies
+    implementation project(':presentation')
+    implementation project(':data')
+    implementation project(':remote')
+    implementation project(':cache')
+    implementation smartphoneUiDependencies.javaxAnnotation
+    implementation smartphoneUiDependencies.kotlin
+    implementation smartphoneUiDependencies.javaxInject
+    implementation smartphoneUiDependencies.rxKotlin
+    implementation smartphoneUiDependencies.androidxAnnotation
+    implementation smartphoneUiDependencies.androidxLegacy
+    implementation smartphoneUiDependencies.appCompat
+    implementation smartphoneUiDependencies.androidxRecyclerView
+    implementation smartphoneUiDependencies.material
+    implementation smartphoneUiDependencies.timber
+    implementation smartphoneUiDependencies.rxAndroid
+    implementation smartphoneUiDependencies.dagger
+    implementation smartphoneUiDependencies.daggerAndroid
+    implementation smartphoneUiDependencies.daggerSupport
+    implementation smartphoneUiDependencies.constraintLayout
+    implementation smartphoneUiDependencies.androidxLifecycleRuntime
+    implementation smartphoneUiDependencies.androidxLifecycleExtensions
+    implementation smartphoneUiDependencies.androidxLifecycleRoom
+    kapt smartphoneUiDependencies.androidxLifecycleCompiler
+    kapt smartphoneUiDependencies.daggerCompiler
+    kapt smartphoneUiDependencies.daggerProcessor
+    compileOnly smartphoneUiDependencies.glassfishAnnotation
+    implementation smartphoneUiDependencies.navigationFragmentKtx
+    implementation smartphoneUiDependencies.navigationUi
+
+    //Instrumentation test dependencies
+    testImplementation smartphoneUiTestDependencies.kotlinJUnit
+    androidTestImplementation smartphoneUiTestDependencies.junit
+    androidTestImplementation smartphoneUiTestDependencies.mockitoKotlin
+    androidTestImplementation smartphoneUiTestDependencies.mockitoAndroid
+//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0' {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//    }
+//    androidTestImplementation 'androidx.test:runner:1.1.0' {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//    }
+//    androidTestImplementation 'androidx.test:rules:1.1.0' {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//    }
+//    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.1.0' {
+//        exclude group: 'com.android.support', module: 'support-annotations'
+//    }
+//    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.1.0' {
+//        exclude module: 'appcompat'
+//        exclude module: 'appcompat-v7'
+//        exclude module: 'support-v4'
+//        exclude module: 'support-annotations'
+//        exclude module: 'recyclerview-v7'
+//        exclude module: 'design'
+//    }
+    kaptTest smartphoneUiDependencies.daggerCompiler
+    kaptAndroidTest smartphoneUiDependencies.daggerCompiler
+    //    androidTestImplementation 'com.android.support.test:runner:1.0.2'
+}

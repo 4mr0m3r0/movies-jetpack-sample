@@ -93,10 +93,20 @@ Clean Architecture
 
 MVVM
 ----
+* [Android Architecture Patterns Part 3: Model-View-ViewModel][54] by Florina Muntenescu 
+* [Why to choose MVVM over MVP — Android Architecture][53]
 
 #### Samples
 * [todo‑mvvm‑databinding][23] Based on the todo-databinding sample, this version incorporates the Model‑View‑ViewModel pattern.
 * [todo‑mvvm‑live][24] Uses ViewModels and LiveData from Architecture Components and the Data Binding library with an MVVM architecture.
+
+Youtube Channels
+----------------
+* [Android Developers][48]
+* [droidcon NYC][49]
+* [Droidcon Italy][50]
+* [droidcon SF][51]
+* [droidcon Berlin][52]
 
 
 [0]: https://developer.android.com/jetpack/foundation/
@@ -138,3 +148,10 @@ MVVM
 [46]: https://github.com/bufferapp/android-clean-architecture-boilerplate
 [47]: https://github.com/googlesamples/android-architecture/tree/todo-mvp-clean/
 [47]: https://medium.com/exploring-android/learn-clean-architecture-for-android-at-caster-io-8f1513621c30
+[48]: https://www.youtube.com/channel/UCVHFbqXqoYvEWM1Ddxl0QDg
+[49]: https://www.youtube.com/channel/UCSLXy31j2Z0sdDeeAX5JpPw
+[50]: https://www.youtube.com/channel/UC9f8652addezs8ZUuKPB4Ow
+[51]: https://www.youtube.com/channel/UCKubKoe1CBw_-n_GXetEQbg
+[52]: https://www.youtube.com/channel/UCF4O2pQ8vBV8YmSAWb5QRPw
+[53]: https://android.jlelse.eu/why-to-choose-mvvm-over-mvp-android-architecture-33c0f2de5516
+[54]: https://medium.com/upday-devs/android-architecture-patterns-part-3-model-view-viewmodel-e7eeee76b73b

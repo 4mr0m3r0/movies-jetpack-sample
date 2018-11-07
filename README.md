@@ -82,9 +82,8 @@ Clean Architecture
 
 * [Clean Architecture: A Craftsman's Guide to Software Structure and Design Book][15] by Robert C. Martin (Uncle Bob)
 * [The Clean Code Blog][6] by Robert C. Martin (Uncle Bob)
-* [Android Architecture: Part 1 – Every New Beginning is Hard][7] by Tomislav Homan with a series of 5 parts
-* [Android Architecture Blueprints [beta] - MVP + Clean Architecture][9]
-* [Learn Clean Architecture for Android at Caster.io][48]
+* [Android Architecture: Part 1 – Every New Beginning is Hard][7] by Tomislav Homan
+* [Learn Clean Architecture for Android at Caster.io][55]
 
 #### Samples
 * [Android-CleanArchitecture][8] by Fernando Cejas
@@ -107,6 +106,7 @@ Youtube Channels
 * [Droidcon Italy][50]
 * [droidcon SF][51]
 * [droidcon Berlin][52]
+* [Android Programming Dev tutorials][56]
 
 
 [0]: https://developer.android.com/jetpack/foundation/
@@ -118,7 +118,6 @@ Youtube Channels
 [6]: https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 [7]: https://five.agency/android-architecture-part-1-every-new-beginning-is-hard/
 [8]: https://github.com/android10/Android-CleanArchitecture
-[9]: https://github.com/googlesamples/android-architecture/tree/todo-mvp-clean/
 [10]: https://developer.android.com/jetpack/arch/
 [11]: https://developer.android.com/topic/libraries/data-binding/
 [12]: https://developer.android.com/topic/libraries/architecture/lifecycle
@@ -147,7 +146,6 @@ Youtube Channels
 [45]: https://github.com/bumptech/glide
 [46]: https://github.com/bufferapp/android-clean-architecture-boilerplate
 [47]: https://github.com/googlesamples/android-architecture/tree/todo-mvp-clean/
-[47]: https://medium.com/exploring-android/learn-clean-architecture-for-android-at-caster-io-8f1513621c30
 [48]: https://www.youtube.com/channel/UCVHFbqXqoYvEWM1Ddxl0QDg
 [49]: https://www.youtube.com/channel/UCSLXy31j2Z0sdDeeAX5JpPw
 [50]: https://www.youtube.com/channel/UC9f8652addezs8ZUuKPB4Ow
@@ -155,3 +153,5 @@ Youtube Channels
 [52]: https://www.youtube.com/channel/UCF4O2pQ8vBV8YmSAWb5QRPw
 [53]: https://android.jlelse.eu/why-to-choose-mvvm-over-mvp-android-architecture-33c0f2de5516
 [54]: https://medium.com/upday-devs/android-architecture-patterns-part-3-model-view-viewmodel-e7eeee76b73b
+[55]: https://medium.com/exploring-android/learn-clean-architecture-for-android-at-caster-io-8f1513621c30
+[56]: https://www.youtube.com/channel/UCSwuCetC3YlO1Y7bqVW5GHg

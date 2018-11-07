@@ -19,4 +19,8 @@ class MovieDataStoreFactory @Inject constructor(
         return movieCacheDataStore
     }
 
+    open fun getRemoteDataStore(): MovieDataStore {
+        return movieRemoteDataStore
+    }
+
 }

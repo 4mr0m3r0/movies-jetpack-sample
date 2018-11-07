@@ -8,11 +8,11 @@ import javax.inject.Inject
 class MovieMapper @Inject constructor(): EntityMapper<MovieEntity, Movie> {
 
     override fun mapFromEntity(entity: MovieEntity): Movie {
-        return Movie(entity.imdbID, entity.title, entity.year, entity.poster)
+        return Movie(entity.imdbID, entity.title, entity.year, entity.poster, entity.type)
     }
 
     override fun mapToEntity(domain: Movie): MovieEntity {
-        return MovieEntity(domain.movieId, domain.title, domain.year, domain.poster)
+        return MovieEntity(domain.movieId, domain.title, domain.year, domain.poster, domain.type)
     }
 
 

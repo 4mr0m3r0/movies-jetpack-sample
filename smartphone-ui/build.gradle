@@ -83,6 +83,7 @@ dependencies {
     implementation smartphoneUiDependencies.androidxLifecycleRuntime
     implementation smartphoneUiDependencies.androidxLifecycleExtensions
     implementation smartphoneUiDependencies.androidxLifecycleRoom
+    implementation smartphoneUiDependencies.glide
     kapt smartphoneUiDependencies.androidxLifecycleCompiler
     kapt smartphoneUiDependencies.daggerCompiler
     kapt smartphoneUiDependencies.daggerProcessor

@@ -5,24 +5,15 @@ import com.tzion.data.movie.repository.MovieCache
 import com.tzion.data.movie.repository.MovieDataStore
 import io.reactivex.Completable
 import io.reactivex.Flowable
+import io.reactivex.Single
 import javax.inject.Inject
 
 class MovieCacheDataStore @Inject constructor(
     private val movieCache: MovieCache)
     : MovieDataStore {
 
-    override fun getMovies(): Flowable<List<MovieEntity>> {
-        return movieCache.getMovies()
-    }
-
-    override fun saveMovies(clients: List<MovieEntity>): Completable {
-        return movieCache.saveMovies(clients).andThen(
-            movieCache.setLastCacheTime(System.currentTimeMillis())
-        )
-    }
-
-    override fun clearMovies(): Completable {
-        return movieCache.clearMovies()
+    override fun findMoviesByText(text: String?): Single<List<MovieEntity>> {
+        return movieCache.findMoviesByText(text)
     }
 
 }

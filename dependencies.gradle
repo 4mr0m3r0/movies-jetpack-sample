@@ -26,6 +26,7 @@ ext {
     navigationVersion = '1.0.0-alpha06'
     androidxAnnotationVersion = '1.0.0'
     appCompatVersion = '1.0.0'
+    glideVersion = '4.0.0'
 
     //Testing
     jUnitVersion = '4.12'
@@ -170,7 +171,8 @@ ext {
             androidxLifecycleRuntime: "androidx.lifecycle:lifecycle-runtime:2.0.0",
             androidxLifecycleExtensions: "androidx.lifecycle:lifecycle-extensions:2.0.0",
             androidxLifecycleCompiler: "androidx.lifecycle:lifecycle-compiler:2.0.0",
-            androidxLifecycleRoom: "androidx.room:room-rxjava2:2.1.0-alpha01"
+            androidxLifecycleRoom: "androidx.room:room-rxjava2:2.1.0-alpha01",
+            glide: "com.github.bumptech.glide:glide:${glideVersion}"
     ]
 
     smartphoneUiTestDependencies = [

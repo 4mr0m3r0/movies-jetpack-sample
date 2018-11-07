@@ -30,35 +30,11 @@ class MovieCacheImpl @Inject constructor(
         }
     }
 
-    override fun getMovies(): Flowable<List<MovieEntity>> {
+    override fun findMoviesByText(text: String?): Single<List<MovieEntity>> {
         return cacheDatabase.cachedMovieDao().getMovies().
             map {
                 it.map { mapper.mapFromCached(it)
                 }
-            }
-    }
-
-    override fun areMoviesCached(): Single<Boolean> {
-        return cacheDatabase.cachedMovieDao().getMovies().isEmpty
-            .map {
-                !it
-            }
-    }
-
-    override fun setLastCacheTime(lastCache: Long): Completable {
-        return Completable.defer {
-            cacheDatabase.configDao().insertConfig(Config(lastCacheTime = lastCache))
-            Completable.complete()
-        }
-    }
-
-    override fun isMoviesCacheExpired(): Single<Boolean> {
-        val currentTime = System.currentTimeMillis()
-        val expirationTime = (60 * 10 * 1000).toLong()
-        return cacheDatabase.configDao().getConfig()
-            .onErrorReturn { Config(lastCacheTime = 0) }
-            .map {
-                currentTime - it.lastCacheTime > expirationTime
             }
     }
 

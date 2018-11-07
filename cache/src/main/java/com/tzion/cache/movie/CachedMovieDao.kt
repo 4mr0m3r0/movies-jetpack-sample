@@ -8,13 +8,14 @@ import com.tzion.cache.movie.MovieConstants.DELETE_MOVIES
 import com.tzion.cache.movie.MovieConstants.SELECT_MOVIES
 import com.tzion.cache.movie.model.CachedMovie
 import io.reactivex.Flowable
+import io.reactivex.Single
 
 @Dao
 abstract class CachedMovieDao {
 
     @Query(SELECT_MOVIES)
     @JvmSuppressWildcards
-    abstract fun getMovies(): Flowable<List<CachedMovie>>
+    abstract fun getMovies(): Single<List<CachedMovie>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     @JvmSuppressWildcards

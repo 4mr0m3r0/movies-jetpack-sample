@@ -11,12 +11,6 @@ interface MovieCache {
 
     fun saveMovies(clients: List<MovieEntity>): Completable
 
-    fun getMovies(): Flowable<List<MovieEntity>>
-
-    fun areMoviesCached(): Single<Boolean>
-
-    fun setLastCacheTime(lastCache: Long): Completable
-
-    fun isMoviesCacheExpired(): Single<Boolean>
+    fun findMoviesByText(text: String?): Single<List<MovieEntity>>
 
 }

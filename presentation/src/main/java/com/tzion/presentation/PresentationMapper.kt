@@ -1,9 +1,9 @@
 package com.tzion.presentation
 
-interface PresentationMapper<V, D> {
+interface PresentationMapper<P, D> {
 
-    fun mapToView(domain: D): V
+    fun mapToPresentation(domain: D): P
 
-    fun mapFromView(view: V): D
+    fun mapFromPresentation(presentation: P): D
 
 }

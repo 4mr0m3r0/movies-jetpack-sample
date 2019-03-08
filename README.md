@@ -2,8 +2,7 @@
 A demo app illustrating Android development with Kotlin, Android Jetpack, Dagger 2, RxKotlin - RxAndroid, Clean Architecture and MVVM
 
 Introduction
-------------
-This app came from the idea of [movies-clean-architecture][25] project from Pablo Araya (pabloaraya)   
+------------  
 ### Functionality
 Find movies information using [OMDb API][26]
 #### Display Movies
@@ -39,7 +38,6 @@ Libraries Used
 
 Great Resources for Learning
 ----------------------------
-Thanks to all the documentation and great samples made by great programmers and Software Engineers.
 
 ![Android Jetpack](screenshots/jetpack.png "Android Jetpack Components")
 

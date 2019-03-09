@@ -2,8 +2,7 @@
 A demo app illustrating Android development with Kotlin, Android Jetpack, Dagger 2, RxKotlin - RxAndroid, Clean Architecture and MVVM
 
 Introduction
-------------
-This app came from the idea of [movies-clean-architecture][25] project from Pablo Araya (pabloaraya)   
+------------  
 ### Functionality
 Find movies information using [OMDb API][26]
 #### Display Movies
@@ -39,7 +38,6 @@ Libraries Used
 
 Great Resources for Learning
 ----------------------------
-Thanks to all the documentation and great samples made by great programmers and Software Engineers.
 
 ![Android Jetpack](screenshots/jetpack.png "Android Jetpack Components")
 
@@ -75,6 +73,7 @@ Official Site [here][5]
 #### Samples
 * [todo‑mvp‑rxjava][20] Uses RxJava 2 to implement concurrency, and abstract the data layer.
 * [dev‑todo‑mvvm‑rxjava][21] Based on the todo-rxjava sample, this version incorporates the Model‑View‑ViewModel pattern.
+* [RxKotlin-RxJava2-Android-Samples][57] Learn RxKotlin with simple coding examples
 
 Clean Architecture
 ------------------
@@ -155,3 +154,4 @@ Youtube Channels
 [54]: https://medium.com/upday-devs/android-architecture-patterns-part-3-model-view-viewmodel-e7eeee76b73b
 [55]: https://medium.com/exploring-android/learn-clean-architecture-for-android-at-caster-io-8f1513621c30
 [56]: https://www.youtube.com/channel/UCSwuCetC3YlO1Y7bqVW5GHg
+[57]: https://github.com/AnkitDroidGit/RxKotlin-RxJava2-Android-Samples/tree/master/RxOperators

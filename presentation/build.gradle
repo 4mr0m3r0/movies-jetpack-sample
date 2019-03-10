@@ -79,6 +79,5 @@ dependencies {
     testImplementation presentationTestDependencies.junit
     testImplementation presentationTestDependencies.mockitoKotlin
     testImplementation presentationTestDependencies.assertj
-    testImplementation presentationTestDependencies.robolectric
     testImplementation presentationTestDependencies.archTesting
 }

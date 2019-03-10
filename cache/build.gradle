@@ -46,7 +46,6 @@ dependencies {
     testImplementation cacheTestDependencies.kotlinJUnit
     testImplementation cacheTestDependencies.mockitoKotlin
     testImplementation cacheTestDependencies.assertj
-    testImplementation cacheTestDependencies.robolectric
     testImplementation cacheTestDependencies.archTesting
     testImplementation cacheTestDependencies.roomTesting
 }

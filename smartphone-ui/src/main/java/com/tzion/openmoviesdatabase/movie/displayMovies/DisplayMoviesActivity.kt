@@ -114,7 +114,7 @@ class DisplayMoviesActivity : AppCompatActivity() {
         }
     }
 
-    private fun setScreenForSuccess(clients: List<MovieView>?) {
+    fun setScreenForSuccess(clients: List<MovieView>?) {
         binding.pbDisplayMovies.visibility = View.GONE
         clients?.let {
             displayMoviesAdapter.setData(it)
@@ -124,7 +124,5 @@ class DisplayMoviesActivity : AppCompatActivity() {
             Timber.d("setScreenForSuccess empty list")
             binding.gMakeSearch.visibility = View.VISIBLE
         }
-
-
     }
 }

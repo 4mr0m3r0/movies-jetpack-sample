@@ -50,6 +50,8 @@ android {
     dataBinding {
         enabled = true
     }
+
+    testOptions.unitTests.includeAndroidResources = true
 }
 
 kapt {
@@ -84,6 +86,7 @@ dependencies {
     implementation smartphoneUiDependencies.androidxLifecycleExtensions
     implementation smartphoneUiDependencies.androidxLifecycleRoom
     implementation smartphoneUiDependencies.glide
+    annotationProcessor smartphoneUiDependencies.glideCompiler
     kapt smartphoneUiDependencies.androidxLifecycleCompiler
     kapt smartphoneUiDependencies.daggerCompiler
     kapt smartphoneUiDependencies.daggerProcessor
@@ -91,32 +94,23 @@ dependencies {
     implementation smartphoneUiDependencies.navigationFragmentKtx
     implementation smartphoneUiDependencies.navigationUi
 
-    //Instrumentation test dependencies
+    //Test Dependencies
+    testImplementation smartphoneUiTestDependencies.junit
     testImplementation smartphoneUiTestDependencies.kotlinJUnit
-    androidTestImplementation smartphoneUiTestDependencies.junit
-    androidTestImplementation smartphoneUiTestDependencies.mockitoKotlin
-    androidTestImplementation smartphoneUiTestDependencies.mockitoAndroid
-//    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.0' {
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    }
-//    androidTestImplementation 'androidx.test:runner:1.1.0' {
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    }
-//    androidTestImplementation 'androidx.test:rules:1.1.0' {
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    }
-//    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.1.0' {
-//        exclude group: 'com.android.support', module: 'support-annotations'
-//    }
-//    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.1.0' {
-//        exclude module: 'appcompat'
-//        exclude module: 'appcompat-v7'
-//        exclude module: 'support-v4'
-//        exclude module: 'support-annotations'
-//        exclude module: 'recyclerview-v7'
-//        exclude module: 'design'
-//    }
+    testImplementation smartphoneUiTestDependencies.testCore
+    testImplementation smartphoneUiTestDependencies.androidRunner
+    testImplementation smartphoneUiTestDependencies.androidRules
+    testImplementation smartphoneUiTestDependencies.extJUnit
+    testImplementation smartphoneUiTestDependencies.extTruth
+    testImplementation smartphoneUiTestDependencies.googleTruth
+    testImplementation smartphoneUiTestDependencies.espressoCore
+    testImplementation smartphoneUiTestDependencies.espressoContrib
+    testImplementation smartphoneUiTestDependencies.robolectric
+    testImplementation smartphoneUiTestDependencies.fragmentTesting
+    testImplementation smartphoneUiTestDependencies.mockitoKotlin
+    testImplementation smartphoneUiTestDependencies.mockitoAndroid
+
+
     kaptTest smartphoneUiDependencies.daggerCompiler
     kaptAndroidTest smartphoneUiDependencies.daggerCompiler
-    //    androidTestImplementation 'com.android.support.test:runner:1.0.2'
 }

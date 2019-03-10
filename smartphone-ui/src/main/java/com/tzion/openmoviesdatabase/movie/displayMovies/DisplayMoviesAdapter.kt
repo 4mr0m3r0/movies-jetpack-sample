@@ -61,10 +61,14 @@ class DisplayMoviesAdapter @Inject constructor(): RecyclerView.Adapter<DisplayMo
         }
 
         fun setImage(poster: String?) {
-            Glide.with(itemView.context)
-                .load(poster)
-//                .apply(RequestOptions.circleCropTransform())
-                .into(binding.acivMovieAvatar)
+            try {
+                Glide.with(binding.root)
+                    .load(poster)
+    //                .apply(RequestOptions.circleCropTransform())
+                    .into(binding.acivMovieAvatar)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
         }
     }
 

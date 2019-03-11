@@ -1,28 +1,21 @@
 package com.tzion.openmoviesdatabase.movie.displayMovies
 
+import androidx.lifecycle.Lifecycle
 import androidx.recyclerview.widget.RecyclerView
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ActivityScenario.launch
 import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
-import androidx.test.espresso.action.ViewActions.pressImeActionButton
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.rule.ActivityTestRule
-import com.nhaarman.mockito_kotlin.any
-import com.nhaarman.mockito_kotlin.whenever
-import com.tzion.domain.movie.model.Movie
 import com.tzion.openmoviesdatabase.OpenMoviesDatabaseApp
 import com.tzion.openmoviesdatabase.R
-import com.tzion.openmoviesdatabase.di.DaggerTestApplicationComponent
 import com.tzion.openmoviesdatabase.movie.factory.MoviesFactory
 import com.tzion.openmoviesdatabase.movie.model.MovieView
 import com.tzion.openmoviesdatabase.test.RecyclerViewMatcher
-import com.tzion.openmoviesdatabase.test.TestApplication
-import io.reactivex.Single
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -31,15 +24,15 @@ import org.junit.runner.RunWith
 @RunWith(AndroidJUnit4::class)
 class DisplayMoviesActivityTest {
 
-    @get:Rule
-    val rule = ActivityTestRule(DisplayMoviesActivity::class.java)
+//    @get:Rule
+//    val rule = ActivityTestRule(DisplayMoviesActivity::class.java)
 
     private val applicationContext = getApplicationContext<OpenMoviesDatabaseApp>()
-//    private lateinit var scenario: ActivityScenario<DisplayMoviesActivity>
+    private lateinit var scenario: ActivityScenario<DisplayMoviesActivity>
 
     @Before
     fun setUp() {
-//        scenario = launch(DisplayMoviesActivity::class.java)
+        scenario = launch(DisplayMoviesActivity::class.java)
     }
 
     @Test
@@ -65,10 +58,31 @@ class DisplayMoviesActivityTest {
     @Test
     fun givenAListOfMovies_whenSetScreenForSuccess_thenShouldDisplayTheList() {
         val moviesView = MoviesFactory.makeMovieViewList(10)
-
-        rule.activity.setScreenForSuccess(moviesView)
+        scenario.onActivity { activity ->
+            activity.setScreenForSuccess(moviesView)
+        }
 
         checkMoviesAreDisplayed(moviesView)
+    }
+
+    @Test
+    fun givenAListOfMovies_whenRecreateActivity_thenShouldDisplayTheList() {
+        val moviesView = MoviesFactory.makeMovieViewList(10)
+        scenario.onActivity { activity ->
+            activity.setScreenForSuccess(moviesView)
+        }
+
+        scenario.recreate()
+
+        checkMoviesAreDisplayed(moviesView)
+    }
+
+    @Test
+    fun whenRecreateActivity_thenShouldDisplaySearchImage() {
+
+        scenario.recreate()
+
+        onView(withId(R.id.aciv_search_display_movies)).check(matches(isDisplayed()))
     }
 
     private fun checkMoviesAreDisplayed(movies: List<MovieView>) {

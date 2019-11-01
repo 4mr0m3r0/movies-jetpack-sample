@@ -1,5 +1,5 @@
 # Movies Demo 
-A demo app illustrating Android development with Kotlin, Architecture Components, Dagger 2, RxKotlin, Clean Architecture
+A demo app illustrating Android development with Kotlin, Android Jetpack, Dagger 2, RxKotlin, Clean Architecture
 
 Introduction
 ------------  

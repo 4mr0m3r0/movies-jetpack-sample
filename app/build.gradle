@@ -1,0 +1,73 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    def globalConfiguration = rootProject.extensions.getByName("ext")
+    compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
+    buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
+    defaultConfig {
+        applicationId "com.tzion.openmoviesdatabase"
+        minSdkVersion globalConfiguration["androidMinSdkVersion"]
+        targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        dev {
+            dimension "default"
+            applicationId 'com.tzion.openmoviesdatabase.dev'
+            versionNameSuffix '-dev'
+        }
+        prod {
+            dimension "default"
+            applicationId 'com.tzion.openmoviesdatabase.prod'
+            versionNameSuffix '-prod'
+        }
+        mock {
+            dimension "default"
+            applicationId 'com.tzion.openmoviesdatabase.mock'
+            versionNameSuffix '-mock'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    testOptions.unitTests.includeAndroidResources = true
+}
+
+kapt {
+    correctErrorTypes = true
+    generateStubs = true
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    def dependencies = rootProject.ext.dependencies
+    def kaptDependencies = rootProject.ext.kaptDependencies
+    def testDependencies = rootProject.ext.testDependencies
+
+    implementation dependencies
+    kapt kaptDependencies
+
+    //Test Dependencies
+    testImplementation testDependencies
+}

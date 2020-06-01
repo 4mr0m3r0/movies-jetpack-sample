@@ -6,7 +6,7 @@
     <data>
         <variable
             name="movieDetail"
-            type="com.tzion.openmoviesdatabase.movies.presentation.model.UiMovieDetail" />
+            type="com.tzion.jetpackmovies.presentation.model.UiMovieDetail" />
     </data>
 
     <ScrollView

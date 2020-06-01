@@ -1,19 +1,16 @@
 package com.tzion.openmoviesdatabase.movies.presentation
 
-import android.util.Log
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.tzion.openmoviesdatabase.movies.domain.FindMoviesByNameUseCase
 import com.tzion.openmoviesdatabase.movies.domain.exception.NoMoviesResultsException
-import com.tzion.openmoviesdatabase.movies.domain.model.DomainMovie
 import com.tzion.openmoviesdatabase.movies.presentation.mapper.UiMovieMapper
-import com.tzion.openmoviesdatabase.movies.presentation.model.UiMovie
 import com.tzion.openmoviesdatabase.movies.presentation.uistates.FindMoviesUiState
-import io.reactivex.observers.DisposableSingleObserver
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class FindMoviesViewModel @Inject constructor(

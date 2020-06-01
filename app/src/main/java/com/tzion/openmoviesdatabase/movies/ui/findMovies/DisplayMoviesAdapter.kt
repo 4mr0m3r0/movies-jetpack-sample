@@ -1,4 +1,4 @@
-package com.tzion.openmoviesdatabase.movies.ui.displayMovies
+package com.tzion.openmoviesdatabase.movies.ui.findMovies
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,9 +7,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.tzion.openmoviesdatabase.databinding.ItemMovieBinding
 import com.tzion.openmoviesdatabase.movies.presentation.model.UiMovie
+import com.tzion.openmoviesdatabase.movies.ui.Navigator
 import javax.inject.Inject
 
-class DisplayMoviesAdapter @Inject constructor(): RecyclerView.Adapter<DisplayMoviesAdapter.ViewHolder>() {
+class DisplayMoviesAdapter @Inject constructor(
+    private val navigator: Navigator): RecyclerView.Adapter<DisplayMoviesAdapter.ViewHolder>() {
 
     var movies: List<UiMovie> = mutableListOf()
 
@@ -35,6 +37,7 @@ class DisplayMoviesAdapter @Inject constructor(): RecyclerView.Adapter<DisplayMo
         return View.OnClickListener {
 //            val movieDetail = PlantListFragmentDirections.ActionPlantListFragmentToPlantDetailFragment(plantId)
 //            it.findNavController().navigate(direction)
+            navigator.openMovieDetails(it.context, movieId)
         }
     }
 

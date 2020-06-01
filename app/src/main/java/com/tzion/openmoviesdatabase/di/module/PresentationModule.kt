@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.tzion.openmoviesdatabase.di.ViewModelFactory
 import com.tzion.openmoviesdatabase.di.ViewModelKey
 import com.tzion.openmoviesdatabase.movies.presentation.FindMoviesViewModel
+import com.tzion.openmoviesdatabase.movies.presentation.MovieDetailViewModel
 import dagger.Binds
 import dagger.MapKey
 import dagger.Module
@@ -18,6 +19,11 @@ abstract class PresentationModule {
     @IntoMap
     @ViewModelKey(FindMoviesViewModel::class)
     abstract fun bindDisplayClientsViewModel(viewModel: FindMoviesViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MovieDetailViewModel::class)
+    abstract fun bindMovieDetailViewModel(viewModel: MovieDetailViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

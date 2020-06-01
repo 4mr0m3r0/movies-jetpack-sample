@@ -29,6 +29,7 @@ ext {
     appCompatVersion = '1.1.0'
     glideVersion = '4.9.0'
     coroutinesAndroidVersion = '1.3.0'
+    pagingVersion = '2.1.2'
 
     //Testing
     jUnitVersion = '4.12'
@@ -82,7 +83,8 @@ ext {
             "androidx.lifecycle:lifecycle-livedata-ktx:${livedataVersion}",
             "androidx.lifecycle:lifecycle-viewmodel-ktx:${archCompVersion}",
             "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesAndroidVersion",
-            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesAndroidVersion}"
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesAndroidVersion}",
+            "androidx.paging:paging-runtime:${pagingVersion}"
     ]
 
     kaptDependencies = [
@@ -112,7 +114,9 @@ ext {
             "org.assertj:assertj-core:${assertJVersion}",
             "androidx.room:room-testing:${roomVersion}",
             "com.android.support.test:runner:${androidSupportRunnerVersion}",
-            "com.android.support.test:rules:${androidSupportRulesVersion}"
+            "com.android.support.test:rules:${androidSupportRulesVersion}",
+            "org.jetbrains.kotlinx:kotlinx-coroutines-test:${coroutinesAndroidVersion}",
+            "androidx.paging:paging-common:${pagingVersion}"
     ]
 
 }

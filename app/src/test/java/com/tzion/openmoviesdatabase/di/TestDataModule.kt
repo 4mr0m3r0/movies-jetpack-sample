@@ -1,7 +1,7 @@
 package com.tzion.openmoviesdatabase.di
 
 import com.nhaarman.mockito_kotlin.mock
-import com.tzion.domain.movie.MovieRepository
+import com.tzion.openmoviesdatabase.movies.domain.repository.Repository
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -12,7 +12,7 @@ object TestDataModule {
     @Provides
     @JvmStatic
     @Singleton
-    fun providesDataRepository(): MovieRepository {
+    fun providesDataRepository(): Repository {
         return mock()
     }
 

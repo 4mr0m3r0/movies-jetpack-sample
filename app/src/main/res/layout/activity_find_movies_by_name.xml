@@ -6,7 +6,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:context="com.tzion.openmoviesdatabase.movies.ui.displayMovies.DisplayMoviesActivity">
+            tools:context="com.tzion.openmoviesdatabase.movies.ui.findMovies.DisplayMoviesActivity">
 
         <androidx.constraintlayout.widget.Group
                     android:id="@+id/g_make_search"

@@ -1,5 +1,22 @@
 <resources>
     <string name="app_name">Open Movies Database</string>
-    <string name="make_a_search">Realice una búsqueda</string>
-    <string name="search_title">Buscar</string>
+    <string name="make_a_search">Find a movie</string>
+    <string name="search_title">Search</string>
+    <string name="title">Title</string>
+    <string name="year">Year</string>
+    <string name="released">Released</string>
+    <string name="runtime">Runtime</string>
+    <string name="genre">Genre</string>
+    <string name="director">Director</string>
+    <string name="writer">Writer</string>
+    <string name="actors">Actors</string>
+    <string name="plot">Plot</string>
+    <string name="language">Language</string>
+    <string name="country">Country</string>
+    <string name="awards">Awards</string>
+    <string name="poster">Poster</string>
+    <string name="rating">Rating</string>
+    <string name="votes">Votes</string>
+    <string name="type">Type</string>
+    <string name="favorite">favorite</string>
 </resources>

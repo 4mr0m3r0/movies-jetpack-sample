@@ -13,13 +13,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name="com.tzion.openmoviesdatabase.movies.ui.displayMovies.DisplayMoviesByNameActivity">
+        <activity android:name="com.tzion.openmoviesdatabase.movies.ui.findMovies.FindMoviesByNameActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+        <activity android:name="com.tzion.openmoviesdatabase.movies.ui.movieDetail.MovieDetailActivity" />
     </application>
 
 </manifest>

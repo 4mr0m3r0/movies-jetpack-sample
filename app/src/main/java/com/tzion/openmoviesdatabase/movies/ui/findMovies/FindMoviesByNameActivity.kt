@@ -1,4 +1,4 @@
-package com.tzion.openmoviesdatabase.movies.ui.displayMovies
+package com.tzion.openmoviesdatabase.movies.ui.findMovies
 
 import android.os.Bundle
 import android.view.Menu
@@ -14,16 +14,17 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tzion.openmoviesdatabase.R
-import com.tzion.openmoviesdatabase.databinding.ActivityDisplayMoviesByNameBinding
+import com.tzion.openmoviesdatabase.databinding.ActivityFindMoviesByNameBinding
 import com.tzion.openmoviesdatabase.di.ViewModelFactory
 import com.tzion.openmoviesdatabase.movies.presentation.FindMoviesViewModel
 import com.tzion.openmoviesdatabase.movies.presentation.model.UiMovie
 import com.tzion.openmoviesdatabase.movies.presentation.uistates.FindMoviesUiState
+import com.tzion.openmoviesdatabase.movies.ui.Navigator
 import dagger.android.AndroidInjection
 import timber.log.Timber
 import javax.inject.Inject
 
-class DisplayMoviesByNameActivity: AppCompatActivity() {
+class FindMoviesByNameActivity: AppCompatActivity() {
 
     @Inject lateinit var displayMoviesAdapter: DisplayMoviesAdapter
     @Inject lateinit var viewModelFactory: ViewModelFactory
@@ -32,13 +33,14 @@ class DisplayMoviesByNameActivity: AppCompatActivity() {
             .of(this, viewModelFactory)
             .get(FindMoviesViewModel::class.java)
     }
-    private lateinit var binding: ActivityDisplayMoviesByNameBinding
+    private lateinit var binding: ActivityFindMoviesByNameBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_display_movies_by_name)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_find_movies_by_name)
         setupDependencyInjection()
         setUpRecyclerView()
+        setupViewModel()
     }
 
     private fun setupDependencyInjection() {
@@ -53,6 +55,10 @@ class DisplayMoviesByNameActivity: AppCompatActivity() {
         } catch (e: Exception) {
             Timber.e(e)
         }
+    }
+
+    private fun setupViewModel() {
+        findMoviesViewModel?.getLiveData()?.observe(this, Observer { renderUiState(it) })
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -80,7 +86,6 @@ class DisplayMoviesByNameActivity: AppCompatActivity() {
     }
 
     private fun findMoviesByName(name: String?) {
-        findMoviesViewModel?.getLiveData()?.observe(this, Observer { renderUiState(it) })
         findMoviesViewModel?.findMoviesByName(name)
     }
 

@@ -2,9 +2,6 @@ package com.tzion.openmoviesdatabase.test
 
 import android.app.Activity
 import android.app.Application
-import androidx.test.core.app.ApplicationProvider
-import com.tzion.openmoviesdatabase.OpenMoviesDatabaseApp
-import com.tzion.openmoviesdatabase.di.DaggerTestApplicationComponent
 import com.tzion.openmoviesdatabase.di.TestApplicationComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -24,7 +21,7 @@ class TestApplication: Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
-        appComponent = DaggerTestApplicationComponent.builder().application(this).build()
+//        appComponent = DaggerTestApplicationComponent.builder().application(this).build()
         appComponent.inject(this)
     }
 

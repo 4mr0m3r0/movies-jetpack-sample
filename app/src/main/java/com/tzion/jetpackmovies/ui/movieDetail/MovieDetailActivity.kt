@@ -3,7 +3,9 @@ package com.tzion.jetpackmovies.ui.movieDetail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +13,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
+import com.google.android.material.snackbar.Snackbar
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.databinding.ActivityMovieDetailBinding
 import com.tzion.jetpackmovies.di.ViewModelFactory
@@ -18,6 +21,7 @@ import com.tzion.jetpackmovies.presentation.MovieDetailViewModel
 import com.tzion.jetpackmovies.presentation.model.UiMovieDetail
 import com.tzion.jetpackmovies.presentation.uistates.MovieDetailUiState
 import dagger.android.AndroidInjection
+import timber.log.Timber
 import javax.inject.Inject
 
 class MovieDetailActivity: AppCompatActivity() {
@@ -81,6 +85,26 @@ class MovieDetailActivity: AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.movie_detail_menu, menu)
         return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.favorite -> {
+                makeFavoriteConfirmationMsg()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun makeFavoriteConfirmationMsg() {
+        Snackbar.make(
+            binding.root,
+            getString(R.string.was_added_to_your_favorite_movie_list, binding.tvTitle.text),
+            Snackbar.LENGTH_INDEFINITE
+        ).setAction(R.string.undo) {
+            Timber.d("Action for Snackbar")
+        }.show()
     }
 
     companion object {

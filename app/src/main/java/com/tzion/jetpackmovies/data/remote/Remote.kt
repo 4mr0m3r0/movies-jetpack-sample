@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.data.source
+package com.tzion.jetpackmovies.data.remote
 
 import com.tzion.jetpackmovies.data.remote.model.RemoteMovieDetail
 import com.tzion.jetpackmovies.data.remote.model.RemoteSearch

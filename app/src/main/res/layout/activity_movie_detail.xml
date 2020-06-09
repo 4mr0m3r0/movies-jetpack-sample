@@ -32,7 +32,7 @@
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tv_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -58,7 +58,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/textView4"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
                 tools:text="@string/runtime"
                 style="@style/Body2"/>
 
@@ -73,7 +73,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/textView"
-                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                app:layout_constraintTop_toBottomOf="@+id/tv_title"
                 tools:text="@string/released"
                 style="@style/Body2"/>
 

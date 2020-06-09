@@ -2,7 +2,7 @@ package com.tzion.jetpackmovies.di
 
 import com.nhaarman.mockito_kotlin.mock
 import com.tzion.jetpackmovies.data.remote.retrofit.WebServiceRetrofit
-import com.tzion.jetpackmovies.data.source.Remote
+import com.tzion.jetpackmovies.data.remote.Remote
 import dagger.Module
 import dagger.Provides
 

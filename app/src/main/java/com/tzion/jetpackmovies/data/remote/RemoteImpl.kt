@@ -3,7 +3,6 @@ package com.tzion.jetpackmovies.data.remote
 import com.tzion.jetpackmovies.data.remote.model.RemoteMovieDetail
 import com.tzion.jetpackmovies.data.remote.model.RemoteSearch
 import com.tzion.jetpackmovies.data.remote.retrofit.WebServiceRetrofit
-import com.tzion.jetpackmovies.data.source.Remote
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

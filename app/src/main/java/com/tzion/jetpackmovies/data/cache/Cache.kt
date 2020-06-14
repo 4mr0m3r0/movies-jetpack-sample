@@ -5,7 +5,7 @@ import com.tzion.jetpackmovies.data.cache.model.CacheMovieDetail
 
 interface Cache {
 
-    fun saveFavoriteMovie(movieDetail: CacheMovieDetail)
+    suspend fun saveFavoriteMovie(movieDetail: CacheMovieDetail)
 
     fun getFavoriteMovies(): DataSource.Factory<Int, CacheMovieDetail>
 

@@ -13,7 +13,7 @@ class ManageFavoriteMoviesUseCase @Inject constructor(private val repository: Re
         return repository.getFavoriteMovies()
     }
 
-    fun saveFavoriteMovie(movieDetail: DomainMovieDetail) {
+    suspend fun saveFavoriteMovie(movieDetail: DomainMovieDetail) {
         //TODO: verify movieDetail main attrs are not empty
         return repository.saveFavoriteMovie(movieDetail)
     }

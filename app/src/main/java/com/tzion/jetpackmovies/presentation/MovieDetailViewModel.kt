@@ -42,7 +42,11 @@ class MovieDetailViewModel @Inject constructor(
     }
 
     fun addMovieToFavorites(movieDetail: UiMovieDetail) {
-//        manageFavoriteMoviesUseCase.saveFavoriteMovie()
+        viewModelScope.launch {
+            manageFavoriteMoviesUseCase.saveFavoriteMovie(with(mapper) {
+                movieDetail.fromUiToDomain()
+            })
+        }
     }
 
 }

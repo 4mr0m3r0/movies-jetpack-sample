@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 
 android {
     def globalConfiguration = rootProject.extensions.getByName("ext")
     compileSdkVersion globalConfiguration["androidCompileSdkVersion"]
     buildToolsVersion globalConfiguration["androidBuildToolsVersion"]
     defaultConfig {
-        applicationId "com.tzion.openmoviesdatabase"
+        applicationId "com.tzion.jetpack"
         minSdkVersion globalConfiguration["androidMinSdkVersion"]
         targetSdkVersion globalConfiguration["androidTargetSdkVersion"]
         versionCode 1
@@ -32,17 +32,17 @@ android {
     productFlavors {
         dev {
             dimension "default"
-            applicationId 'com.tzion.openmoviesdatabase.dev'
+            applicationId 'com.tzion.jetpack.dev'
             versionNameSuffix '-dev'
         }
         prod {
             dimension "default"
-            applicationId 'com.tzion.openmoviesdatabase.prod'
+            applicationId 'com.tzion.jetpack.prod'
             versionNameSuffix '-prod'
         }
         mock {
             dimension "default"
-            applicationId 'com.tzion.openmoviesdatabase.mock'
+            applicationId 'com.tzion.jetpack.mock'
             versionNameSuffix '-mock'
         }
     }

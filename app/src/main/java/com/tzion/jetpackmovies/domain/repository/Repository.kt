@@ -12,7 +12,7 @@ interface Repository {
 
     fun getMovieDetailById(movieId: String): Flow<DomainMovieDetail>
 
-    fun saveFavoriteMovie(movieDetail: DomainMovieDetail)
+    suspend fun saveFavoriteMovie(movieDetail: DomainMovieDetail)
 
     fun getFavoriteMovies(): LiveData<PagedList<DomainMovieDetail>>
 

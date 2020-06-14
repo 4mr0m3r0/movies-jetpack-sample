@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Open Movies Database</string>
+    <string name="app_name">Movies</string>
     <string name="make_a_search">Find a movie</string>
     <string name="search_title">Search</string>
     <string name="title">Title</string>

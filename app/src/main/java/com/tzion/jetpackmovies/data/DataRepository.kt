@@ -33,7 +33,7 @@ class DataRepository @Inject constructor(
             with(dataMovieDetailMapper) { remoteMovieDetail.fromRemoteToDomain() }
         }
 
-    override fun saveFavoriteMovie(movieDetail: DomainMovieDetail) {
+    override suspend fun saveFavoriteMovie(movieDetail: DomainMovieDetail) {
         cache.saveFavoriteMovie(with(dataMovieDetailMapper) { movieDetail.fromDomainToCache() })
     }
 

@@ -7,7 +7,7 @@ import javax.inject.Inject
 
 class CacheImpl @Inject constructor(private val databaseBuilder: DatabaseBuilder): Cache {
 
-    override fun saveFavoriteMovie(movieDetail: CacheMovieDetail) {
+    override suspend fun saveFavoriteMovie(movieDetail: CacheMovieDetail) {
         databaseBuilder.favoriteMovieDao().insertFavoriteMovie(movieDetail)
     }
 

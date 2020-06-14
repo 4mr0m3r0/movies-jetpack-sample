@@ -34,6 +34,7 @@ class MovieDetailActivity: AppCompatActivity() {
             .get(MovieDetailViewModel::class.java)
     }
     private lateinit var binding: ActivityMovieDetailBinding
+    private lateinit var movieDetailDisplayed: UiMovieDetail
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,14 +59,21 @@ class MovieDetailActivity: AppCompatActivity() {
     }
 
     private fun updateScreenForLoading(loading: Boolean) {
-//        if (loading) {
-//            binding.pbMovieDetail.visibility = View.VISIBLE
-//        } else {
-//            binding.pbMovieDetail.visibility = View.GONE
-//        }
+        if (loading) {
+            binding.apply {
+                svDetailMovie.visibility = View.GONE
+                pbMovieDetail.visibility = View.VISIBLE
+            }
+        } else {
+            binding.apply {
+                svDetailMovie.visibility = View.VISIBLE
+                pbMovieDetail.visibility = View.GONE
+            }
+        }
     }
 
     private fun updateScreenForSuccess(movieDetail: UiMovieDetail) {
+        movieDetailDisplayed = movieDetail
         binding.attrsDetailTemplate = with(attrsMapper) { movieDetail.fromUiToAttrs() }
     }
 
@@ -88,18 +96,23 @@ class MovieDetailActivity: AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.favorite -> {
-                makeFavoriteConfirmationMsg()
+                setDisplayedMovieAsFavorite()
                 true
             }
             else -> super.onOptionsItemSelected(item)
         }
     }
 
+    private fun setDisplayedMovieAsFavorite() {
+        movieDetailViewModel?.addMovieToFavorites(movieDetailDisplayed)
+        makeFavoriteConfirmationMsg()
+    }
+
     private fun makeFavoriteConfirmationMsg() {
         Snackbar.make(
             binding.root,
             getString(R.string.was_added_to_your_favorite_movie_list, binding.templateDetailMovie.getTitle()),
-            Snackbar.LENGTH_INDEFINITE
+            Snackbar.LENGTH_LONG
         ).setAction(R.string.undo) {
             Timber.d("Action for Snackbar")
         }.show()

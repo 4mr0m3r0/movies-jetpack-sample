@@ -13,12 +13,12 @@ import com.tzion.jetpackmovies.data.cache.model.CacheMovieDetail
 interface FavoriteMovieDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertFavoriteMovie(movieDetail: CacheMovieDetail)
+    suspend fun insertFavoriteMovie(movieDetail: CacheMovieDetail)
 
     @Query(SELECT_ALL_FROM_FAVORITE_MOVIES)
     fun getFavoriteMovies(): DataSource.Factory<Int, CacheMovieDetail>
 
     @Query(DELETE_ALL_FROM_FAVORITE_MOVIES)
-    fun deleteAll()
+    suspend fun deleteAll()
 
 }

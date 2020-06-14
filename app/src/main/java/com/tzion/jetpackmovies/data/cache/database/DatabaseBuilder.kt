@@ -8,7 +8,7 @@ import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 import com.tzion.jetpackmovies.data.cache.model.CacheMovieDetail
 
-@Database(version = 1, entities = [CacheMovieDetail::class])
+@Database(version = 1, entities = [CacheMovieDetail::class], exportSchema = false)
 abstract class DatabaseBuilder: RoomDatabase() {
 
     abstract fun favoriteMovieDao(): FavoriteMovieDao

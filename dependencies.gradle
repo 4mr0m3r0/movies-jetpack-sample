@@ -72,6 +72,7 @@ ext {
             "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
             "androidx.room:room-runtime:${roomVersion}",
+            "androidx.room:room-ktx:${roomVersion}",
             "com.google.code.gson:gson:${gsonVersion}",
             "androidx.lifecycle:lifecycle-runtime:${archCompVersion}",
             "androidx.lifecycle:lifecycle-extensions:${archCompVersion}",

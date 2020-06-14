@@ -9,16 +9,33 @@
             type="com.tzion.jetpackmovies.uicomponent.template.model.AttrsDetailTemplate" />
     </data>
 
-    <ScrollView
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
 
-        <com.tzion.jetpackmovies.uicomponent.template.DetailTemplate
-            android:id="@+id/template_detail_movie"
+        <ScrollView
+            android:id="@+id/sv_detail_movie"
+            android:visibility="gone"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:attributes="@{attrsDetailTemplate}" />
+            android:layout_height="wrap_content">
 
-    </ScrollView>
+            <com.tzion.jetpackmovies.uicomponent.template.DetailTemplate
+                android:id="@+id/template_detail_movie"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:attributes="@{attrsDetailTemplate}" />
+
+        </ScrollView>
+
+        <ProgressBar
+            android:id="@+id/pb_movie_detail"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:progressDrawable="@drawable/progress_bar_color"
+            android:visibility="gone"
+            android:layout_gravity="center" />
+
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
 </layout>

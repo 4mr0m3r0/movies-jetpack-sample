@@ -1,8 +1,8 @@
-package com.tzion.jetpackmovies.di
+package com.tzion.jetpackmovies.ui.di
 
 import android.app.Application
 import com.tzion.jetpackmovies.JetpackMoviesApp
-import com.tzion.jetpackmovies.di.module.*
+import com.tzion.jetpackmovies.ui.di.module.*
 import dagger.BindsInstance
 import dagger.Component
 import dagger.android.AndroidInjectionModule
@@ -14,7 +14,7 @@ import javax.inject.Singleton
     UiModule::class,
     PresentationModule::class,
     DataModule::class,
-//    CacheModule::class,
+    CacheModule::class,
     RemoteModule::class])
 interface ApplicationComponent {
 

@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.di
+package com.tzion.jetpackmovies.ui.di
 
 //@Module
 object TestCacheModule {

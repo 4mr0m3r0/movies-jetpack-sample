@@ -3,7 +3,6 @@ package com.tzion.jetpackmovies.ui.movieDetail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
@@ -16,10 +15,11 @@ import com.bumptech.glide.Glide
 import com.google.android.material.snackbar.Snackbar
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.databinding.ActivityMovieDetailBinding
-import com.tzion.jetpackmovies.di.ViewModelFactory
+import com.tzion.jetpackmovies.ui.di.ViewModelFactory
 import com.tzion.jetpackmovies.presentation.MovieDetailViewModel
 import com.tzion.jetpackmovies.presentation.model.UiMovieDetail
 import com.tzion.jetpackmovies.presentation.uistates.MovieDetailUiState
+import com.tzion.jetpackmovies.ui.mapper.AttrsMapper
 import dagger.android.AndroidInjection
 import timber.log.Timber
 import javax.inject.Inject
@@ -27,6 +27,7 @@ import javax.inject.Inject
 class MovieDetailActivity: AppCompatActivity() {
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
+    @Inject lateinit var attrsMapper: AttrsMapper
     private val movieDetailViewModel: MovieDetailViewModel? by lazy {
         ViewModelProviders
             .of(this, viewModelFactory)
@@ -57,18 +58,15 @@ class MovieDetailActivity: AppCompatActivity() {
     }
 
     private fun updateScreenForLoading(loading: Boolean) {
-        if (loading) {
-            binding.pbMovieDetail.visibility = View.VISIBLE
-        } else {
-            binding.pbMovieDetail.visibility = View.GONE
-        }
+//        if (loading) {
+//            binding.pbMovieDetail.visibility = View.VISIBLE
+//        } else {
+//            binding.pbMovieDetail.visibility = View.GONE
+//        }
     }
 
     private fun updateScreenForSuccess(movieDetail: UiMovieDetail) {
-        if (movieDetail.title.isNotEmpty()) {
-            Glide.with(this).load(movieDetail.poster).into(binding.ivPoster)
-            binding.movieDetail = movieDetail
-        }
+        binding.attrsDetailTemplate = with(attrsMapper) { movieDetail.fromUiToAttrs() }
     }
 
     private fun updateScreenForError(error: Throwable?) {
@@ -100,7 +98,7 @@ class MovieDetailActivity: AppCompatActivity() {
     private fun makeFavoriteConfirmationMsg() {
         Snackbar.make(
             binding.root,
-            getString(R.string.was_added_to_your_favorite_movie_list, binding.tvTitle.text),
+            getString(R.string.was_added_to_your_favorite_movie_list, binding.templateDetailMovie.getTitle()),
             Snackbar.LENGTH_INDEFINITE
         ).setAction(R.string.undo) {
             Timber.d("Action for Snackbar")

@@ -14,6 +14,5 @@ data class UiMovieDetail(val title: String = "",
                          val awards: String = "",
                          val poster: String = "",
                          val rating: String = "",
-                         val imdbRating: String = "",
-                         val imdbVotes: String = "",
+                         val votes: String = "",
                          val type: String = "")

@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.di
+package com.tzion.jetpackmovies.ui.di
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

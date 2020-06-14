@@ -1,9 +1,9 @@
-package com.tzion.jetpackmovies.di.module
+package com.tzion.jetpackmovies.ui.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.tzion.jetpackmovies.di.ViewModelFactory
-import com.tzion.jetpackmovies.di.ViewModelKey
+import com.tzion.jetpackmovies.ui.di.ViewModelFactory
+import com.tzion.jetpackmovies.ui.di.ViewModelKey
 import com.tzion.jetpackmovies.presentation.FindMoviesViewModel
 import com.tzion.jetpackmovies.presentation.MovieDetailViewModel
 import dagger.Binds

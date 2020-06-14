@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.di.module
+package com.tzion.jetpackmovies.ui.di.module
 
 import com.tzion.jetpackmovies.ui.findMovies.FindMoviesByNameActivity
 import com.tzion.jetpackmovies.ui.movieDetail.MovieDetailActivity

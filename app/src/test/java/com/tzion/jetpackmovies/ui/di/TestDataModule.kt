@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.di
+package com.tzion.jetpackmovies.ui.di
 
 import com.nhaarman.mockito_kotlin.mock
 import com.tzion.jetpackmovies.domain.repository.Repository

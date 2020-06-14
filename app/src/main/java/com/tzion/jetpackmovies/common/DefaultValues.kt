@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.helper
+package com.tzion.jetpackmovies.common
 
 object DefaultValues {
 

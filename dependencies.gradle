@@ -7,9 +7,6 @@ ext {
     kotlinVersion = '1.3.41'
 
     //Libraries
-    rxJavaVersion = '2.2.2'
-    rxKotlinVersion = '2.3.0'
-    rxAndroidVersion = '2.1.0'
     javaxAnnotationVersion = '1.3.2'
     javaxInjectVersion = '1'
     androidAnnotationsVersion = '27.1.1'
@@ -74,9 +71,7 @@ ext {
             "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
             "com.squareup.retrofit2:retrofit:${retrofitVersion}",
             "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
-            "com.squareup.retrofit2:adapter-rxjava2:${retrofitVersion}",
             "androidx.room:room-runtime:${roomVersion}",
-            "androidx.room:room-rxjava2:${roomVersion}",
             "com.google.code.gson:gson:${gsonVersion}",
             "androidx.lifecycle:lifecycle-runtime:${archCompVersion}",
             "androidx.lifecycle:lifecycle-extensions:${archCompVersion}",

@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.databinding.ActivityFindMoviesByNameBinding
-import com.tzion.jetpackmovies.di.ViewModelFactory
+import com.tzion.jetpackmovies.ui.di.ViewModelFactory
 import com.tzion.jetpackmovies.presentation.FindMoviesViewModel
 import com.tzion.jetpackmovies.presentation.model.UiMovie
 import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState

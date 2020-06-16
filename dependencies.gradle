@@ -4,13 +4,13 @@ ext {
     androidMinSdkVersion = 21
     androidTargetSdkVersion = 29
     androidCompileSdkVersion = 29
-    kotlinVersion = '1.3.41'
+    kotlinVersion = '1.3.72'
 
     //Libraries
     javaxAnnotationVersion = '1.3.2'
     javaxInjectVersion = '1'
     androidAnnotationsVersion = '27.1.1'
-    daggerVersion = '2.16'
+    daggerVersion = '2.24'
     gsonVersion = '2.8.1'
     okHttpVersion = '3.9.1'
     retrofitVersion = '2.8.1'
@@ -21,7 +21,7 @@ ext {
     timberVersion = '4.7.1'
     constraintLayoutVersion = '1.1.3'
     glassfishAnnotationVersion = '10.0-b28'
-    navigationVersion = '1.0.0-alpha06'
+    navigationVersion = '2.1.0'
     androidxAnnotationVersion = '1.0.0'
     appCompatVersion = '1.1.0'
     glideVersion = '4.9.0'
@@ -56,13 +56,9 @@ ext {
             "com.google.dagger:dagger-android:${daggerVersion}",
             "com.google.dagger:dagger-android-support:${daggerVersion}",
             "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}",
-            "android.arch.navigation:navigation-runtime:${navigationVersion}",
-            "android.arch.navigation:navigation-runtime-ktx:${navigationVersion}",
-            "android.arch.navigation:navigation-fragment:${navigationVersion}",
-            "android.arch.navigation:navigation-fragment-ktx:${navigationVersion}",
-            "android.arch.navigation:navigation-ui-ktx:${navigationVersion}",
+            "androidx.navigation:navigation-fragment-ktx:${navigationVersion}",
+            "androidx.navigation:navigation-ui-ktx:${navigationVersion}",
             "androidx.annotation:annotation:${androidxAnnotationVersion}",
-            "androidx.legacy:legacy-support-v4:1.0.0",
             "androidx.appcompat:appcompat:${appCompatVersion}",
             "androidx.recyclerview:recyclerview:${appCompatVersion}",
             "com.google.android.material:material:1.0.0",

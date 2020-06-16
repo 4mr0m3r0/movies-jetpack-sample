@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.tzion.jetpackmovies.databinding.ItemMovieBinding
 import com.tzion.jetpackmovies.presentation.model.UiMovie
 import com.tzion.jetpackmovies.ui.Navigator
+import timber.log.Timber
 import javax.inject.Inject
 
 class DisplayMoviesAdapter @Inject constructor(
@@ -35,9 +36,7 @@ class DisplayMoviesAdapter @Inject constructor(
 
     private fun createOnClickListener(movieId: String): View.OnClickListener {
         return View.OnClickListener {
-//            val movieDetail = PlantListFragmentDirections.ActionPlantListFragmentToPlantDetailFragment(plantId)
-//            it.findNavController().navigate(direction)
-            navigator.openMovieDetails(it.context, movieId)
+            navigator.openMovieDetails(it, movieId)
         }
     }
 
@@ -63,7 +62,7 @@ class DisplayMoviesAdapter @Inject constructor(
     //                .apply(RequestOptions.circleCropTransform())
                     .into(binding.acivMovieAvatar)
             } catch (e: Exception) {
-                e.printStackTrace()
+                Timber.d("adapter setImage ERROR: ${e.stackTrace}")
             }
         }
     }

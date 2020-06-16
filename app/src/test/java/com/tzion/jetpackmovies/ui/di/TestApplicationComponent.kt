@@ -2,7 +2,6 @@ package com.tzion.jetpackmovies.ui.di
 
 import android.app.Application
 import com.tzion.jetpackmovies.ui.di.module.PresentationModule
-import com.tzion.jetpackmovies.ui.di.module.UiModule
 import com.tzion.jetpackmovies.domain.repository.Repository
 import com.tzion.jetpackmovies.test.TestApplication
 import dagger.BindsInstance

@@ -19,6 +19,7 @@
     <string name="votes">Votes</string>
     <string name="type">Type</string>
     <string name="favorite">favorite</string>
+    <string name="favorites_movies">Favorites movies</string>
     <string name="was_added_to_your_favorite_movie_list">%s was added to your favorite movie list</string>
     <string name="undo">Undo</string>
 </resources>

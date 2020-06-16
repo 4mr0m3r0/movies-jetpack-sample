@@ -1,5 +1,12 @@
-# Movies Demo 
-A demo app illustrating Android development with Kotlin, Android Jetpack, Dagger 2, RxKotlin, Clean Architecture
+# Movies
+A demo Android app that combines the latest tools and good practices such as 
+ * Hilt. 
+ * Flow. 
+ * Coroutines. 
+ * Jetpack: Paging, Navigation, Args. 
+ * Kotlin and Clean Architecture.
+ * Navigator pattern.
+ 
 
 Introduction
 ------------  
@@ -28,7 +35,6 @@ Libraries Used
       asynchronous tasks for optimal execution.
  * [Dagger 2][36] Dependency Injection Framework.
  * Third party
-   * [RxKotlin][38] - [RxAndroid][39] Reactive Extensions for Kotlin and Android.
    * [Timber][40] A logger with a small, extensible API which provides utility on top of Android's normal Log class.
    * [Robolectric][41] A unit test framework that de-fangs the Android SDK jar. 
    * [Mockito-Kotlin][42] A small library that provides helper functions to work with Mockito in Kotlin.

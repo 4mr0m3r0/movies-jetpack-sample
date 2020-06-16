@@ -3,28 +3,27 @@ package com.tzion.jetpackmovies.ui.movieDetail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import com.bumptech.glide.Glide
+import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
+import com.tzion.jetpackmovies.JetpackMoviesApp
 import com.tzion.jetpackmovies.R
-import com.tzion.jetpackmovies.databinding.ActivityMovieDetailBinding
+import com.tzion.jetpackmovies.databinding.FragmentMovieDetailBinding
 import com.tzion.jetpackmovies.ui.di.ViewModelFactory
 import com.tzion.jetpackmovies.presentation.MovieDetailViewModel
 import com.tzion.jetpackmovies.presentation.model.UiMovieDetail
 import com.tzion.jetpackmovies.presentation.uistates.MovieDetailUiState
+import com.tzion.jetpackmovies.ui.di.module.DaggerMoviesComponent
 import com.tzion.jetpackmovies.ui.mapper.AttrsMapper
 import dagger.android.AndroidInjection
 import timber.log.Timber
 import javax.inject.Inject
 
-class MovieDetailActivity: AppCompatActivity() {
+class MovieDetailFragment: Fragment() {
 
     @Inject lateinit var viewModelFactory: ViewModelFactory
     @Inject lateinit var attrsMapper: AttrsMapper
@@ -33,19 +32,20 @@ class MovieDetailActivity: AppCompatActivity() {
             .of(this, viewModelFactory)
             .get(MovieDetailViewModel::class.java)
     }
-    private lateinit var binding: ActivityMovieDetailBinding
+    private lateinit var binding: FragmentMovieDetailBinding
     private lateinit var movieDetailDisplayed: UiMovieDetail
+    private val args: MovieDetailFragmentArgs by navArgs()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_movie_detail)
         setupDependencyInjection()
         setupViewModel()
         loadMovieDetailById()
     }
 
     private fun setupDependencyInjection() {
-        AndroidInjection.inject(this)
+        val applicationComponent = (activity?.applicationContext as JetpackMoviesApp).appComponent
+        DaggerMoviesComponent.factory().create(applicationComponent).inject(this)
     }
 
     private fun setupViewModel() {
@@ -79,18 +79,12 @@ class MovieDetailActivity: AppCompatActivity() {
 
     private fun updateScreenForError(error: Throwable?) {
         error?.let {
-            Toast.makeText(this, it.localizedMessage, Toast.LENGTH_LONG).show()
+            Toast.makeText(context, it.localizedMessage, Toast.LENGTH_LONG).show()
         }
     }
 
     private fun loadMovieDetailById() {
-        val movieId = intent.extras?.getString(MOVIE_ID_KEY)
-        movieDetailViewModel?.loadMovieDetailById(movieId)
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.movie_detail_menu, menu)
-        return super.onCreateOptionsMenu(menu)
+        movieDetailViewModel?.loadMovieDetailById(args.movieId)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -118,13 +112,16 @@ class MovieDetailActivity: AppCompatActivity() {
         }.show()
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        binding = FragmentMovieDetailBinding.inflate(inflater, container, false)
+        return binding.root
+    }
+
     companion object {
-        const val MOVIE_ID_KEY = "movieIdKey"
 
         fun makeIntent(context: Context?, movieId: String): Intent? = context?.let {
-            Intent(context, MovieDetailActivity::class.java).apply {
-                putExtra(MOVIE_ID_KEY, movieId)
-            }
+            Intent(context, MovieDetailFragment::class.java)
         }
 
     }

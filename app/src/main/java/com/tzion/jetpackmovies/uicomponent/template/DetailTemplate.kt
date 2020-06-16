@@ -46,7 +46,7 @@ class DetailTemplate @JvmOverloads constructor(
                 Glide.with(this).load(poster).into(iv_poster)
             }
         } catch (e: Exception) {
-            Timber.d(e.localizedMessage)
+            Timber.d("template setPoster ERROR: ${e.stackTrace}")
         }
     }
 

@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.tzion.jetpackmovies.ui.di.ViewModelFactory
 import com.tzion.jetpackmovies.ui.di.ViewModelKey
 import com.tzion.jetpackmovies.presentation.FindMoviesViewModel
+import com.tzion.jetpackmovies.presentation.MainViewModel
 import com.tzion.jetpackmovies.presentation.MovieDetailViewModel
 import dagger.Binds
 import dagger.Module
@@ -12,6 +13,11 @@ import dagger.multibindings.IntoMap
 
 @Module
 abstract class PresentationModule {
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(MainViewModel::class)
+    abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
 
     @Binds
     @IntoMap

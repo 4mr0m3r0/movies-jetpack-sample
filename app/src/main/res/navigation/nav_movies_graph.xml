@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_movies_graph"
+    app:startDestination="@id/findMoviesByNameFragment">
+
+
+    <fragment
+        android:id="@+id/findMoviesByNameFragment"
+        android:name="com.tzion.jetpackmovies.ui.findMovies.FindMoviesByNameFragment"
+        android:label="@string/make_a_search"
+        tools:layout="@layout/fragment_find_movies_by_name">
+        <action
+            android:id="@+id/action_findMoviesByName_to_movieDetail"
+            app:destination="@id/movieDetailFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/movieDetailFragment"
+        android:name="com.tzion.jetpackmovies.ui.movieDetail.MovieDetailFragment"
+        android:label="MovieDetailFragment"
+        tools:layout="@layout/fragment_movie_detail">
+        <argument android:name="movieId" app:argType="string"/>
+    </fragment>
+
+</navigation>

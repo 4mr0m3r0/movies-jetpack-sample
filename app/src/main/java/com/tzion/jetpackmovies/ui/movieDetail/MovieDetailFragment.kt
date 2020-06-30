@@ -7,6 +7,7 @@ import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.snackbar.Snackbar
@@ -28,8 +29,7 @@ class MovieDetailFragment: Fragment() {
     @Inject lateinit var viewModelFactory: ViewModelFactory
     @Inject lateinit var attrsMapper: AttrsMapper
     private val movieDetailViewModel: MovieDetailViewModel? by lazy {
-        ViewModelProviders
-            .of(this, viewModelFactory)
+        ViewModelProvider(this, viewModelFactory)
             .get(MovieDetailViewModel::class.java)
     }
     private lateinit var binding: FragmentMovieDetailBinding
@@ -87,6 +87,17 @@ class MovieDetailFragment: Fragment() {
         movieDetailViewModel?.loadMovieDetailById(args.movieId)
     }
 
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
+                              savedInstanceState: Bundle?): View? {
+        binding = FragmentMovieDetailBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
+        return binding.root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.movie_detail_menu, menu)
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             R.id.favorite -> {
@@ -98,7 +109,7 @@ class MovieDetailFragment: Fragment() {
     }
 
     private fun setDisplayedMovieAsFavorite() {
-        movieDetailViewModel?.addMovieToFavorites(movieDetailDisplayed)
+        movieDetailViewModel?.addMovieToFavorites(args.movieId, movieDetailDisplayed)
         makeFavoriteConfirmationMsg()
     }
 
@@ -110,20 +121,6 @@ class MovieDetailFragment: Fragment() {
         ).setAction(R.string.undo) {
             Timber.d("Action for Snackbar")
         }.show()
-    }
-
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        binding = FragmentMovieDetailBinding.inflate(inflater, container, false)
-        return binding.root
-    }
-
-    companion object {
-
-        fun makeIntent(context: Context?, movieId: String): Intent? = context?.let {
-            Intent(context, MovieDetailFragment::class.java)
-        }
-
     }
 
 }

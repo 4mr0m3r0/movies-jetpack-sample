@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:key="notification_category"
+        android:title="@string/make_a_search">
+        <SwitchPreferenceCompat
+            android:key="switch_candle_lighting_notification"
+            android:title="@string/search_title"
+            android:summary="@string/was_added_to_your_favorite_movie_list" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="data_sync_category"
+        android:title="@string/favorites_movies">
+        <ListPreference
+            android:key="list_pref_weekday"
+            android:dialogTitle="@string/favorites_movies"
+            android:title="@string/favorites_movies"
+            android:summary="@string/was_added_to_your_favorite_movie_list"
+            android:entries="@array/entries"
+            android:entryValues="@array/entry_values" />
+        <EditTextPreference
+            android:key="edittext"
+            android:title="Some input"
+            app:useSimpleSummaryProvider="true"
+            android:dialogTitle="This is the title"/>
+    </PreferenceCategory>
+
+</PreferenceScreen>

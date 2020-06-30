@@ -11,8 +11,8 @@ import com.tzion.jetpackmovies.ui.Navigator
 import timber.log.Timber
 import javax.inject.Inject
 
-class DisplayMoviesAdapter @Inject constructor(
-    private val navigator: Navigator): RecyclerView.Adapter<DisplayMoviesAdapter.ViewHolder>() {
+class FindMoviesByNameAdapter @Inject constructor(
+    private val navigator: Navigator): RecyclerView.Adapter<FindMoviesByNameAdapter.ViewHolder>() {
 
     var movies: List<UiMovie> = mutableListOf()
 

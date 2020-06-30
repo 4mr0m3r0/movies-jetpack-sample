@@ -1,29 +1,22 @@
 package com.tzion.jetpackmovies.ui
 
 import android.os.Bundle
-import android.os.PersistableBundle
-import android.view.Menu
-import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
-import androidx.core.view.GravityCompat
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.NavigationUI
-import androidx.navigation.ui.NavigationUI.setupWithNavController
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.google.android.material.navigation.NavigationView
+import androidx.work.ExistingPeriodicWorkPolicy
+import androidx.work.WorkManager
 import com.tzion.jetpackmovies.JetpackMoviesApp
 import com.tzion.jetpackmovies.R
-import com.tzion.jetpackmovies.common.DefaultValues
 import com.tzion.jetpackmovies.databinding.ActivityMainBinding
-import com.tzion.jetpackmovies.presentation.FindMoviesViewModel
-import com.tzion.jetpackmovies.presentation.MainViewModel
+import com.tzion.jetpackmovies.device.notification.NotificationBuilder
+import com.tzion.jetpackmovies.device.worker.FavoriteMovieWorkRequest
+import com.tzion.jetpackmovies.device.worker.FavoriteMovieWorker
 import com.tzion.jetpackmovies.ui.di.ViewModelFactory
 import com.tzion.jetpackmovies.ui.di.module.DaggerMoviesComponent
 import javax.inject.Inject
@@ -33,11 +26,7 @@ class MainActivity: AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration : AppBarConfiguration
     @Inject lateinit var viewModelFactory: ViewModelFactory
-    private val mainViewModel: MainViewModel? by lazy {
-        ViewModelProviders
-            .of(this, viewModelFactory)
-            .get(MainViewModel::class.java)
-    }
+    @Inject lateinit var notificationBuilder: NotificationBuilder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +37,10 @@ class MainActivity: AppCompatActivity() {
         val navHostFragment = getNavHostFragment()
         appBarConfiguration = makeAppBarConfigurationWithDestinations()
         setupActionBar(navHostFragment.navController, appBarConfiguration)
+        setupNavigationMenu(navHostFragment.navController)
         setupDependencyInjection()
+        createFavoriteMovieChannel()
+        setupWorker()
     }
 
     private fun setupToolbar() {
@@ -59,7 +51,7 @@ class MainActivity: AppCompatActivity() {
         .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
     private fun makeAppBarConfigurationWithDestinations(): AppBarConfiguration = AppBarConfiguration(
-            setOf(R.id.findMoviesByNameFragment, R.id.favoriteMovies),
+            setOf(R.id.findMoviesByNameFragment, R.id.favoriteMoviesFragment),
             binding.drawerLayout)
 
     private fun setupActionBar(navController: NavController, appBarConfiguration: AppBarConfiguration) {
@@ -70,33 +62,27 @@ class MainActivity: AppCompatActivity() {
         return NavigationUI.navigateUp(findNavController(R.id.nav_host_fragment), appBarConfiguration)
     }
 
+    private fun setupNavigationMenu(navController: NavController) {
+        binding.navView.setupWithNavController(navController)
+    }
+
     private fun setupDependencyInjection() {
         val applicationComponent = (applicationContext as JetpackMoviesApp).appComponent
         DaggerMoviesComponent.factory().create(applicationComponent).inject(this)
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.find_movies_menu, menu)
-        val searchView = menu?.findItem(R.id.menu_search)?.actionView as SearchView
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextChange(text: String?): Boolean {
-                return false
-            }
-
-            override fun onQueryTextSubmit(text: String?): Boolean {
-                mainViewModel?.postFindMovieQuery(name = text ?: DefaultValues.emptyString())
-                return false
-            }
-        })
-
-        return true
+    private fun createFavoriteMovieChannel() {
+        notificationBuilder.createFavoriteMovieNotificationChannel(this)
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.menu_search -> true
-            else -> super.onOptionsItemSelected(item)
-        }
+    private fun setupWorker() {
+        val request = FavoriteMovieWorkRequest()
+
+        WorkManager.getInstance(this).enqueueUniquePeriodicWork(
+            FavoriteMovieWorker.WORK_NAME,
+            ExistingPeriodicWorkPolicy.KEEP,
+            request.makeFavoriteMovieWorkRequest()
+        )
     }
 
 }

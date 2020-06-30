@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.tzion.jetpackmovies.domain.GetMovieDetailUseCase
 import com.tzion.jetpackmovies.domain.ManageFavoriteMoviesUseCase
+import com.tzion.jetpackmovies.presentation.mapper.UiFavoriteMovieMapper
 import com.tzion.jetpackmovies.presentation.mapper.UiMovieDetailMapper
 import com.tzion.jetpackmovies.presentation.model.UiMovieDetail
 import com.tzion.jetpackmovies.presentation.uistates.MovieDetailUiState
@@ -41,10 +42,10 @@ class MovieDetailViewModel @Inject constructor(
         }
     }
 
-    fun addMovieToFavorites(movieDetail: UiMovieDetail) {
+    fun addMovieToFavorites(movieId: String, movieDetail: UiMovieDetail) {
         viewModelScope.launch {
             manageFavoriteMoviesUseCase.saveFavoriteMovie(with(mapper) {
-                movieDetail.fromUiToDomain()
+                movieDetail.fromUiMovieDetailToDomainFavoriteMovie(movieId)
             })
         }
     }

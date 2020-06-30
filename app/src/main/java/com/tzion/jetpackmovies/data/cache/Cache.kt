@@ -1,12 +1,12 @@
 package com.tzion.jetpackmovies.data.cache
 
 import androidx.paging.DataSource
-import com.tzion.jetpackmovies.data.cache.model.CacheMovieDetail
+import com.tzion.jetpackmovies.data.cache.model.CacheFavoriteMovie
 
 interface Cache {
 
-    suspend fun saveFavoriteMovie(movieDetail: CacheMovieDetail)
+    suspend fun saveFavoriteMovie(favoriteMovie: CacheFavoriteMovie)
 
-    fun getFavoriteMovies(): DataSource.Factory<Int, CacheMovieDetail>
+    fun getFavoriteMovies(): DataSource.Factory<Int, CacheFavoriteMovie>
 
 }

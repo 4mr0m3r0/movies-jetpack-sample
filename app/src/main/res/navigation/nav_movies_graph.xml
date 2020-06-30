@@ -14,6 +14,9 @@
         <action
             android:id="@+id/action_findMoviesByName_to_movieDetail"
             app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_findMoviesByNameFragment_to_favoriteMoviesFragment"
+            app:destination="@id/favoriteMoviesFragment" />
     </fragment>
 
     <fragment
@@ -23,5 +26,10 @@
         tools:layout="@layout/fragment_movie_detail">
         <argument android:name="movieId" app:argType="string"/>
     </fragment>
+    <fragment
+        android:id="@+id/favoriteMoviesFragment"
+        android:name="com.tzion.jetpackmovies.ui.favoriteMovies.FavoriteMoviesFragment"
+        android:label="@string/favorites_movies"
+        tools:layout="@layout/fragment_favorite_movies" />
 
 </navigation>

@@ -6,10 +6,10 @@ import androidx.room.PrimaryKey
 import com.tzion.jetpackmovies.data.cache.database.DatabaseConfigs
 
 @Entity(tableName = DatabaseConfigs.Names.Tables.FAVORITE_MOVIES)
-data class CacheMovieDetail(
-    @PrimaryKey(autoGenerate = true)
+data class CacheFavoriteMovie(
+    @PrimaryKey
     @ColumnInfo(name = DatabaseConfigs.Names.Columns.FAVORITE_MOVIE_ID)
-    val id: Int = 0,
+    val id: String,
     val title: String,
     val year: String,
     val rated: String,

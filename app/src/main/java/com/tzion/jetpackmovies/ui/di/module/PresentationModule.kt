@@ -2,10 +2,10 @@ package com.tzion.jetpackmovies.ui.di.module
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.tzion.jetpackmovies.presentation.FavoriteMovieViewModel
 import com.tzion.jetpackmovies.ui.di.ViewModelFactory
 import com.tzion.jetpackmovies.ui.di.ViewModelKey
 import com.tzion.jetpackmovies.presentation.FindMoviesViewModel
-import com.tzion.jetpackmovies.presentation.MainViewModel
 import com.tzion.jetpackmovies.presentation.MovieDetailViewModel
 import dagger.Binds
 import dagger.Module
@@ -16,11 +16,6 @@ abstract class PresentationModule {
 
     @Binds
     @IntoMap
-    @ViewModelKey(MainViewModel::class)
-    abstract fun bindMainViewModel(viewModel: MainViewModel): ViewModel
-
-    @Binds
-    @IntoMap
     @ViewModelKey(FindMoviesViewModel::class)
     abstract fun bindDisplayClientsViewModel(viewModel: FindMoviesViewModel): ViewModel
 
@@ -28,6 +23,11 @@ abstract class PresentationModule {
     @IntoMap
     @ViewModelKey(MovieDetailViewModel::class)
     abstract fun bindMovieDetailViewModel(viewModel: MovieDetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FavoriteMovieViewModel::class)
+    abstract fun bindFavoriteMovieViewModel(viewModel: FavoriteMovieViewModel): ViewModel
 
     @Binds
     abstract fun bindViewModelFactory(factory: ViewModelFactory): ViewModelProvider.Factory

@@ -3,6 +3,7 @@ package com.tzion.jetpackmovies.presentation.mapper
 import android.content.Context
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.common.DefaultValues
+import com.tzion.jetpackmovies.domain.model.DomainFavoriteMovie
 import com.tzion.jetpackmovies.domain.model.DomainMovieDetail
 import com.tzion.jetpackmovies.presentation.model.UiMovieDetail
 import javax.inject.Inject
@@ -28,7 +29,8 @@ class UiMovieDetailMapper @Inject constructor() {
         type = type ?: DefaultValues.emptyString()
     )
 
-    fun UiMovieDetail.fromUiToDomain() = DomainMovieDetail(
+    fun UiMovieDetail.fromUiMovieDetailToDomainFavoriteMovie(movieId: String) = DomainFavoriteMovie(
+        movieId = movieId,
         title = title,
         year = year,
         rated = DefaultValues.emptyString(),

@@ -3,50 +3,39 @@ package com.tzion.jetpackmovies.ui.findMovies
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tzion.jetpackmovies.JetpackMoviesApp
 import com.tzion.jetpackmovies.R
+import com.tzion.jetpackmovies.common.DefaultValues
 import com.tzion.jetpackmovies.databinding.FragmentFindMoviesByNameBinding
 import com.tzion.jetpackmovies.ui.di.ViewModelFactory
 import com.tzion.jetpackmovies.presentation.FindMoviesViewModel
-import com.tzion.jetpackmovies.presentation.MainViewModel
 import com.tzion.jetpackmovies.presentation.model.UiMovie
 import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState
-import com.tzion.jetpackmovies.ui.di.DaggerApplicationComponent
 import com.tzion.jetpackmovies.ui.di.module.DaggerMoviesComponent
-import dagger.android.AndroidInjection
 import timber.log.Timber
 import javax.inject.Inject
 
 class FindMoviesByNameFragment: Fragment() {
 
-    @Inject lateinit var displayMoviesAdapter: DisplayMoviesAdapter
+    @Inject lateinit var findMoviesByNameAdapter: FindMoviesByNameAdapter
     @Inject lateinit var viewModelFactory: ViewModelFactory
     private val findMoviesViewModel: FindMoviesViewModel? by lazy {
-        ViewModelProviders
-            .of(this, viewModelFactory)
+        ViewModelProvider(this, viewModelFactory)
             .get(FindMoviesViewModel::class.java)
-    }
-    private val mainViewModel: MainViewModel? by lazy {
-        activity?.let { fragmentActivity ->
-            ViewModelProviders
-                .of(fragmentActivity, viewModelFactory)
-                .get(MainViewModel::class.java)
-        }
     }
     private lateinit var binding: FragmentFindMoviesByNameBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
         binding = FragmentFindMoviesByNameBinding.inflate(inflater, container, false)
+        setHasOptionsMenu(true)
         setupFragment()
         return binding.root
     }
@@ -54,7 +43,6 @@ class FindMoviesByNameFragment: Fragment() {
     private fun setupFragment() {
         setupDependencyInjection()
         setUpRecyclerView()
-        observeMainViewModel()
         observeFindMoviesViewModel()
     }
 
@@ -67,18 +55,10 @@ class FindMoviesByNameFragment: Fragment() {
         try {
             binding.rvDisplayMovies.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
             binding.rvDisplayMovies.itemAnimator = DefaultItemAnimator()
-            binding.rvDisplayMovies.adapter = displayMoviesAdapter
+            binding.rvDisplayMovies.adapter = findMoviesByNameAdapter
         } catch (e: Exception) {
             Timber.e(e)
         }
-    }
-
-    private fun observeMainViewModel() {
-        mainViewModel?.getFindMovieQueryLiveData()?.observe(this, Observer { findMoviesByName(it) })
-    }
-
-    private fun findMoviesByName(name: String?) {
-        findMoviesViewModel?.findMoviesByName(name)
     }
 
     private fun observeFindMoviesViewModel() {
@@ -104,12 +84,38 @@ class FindMoviesByNameFragment: Fragment() {
     }
 
     private fun updateScreenForSuccess(movies: List<UiMovie>) {
-        displayMoviesAdapter.setData(movies)
+        findMoviesByNameAdapter.setData(movies)
     }
 
     private fun updateScreenForError(error: Throwable?) {
         error?.let {
             Toast.makeText(context, it.localizedMessage, Toast.LENGTH_LONG).show()
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.find_movies_menu, menu)
+        val searchView = menu.findItem(R.id.menu_search)?.actionView as SearchView
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(text: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextSubmit(text: String?): Boolean {
+                findMoviesByName(text ?: DefaultValues.emptyString())
+                return false
+            }
+        })
+    }
+
+    private fun findMoviesByName(name: String?) {
+        findMoviesViewModel?.findMoviesByName(name)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menu_search -> true
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

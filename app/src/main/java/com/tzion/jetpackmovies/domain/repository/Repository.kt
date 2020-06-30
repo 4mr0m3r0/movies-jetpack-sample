@@ -1,7 +1,9 @@
 package com.tzion.jetpackmovies.domain.repository
 
 import androidx.lifecycle.LiveData
+import androidx.paging.DataSource
 import androidx.paging.PagedList
+import com.tzion.jetpackmovies.domain.model.DomainFavoriteMovie
 import com.tzion.jetpackmovies.domain.model.DomainMovie
 import com.tzion.jetpackmovies.domain.model.DomainMovieDetail
 import kotlinx.coroutines.flow.Flow
@@ -12,8 +14,8 @@ interface Repository {
 
     fun getMovieDetailById(movieId: String): Flow<DomainMovieDetail>
 
-    suspend fun saveFavoriteMovie(movieDetail: DomainMovieDetail)
+    suspend fun saveFavoriteMovie(favoriteMovie: DomainFavoriteMovie)
 
-    fun getFavoriteMovies(): LiveData<PagedList<DomainMovieDetail>>
+    fun getFavoriteMovies(): DataSource.Factory<Int, DomainFavoriteMovie>
 
 }

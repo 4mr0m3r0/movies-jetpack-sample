@@ -21,5 +21,6 @@
     <string name="favorite">favorite</string>
     <string name="favorites_movies">Favorites movies</string>
     <string name="was_added_to_your_favorite_movie_list">%s was added to your favorite movie list</string>
+    <string name="review_your_favorite_list">Review your favorite list</string>
     <string name="undo">Undo</string>
 </resources>

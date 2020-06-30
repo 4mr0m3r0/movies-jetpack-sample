@@ -3,7 +3,8 @@ A demo Android app that combines the latest tools and good practices such as
  * Hilt. 
  * Flow. 
  * Coroutines. 
- * Jetpack: Paging, Navigation, Args. 
+ * Jetpack: Paging, Navigation, Args, WorkManager. 
+ * Android KTK.
  * Kotlin and Clean Architecture.
  * Navigator pattern.
  

@@ -29,6 +29,7 @@ ext {
     //Testing
     jUnitVersion = '4.13'
     runnerVersion = '1.2.0'
+    rulesVersion = '1.2.0'
     espressoCoreVersion = '3.2.0'
     assertJVersion = '3.16.1'
     mockitoKotlinVersion = '2.2.0'
@@ -79,16 +80,22 @@ ext {
 
     testDependencies = [
             "junit:junit:${jUnitVersion}",
-            "androidx.test:runner:${runnerVersion}",
-            "androidx.test.espresso:espresso-core:${espressoCoreVersion}",
             "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
             "org.assertj:assertj-core:${assertJVersion}",
             "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
             "androidx.test:core:${testCoreVersion}",
             "androidx.arch.core:core-testing:${archCoreTestingVersion}",
-            "androidx.test.ext:junit:${extJUnitVersion}",
+
             "androidx.room:room-testing:${roomVersion}",
             "org.robolectric:robolectric:${robolectricVersion}"
+    ]
+
+    androidTestDependencies = [
+            "androidx.test:runner:${runnerVersion}",
+            "androidx.test.espresso:espresso-core:${espressoCoreVersion}",
+            "androidx.test:rules:$rulesVersion",
+            "androidx.test.ext:junit:${extJUnitVersion}",
+            "androidx.test.espresso:espresso-contrib:$espressoCoreVersion"
     ]
 
 }

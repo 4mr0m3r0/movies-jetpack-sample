@@ -2,7 +2,7 @@
 A demo Android app that combines the latest tools and good practices such as 
  * Flow. 
  * Coroutines. 
- * Jetpack: Paging, Navigation, Args, WorkManager, Hilt. 
+ * Jetpack: Paging, Navigation, Args, WorkManager. 
  * Android KTK.
  * Kotlin and Clean Architecture.
  * Navigator pattern.
@@ -15,32 +15,9 @@ Find movies information using [OMDb API][26]
 #### Display Movies
  Display a list of movies searching them by title
 #### Movie Detail
- Display a detail from a selected movie on the list. (Not implemented yet)
- 
-Libraries Used
---------------
- * [Foundation][0] - Components for core system capabilities, Kotlin extensions and support for
-   multidex and automated testing.
-   * [AppCompat][1] - Degrade gracefully on older versions of Android.
-   * [Test][4] - An Android testing framework for unit and runtime UI tests.
- * [Architecture][10] - A collection of libraries that help you design robust, testable, and
-   maintainable apps. Start with classes for managing your UI component lifecycle and handling data
-   persistence.
-   * [Data Binding][11] - Declaratively bind observable data to UI elements.
-   * [Lifecycles][12] - Create a UI that automatically responds to lifecycle events.
-   * [LiveData][13] - Build data objects that notify views when the underlying database changes.
-   * [Navigation][14] - Handle everything needed for in-app navigation.
-   * [Room][16] - Access your app's SQLite database with in-app objects and compile-time checks.
-   * [ViewModel][17] - Store UI-related data that isn't destroyed on app rotations. Easily schedule
-      asynchronous tasks for optimal execution.
- * [Dagger 2][36] Dependency Injection Framework.
- * Third party
-   * [Timber][40] A logger with a small, extensible API which provides utility on top of Android's normal Log class.
-   * [Robolectric][41] A unit test framework that de-fangs the Android SDK jar. 
-   * [Mockito-Kotlin][42] A small library that provides helper functions to work with Mockito in Kotlin.
-   * [Retrofit][43] A type-safe HTTP client for Android and Java.
-   * [Gson][44] Gson is a Java library that can be used to convert Java Objects into their JSON representation.
-   * [Glide][45] Glide is a fast and efficient open source media management and image loading framework for Android.
+ Display a detail from a selected movie on the list.
+#### Movie Favorites
+ Display the favorites movies you saved as favorite.
 
 Great Resources for Learning
 ----------------------------

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="text_size_headline_h5">24sp</dimen>
+    <dimen name="text_size_body_2">14sp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+</resources>

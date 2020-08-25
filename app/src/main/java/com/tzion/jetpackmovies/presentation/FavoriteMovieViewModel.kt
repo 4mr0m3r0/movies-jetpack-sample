@@ -1,9 +1,7 @@
 package com.tzion.jetpackmovies.presentation
 
-import androidx.hilt.Assisted
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
@@ -12,9 +10,8 @@ import com.tzion.jetpackmovies.presentation.mapper.UiFavoriteMovieMapper
 import com.tzion.jetpackmovies.presentation.model.UiFavoriteMovie
 
 class FavoriteMovieViewModel @ViewModelInject constructor(
-    private val manageFavoriteMoviesUseCase: ManageFavoriteMoviesUseCase,
-    private val mapper: UiFavoriteMovieMapper,
-    @Assisted private val savedStateHandle: SavedStateHandle): ViewModel() {
+    manageFavoriteMoviesUseCase: ManageFavoriteMoviesUseCase,
+    private val mapper: UiFavoriteMovieMapper): ViewModel() {
 
     private val config = PagedList.Config.Builder()
         .setPageSize(DATABASE_PAGE_SIZE)

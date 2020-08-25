@@ -1,22 +1,20 @@
 package com.tzion.jetpackmovies.presentation
 
+import androidx.hilt.Assisted
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
-import com.google.gson.internal.bind.DateTypeAdapter
 import com.tzion.jetpackmovies.domain.ManageFavoriteMoviesUseCase
 import com.tzion.jetpackmovies.presentation.mapper.UiFavoriteMovieMapper
 import com.tzion.jetpackmovies.presentation.model.UiFavoriteMovie
-import com.tzion.jetpackmovies.presentation.model.UiMovieDetail
-import com.tzion.jetpackmovies.presentation.uistates.FavoriteMovieUiState
-import javax.inject.Inject
 
-class FavoriteMovieViewModel @Inject constructor(
-    manageFavoriteMoviesUseCase: ManageFavoriteMoviesUseCase,
-    private val mapper: UiFavoriteMovieMapper): ViewModel() {
+class FavoriteMovieViewModel @ViewModelInject constructor(
+    private val manageFavoriteMoviesUseCase: ManageFavoriteMoviesUseCase,
+    private val mapper: UiFavoriteMovieMapper,
+    @Assisted private val savedStateHandle: SavedStateHandle): ViewModel() {
 
     private val config = PagedList.Config.Builder()
         .setPageSize(DATABASE_PAGE_SIZE)

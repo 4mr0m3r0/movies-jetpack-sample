@@ -11,21 +11,19 @@ import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import androidx.work.ExistingPeriodicWorkPolicy
 import androidx.work.WorkManager
-import com.tzion.jetpackmovies.JetpackMoviesApp
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.databinding.ActivityMainBinding
 import com.tzion.jetpackmovies.device.notification.NotificationBuilder
 import com.tzion.jetpackmovies.device.worker.FavoriteMovieWorkRequest
 import com.tzion.jetpackmovies.device.worker.FavoriteMovieWorker
-import com.tzion.jetpackmovies.ui.di.ViewModelFactory
-import com.tzion.jetpackmovies.ui.di.module.DaggerMoviesComponent
+import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class MainActivity: AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration : AppBarConfiguration
-    @Inject lateinit var viewModelFactory: ViewModelFactory
     @Inject lateinit var notificationBuilder: NotificationBuilder
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,7 +36,6 @@ class MainActivity: AppCompatActivity() {
         appBarConfiguration = makeAppBarConfigurationWithDestinations()
         setupActionBar(navHostFragment.navController, appBarConfiguration)
         setupNavigationMenu(navHostFragment.navController)
-        setupDependencyInjection()
         createFavoriteMovieChannel()
         setupWorker()
     }
@@ -64,11 +61,6 @@ class MainActivity: AppCompatActivity() {
 
     private fun setupNavigationMenu(navController: NavController) {
         binding.navView.setupWithNavController(navController)
-    }
-
-    private fun setupDependencyInjection() {
-        val applicationComponent = (applicationContext as JetpackMoviesApp).appComponent
-        DaggerMoviesComponent.factory().create(applicationComponent).inject(this)
     }
 
     private fun createFavoriteMovieChannel() {

@@ -67,6 +67,12 @@ Youtube Channels
 * [droidcon Berlin][21]
 * [Android Programming Dev tutorials][22]
 
+Other samples
+-------------
+MVI and Clean Architecture by layers [here][23]
+
+Modularization with dynamic features [here][24]
+
 
 [1]: https://kotlinlang.org/docs/reference/coroutines/flow.html
 [2]: https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html
@@ -90,3 +96,5 @@ Youtube Channels
 [20]: https://www.youtube.com/channel/UCKubKoe1CBw_-n_GXetEQbg
 [21]: https://www.youtube.com/channel/UCF4O2pQ8vBV8YmSAWb5QRPw
 [22]: https://www.youtube.com/channel/UCSwuCetC3YlO1Y7bqVW5GHg
+[23]: https://github.com/4mr0m3r0/movies-mvi-sample
+[24]: https://github.com/4mr0m3r0/movies-modularization-sample

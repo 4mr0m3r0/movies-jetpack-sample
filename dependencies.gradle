@@ -4,7 +4,7 @@ ext {
     androidMinSdkVersion = 21
     androidTargetSdkVersion = 29
     androidCompileSdkVersion = 29
-    kotlinVersion = '1.3.72'
+    kotlinVersion = '1.4.0'
 
     //Libraries
     javaxAnnotationVersion = '1.3.2'
@@ -25,6 +25,8 @@ ext {
     workVersion = '2.3.4'
     coreKtxVersion = '1.3.0'
     preferenceVersion = '1.1.0'
+    hiltVersion = '2.28-alpha'
+    hiltViewModelVersion = '1.0.0-alpha01'
 
     //Testing
     jUnitVersion = '4.13'
@@ -39,62 +41,60 @@ ext {
     robolectricVersion = '4.3.1'
 
     dependencies = [
-            "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${kotlinVersion}",
-            "androidx.appcompat:appcompat:${appCompatVersion}",
-            "androidx.core:core-ktx:${coreKtxVersion}",
-            "androidx.constraintlayout:constraintlayout:${constraintLayoutVersion}",
-            "com.google.dagger:dagger:${daggerVersion}",
-            "com.google.dagger:dagger-android:${daggerVersion}",
-            "com.google.dagger:dagger-android-support:${daggerVersion}",
-            "javax.inject:javax.inject:${javaxInjectVersion}",
-            "com.jakewharton.timber:timber:${timberVersion}",
-            "com.squareup.okhttp3:okhttp:${okHttpVersion}",
-            "com.squareup.okhttp3:logging-interceptor:${okHttpVersion}",
-            "com.squareup.retrofit2:retrofit:${retrofitVersion}",
-            "com.squareup.retrofit2:converter-gson:${retrofitVersion}",
+            "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            "androidx.appcompat:appcompat:$appCompatVersion",
+            "androidx.core:core-ktx:$coreKtxVersion",
+            "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            "javax.inject:javax.inject:$javaxInjectVersion",
+            "com.jakewharton.timber:timber:$timberVersion",
+            "com.squareup.okhttp3:okhttp:$okHttpVersion",
+            "com.squareup.okhttp3:logging-interceptor:$okHttpVersion",
+            "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            "com.squareup.retrofit2:converter-gson:$retrofitVersion",
             "androidx.lifecycle:lifecycle-runtime:$lifecycleVersion",
             "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion",
             "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
-            "com.github.bumptech.glide:glide:${glideVersion}",
-            "androidx.navigation:navigation-fragment-ktx:${navigationVersion}",
-            "androidx.navigation:navigation-ui-ktx:${navigationVersion}",
+            "com.github.bumptech.glide:glide:$glideVersion",
+            "androidx.navigation:navigation-fragment-ktx:$navigationVersion",
+            "androidx.navigation:navigation-ui-ktx:$navigationVersion",
             'com.google.android.material:material:1.1.0',
-            "androidx.room:room-runtime:${roomVersion}",
-            "androidx.room:room-ktx:${roomVersion}",
+            "androidx.room:room-runtime:$roomVersion",
+            "androidx.room:room-ktx:$roomVersion",
             "androidx.work:work-runtime-ktx:$workVersion",
-            "androidx.recyclerview:recyclerview:${appCompatVersion}",
-            "com.google.code.gson:gson:${gsonVersion}",
+            "androidx.recyclerview:recyclerview:$appCompatVersion",
+            "com.google.code.gson:gson:$gsonVersion",
             "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesAndroidVersion",
-            "org.jetbrains.kotlinx:kotlinx-coroutines-android:${coroutinesAndroidVersion}",
-            "androidx.paging:paging-runtime:${pagingVersion}",
-            "androidx.preference:preference-ktx:${preferenceVersion}"
+            "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesAndroidVersion",
+            "androidx.paging:paging-runtime:$pagingVersion",
+            "androidx.preference:preference-ktx:$preferenceVersion",
+            "com.google.dagger:hilt-android:$hiltVersion",
+            "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewModelVersion"
     ]
 
     kaptDependencies = [
             "androidx.lifecycle:lifecycle-compiler:$lifecycleVersion",
-            "com.google.dagger:dagger-compiler:${daggerVersion}",
-            "com.github.bumptech.glide:compiler:${glideVersion}",
-            "androidx.room:room-compiler:${roomVersion}",
-            "com.google.dagger:dagger-android-processor:${daggerVersion}"
+            "com.github.bumptech.glide:compiler:$glideVersion",
+            "androidx.room:room-compiler:$roomVersion",
+            "com.google.dagger:hilt-android-compiler:$hiltVersion",
+            "androidx.hilt:hilt-compiler:$hiltViewModelVersion"
     ]
 
     testDependencies = [
-            "junit:junit:${jUnitVersion}",
-            "org.jetbrains.kotlin:kotlin-test-junit:${kotlinVersion}",
-            "org.assertj:assertj-core:${assertJVersion}",
-            "com.nhaarman.mockitokotlin2:mockito-kotlin:${mockitoKotlinVersion}",
-            "androidx.test:core:${testCoreVersion}",
-            "androidx.arch.core:core-testing:${archCoreTestingVersion}",
-
-            "androidx.room:room-testing:${roomVersion}",
-            "org.robolectric:robolectric:${robolectricVersion}"
+            "junit:junit:$jUnitVersion",
+            "org.jetbrains.kotlin:kotlin-test-junit:$kotlinVersion",
+            "org.assertj:assertj-core:$assertJVersion",
+            "com.nhaarman.mockitokotlin2:mockito-kotlin:$mockitoKotlinVersion",
+            "androidx.test:core:$testCoreVersion",
+            "androidx.arch.core:core-testing:$archCoreTestingVersion",
+            "androidx.room:room-testing:$roomVersion",
+            "org.robolectric:robolectric:$robolectricVersion"
     ]
 
     androidTestDependencies = [
-            "androidx.test:runner:${runnerVersion}",
-            "androidx.test.espresso:espresso-core:${espressoCoreVersion}",
+            "androidx.test:runner:$runnerVersion",
+            "androidx.test.espresso:espresso-core:$espressoCoreVersion",
             "androidx.test:rules:$rulesVersion",
-            "androidx.test.ext:junit:${extJUnitVersion}",
+            "androidx.test.ext:junit:$extJUnitVersion",
             "androidx.test.espresso:espresso-contrib:$espressoCoreVersion"
     ]
 

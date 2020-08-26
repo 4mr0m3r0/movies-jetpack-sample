@@ -2,7 +2,6 @@ package com.tzion.jetpackmovies.test
 
 import android.app.Activity
 import android.app.Application
-import com.tzion.jetpackmovies.ui.di.TestApplicationComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector

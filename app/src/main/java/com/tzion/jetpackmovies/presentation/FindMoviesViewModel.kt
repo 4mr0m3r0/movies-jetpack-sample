@@ -1,5 +1,6 @@
 package com.tzion.jetpackmovies.presentation
 
+import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,11 +12,11 @@ import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
-import javax.inject.Inject
 
-class FindMoviesViewModel @Inject constructor(
+class FindMoviesViewModel @ViewModelInject constructor(
     private val findMoviesUseCase: FindMoviesByNameUseCase,
-    private val mapper: UiMovieMapper): ViewModel() {
+    private val mapper: UiMovieMapper
+): ViewModel() {
 
     private val liveData: MutableLiveData<FindMoviesUiState> = MutableLiveData()
 

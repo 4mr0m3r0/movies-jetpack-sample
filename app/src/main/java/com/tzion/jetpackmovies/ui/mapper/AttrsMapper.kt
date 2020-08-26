@@ -4,9 +4,10 @@ import android.content.Context
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.presentation.model.UiMovieDetail
 import com.tzion.jetpackmovies.uicomponent.template.model.AttrsDetailTemplate
+import dagger.hilt.android.qualifiers.ActivityContext
 import javax.inject.Inject
 
-class AttrsMapper @Inject constructor(private val context: Context) {
+class AttrsMapper @Inject constructor(@ActivityContext private val context: Context) {
 
     fun UiMovieDetail.fromUiToAttrs() = AttrsDetailTemplate(
         title = title,

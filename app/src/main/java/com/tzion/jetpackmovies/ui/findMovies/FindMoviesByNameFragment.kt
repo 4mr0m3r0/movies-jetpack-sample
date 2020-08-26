@@ -5,31 +5,26 @@ import android.view.*
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.tzion.jetpackmovies.JetpackMoviesApp
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.common.DefaultValues
 import com.tzion.jetpackmovies.databinding.FragmentFindMoviesByNameBinding
-import com.tzion.jetpackmovies.ui.di.ViewModelFactory
 import com.tzion.jetpackmovies.presentation.FindMoviesViewModel
 import com.tzion.jetpackmovies.presentation.model.UiMovie
 import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState
-import com.tzion.jetpackmovies.ui.di.module.DaggerMoviesComponent
+import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 import javax.inject.Inject
 
+@AndroidEntryPoint
 class FindMoviesByNameFragment: Fragment() {
 
     @Inject lateinit var findMoviesByNameAdapter: FindMoviesByNameAdapter
-    @Inject lateinit var viewModelFactory: ViewModelFactory
-    private val findMoviesViewModel: FindMoviesViewModel? by lazy {
-        ViewModelProvider(this, viewModelFactory)
-            .get(FindMoviesViewModel::class.java)
-    }
+    private val findMoviesViewModel by viewModels<FindMoviesViewModel>()
     private lateinit var binding: FragmentFindMoviesByNameBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -41,14 +36,8 @@ class FindMoviesByNameFragment: Fragment() {
     }
 
     private fun setupFragment() {
-        setupDependencyInjection()
         setUpRecyclerView()
         observeFindMoviesViewModel()
-    }
-
-    private fun setupDependencyInjection() {
-        val applicationComponent = (activity?.applicationContext as JetpackMoviesApp).appComponent
-        DaggerMoviesComponent.factory().create(applicationComponent).inject(this)
     }
 
     private fun setUpRecyclerView() {
@@ -62,7 +51,7 @@ class FindMoviesByNameFragment: Fragment() {
     }
 
     private fun observeFindMoviesViewModel() {
-        findMoviesViewModel?.getLiveData()?.observe(this, Observer { renderUiState(it) })
+        findMoviesViewModel.getLiveData().observe(this, Observer { renderUiState(it) })
     }
 
     private fun renderUiState(uiState: FindMoviesUiState) {

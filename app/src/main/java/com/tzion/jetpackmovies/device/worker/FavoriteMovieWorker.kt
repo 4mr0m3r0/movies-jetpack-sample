@@ -5,9 +5,11 @@ import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.tzion.jetpackmovies.common.NotificationChannelRegister
 import com.tzion.jetpackmovies.device.notification.NotificationBuilder
+import dagger.hilt.android.qualifiers.ActivityContext
 
-class FavoriteMovieWorker(private val context: Context, workerParameters: WorkerParameters)
-    : Worker(context, workerParameters) {
+class FavoriteMovieWorker(
+    @ActivityContext private val context: Context,
+    workerParameters: WorkerParameters): Worker(context, workerParameters) {
 
     override fun doWork(): Result {
         val notificationBuilder = NotificationBuilder(NotificationChannelRegister())

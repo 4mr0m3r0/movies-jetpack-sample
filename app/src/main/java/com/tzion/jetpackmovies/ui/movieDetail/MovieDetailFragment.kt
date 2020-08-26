@@ -22,7 +22,7 @@ import javax.inject.Inject
 class MovieDetailFragment: Fragment() {
 
     @Inject lateinit var attrsMapper: AttrsMapper
-    private val movieDetailViewModel: MovieDetailViewModel? by viewModels()
+    private val movieDetailViewModel by viewModels<MovieDetailViewModel>()
     private lateinit var binding: FragmentMovieDetailBinding
     private lateinit var movieDetailDisplayed: UiMovieDetail
     private val args: MovieDetailFragmentArgs by navArgs()
@@ -34,7 +34,7 @@ class MovieDetailFragment: Fragment() {
     }
 
     private fun setupViewModel() {
-        movieDetailViewModel?.getLiveData()?.observe(this, Observer { renderUiState(it) })
+        movieDetailViewModel.getLiveData().observe(this, Observer { renderUiState(it) })
     }
 
     private fun renderUiState(uiState: MovieDetailUiState) {
@@ -69,7 +69,7 @@ class MovieDetailFragment: Fragment() {
     }
 
     private fun loadMovieDetailById() {
-        movieDetailViewModel?.loadMovieDetailById(args.movieId)
+        movieDetailViewModel.loadMovieDetailById(args.movieId)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -94,7 +94,7 @@ class MovieDetailFragment: Fragment() {
     }
 
     private fun setDisplayedMovieAsFavorite() {
-        movieDetailViewModel?.addMovieToFavorites(args.movieId, movieDetailDisplayed)
+        movieDetailViewModel.addMovieToFavorites(args.movieId, movieDetailDisplayed)
         makeFavoriteConfirmationMsg()
     }
 

@@ -24,7 +24,7 @@ import javax.inject.Inject
 class FavoriteMoviesFragment: Fragment() {
 
     @Inject lateinit var favoriteMoviesAdapter: FavoriteMoviesAdapter
-    private val favoriteMoviesViewModel: FavoriteMovieViewModel? by viewModels()
+    private val favoriteMoviesViewModel by viewModels<FavoriteMovieViewModel>()
     lateinit var binding: FragmentFavoriteMoviesBinding
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
@@ -51,8 +51,8 @@ class FavoriteMoviesFragment: Fragment() {
 
     private fun observeFavoriteMovieViewModel() {
         favoriteMoviesViewModel
-            ?.favoriteMoviesLiveData()
-            ?.observe(viewLifecycleOwner, Observer { updateFavoriteMovieAdapter(it) })
+            .favoriteMoviesLiveData()
+            .observe(viewLifecycleOwner, Observer { updateFavoriteMovieAdapter(it) })
     }
 
     private fun updateFavoriteMovieAdapter(movies: PagedList<UiFavoriteMovie>) {

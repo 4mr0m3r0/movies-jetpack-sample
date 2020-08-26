@@ -2,7 +2,7 @@
 A demo Android app that that tries to combines the latest things and good practices such as 
  * Kotlin Flow. 
  * Coroutines. 
- * Jetpack Components: Paging 3, Navigation, WorkManager, Hilt. 
+ * Jetpack Components: Paging, Navigation, WorkManager, Hilt. 
  * Android KTK.
  * Clean Architecture.
  

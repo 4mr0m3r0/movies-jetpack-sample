@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.ui.di.module
+package com.tzion.jetpackmovies.ui.di
 
 import android.content.Context
 import com.tzion.jetpackmovies.data.cache.Cache

@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.ui.di.module
+package com.tzion.jetpackmovies.ui.di
 
 import com.tzion.jetpackmovies.data.DataRepository
 import com.tzion.jetpackmovies.domain.repository.Repository

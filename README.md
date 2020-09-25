@@ -1,5 +1,5 @@
 # Movies
-A demo Android app that that tries to combines the latest things and good practices such as 
+A demo Android app with: 
  * Kotlin Flow. 
  * Coroutines. 
  * Jetpack Components: Paging, Navigation, WorkManager, Hilt. 

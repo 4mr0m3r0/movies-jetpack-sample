@@ -69,9 +69,9 @@ Youtube Channels
 
 Other samples
 -------------
-MVI and Clean Architecture by layers [here][23]
-
-Modularization with dynamic features [here][24]
+* MVI - RxJava with modules as layers [here][23]
+* MVI - Kotlin Flow and modularization with dynamic features [here][24]
+* Compose with Atomic Design approach [here][25]
 
 
 [1]: https://kotlinlang.org/docs/reference/coroutines/flow.html
@@ -98,6 +98,7 @@ Modularization with dynamic features [here][24]
 [22]: https://www.youtube.com/channel/UCSwuCetC3YlO1Y7bqVW5GHg
 [23]: https://github.com/4mr0m3r0/movies-mvi-sample
 [24]: https://github.com/4mr0m3r0/movies-modularization-sample
+[25]: https://github.com/4mr0m3r0/atomic-design-sample
 
 License
 -------

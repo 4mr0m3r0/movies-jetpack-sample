@@ -1,33 +1,33 @@
 ext {
     //Android
-    androidBuildToolsVersion = "29.0.3"
-    androidMinSdkVersion = 21
-    androidTargetSdkVersion = 29
-    androidCompileSdkVersion = 29
-    kotlinVersion = '1.4.0'
+    buildToolsVersion = "30.0.3"
+    minSdkVersion = 21
+    targetSdkVersion = 30
+    compileSdkVersion = 30
+    kotlinVersion = '1.5.10'
 
     //Libraries
-    javaxAnnotationVersion = '1.3.2'
-    javaxInjectVersion = '1'
-    daggerVersion = '2.28'
-    gsonVersion = '2.8.6'
-    okHttpVersion = '4.7.2'
-    retrofitVersion = '2.9.0'
-    roomVersion = '2.2.5'
-    lifecycleVersion = '2.2.0'
-    timberVersion = '4.7.1'
-    constraintLayoutVersion = '2.0.0-beta3'
-    navigationVersion = '2.1.0'
     appCompatVersion = '1.1.0'
-    glideVersion = '4.11.0'
-    coroutinesAndroidVersion = '1.3.0'
-    pagingVersion = '2.1.2'
-    workVersion = '2.3.4'
+    daggerVersion = '2.28'
     coreKtxVersion = '1.3.1'
-    preferenceVersion = '1.1.0'
+    constraintLayoutVersion = '2.0.0-beta3'
+    coroutinesAndroidVersion = '1.3.0'
+    fragmentKtx = '1.2.5'
+    glideVersion = '4.11.0'
+    gsonVersion = '2.8.6'
     hiltVersion = '2.28-alpha'
     hiltViewModelVersion = '1.0.0-alpha01'
-    fragmentKtx = '1.2.5'
+    javaxInjectVersion = '1'
+    javaxAnnotationVersion = '1.3.2'
+    lifecycleVersion = '2.2.0'
+    okHttpVersion = '4.7.2'
+    pagingVersion = '2.1.2'
+    preferenceVersion = '1.1.0'
+    navigationVersion = '2.1.0'
+    retrofitVersion = '2.9.0'
+    roomVersion = '2.3.0'
+    timberVersion = '4.7.1'
+    workVersion = '2.3.4'
 
     //Testing
     jUnitVersion = '4.13'
@@ -40,6 +40,12 @@ ext {
     archCoreTestingVersion = '2.1.0'
     extJUnitVersion = '1.1.1'
     robolectricVersion = '4.3.1'
+
+    //Tools
+    toolsBuildGradle = 'com.android.tools.build:gradle:4.2.1'
+    kotlinGradlePlugin = "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    safeArgsGradlePlugin = "androidx.navigation:navigation-safe-args-gradle-plugin:$navigationVersion"
+    hiltGradlePlugin = 'com.google.dagger:hilt-android-gradle-plugin:2.28-alpha'
 
     dependencies = [
             "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",

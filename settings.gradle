@@ -1,1 +1,3 @@
+rootProject.name='Movies Jetpack Sample'
+
 include ':app'

@@ -17,5 +17,4 @@ class UiMovieMapper @Inject constructor() {
         poster = poster ?: "",
         type = type ?: ""
     )
-
 }

@@ -43,6 +43,5 @@ object DatabaseConfigs {
             const val PRODUCTION = "production"
             const val WEBSITE = "website"
         }
-
     }
 }

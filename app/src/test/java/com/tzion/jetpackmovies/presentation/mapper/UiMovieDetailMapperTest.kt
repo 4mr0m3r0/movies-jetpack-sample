@@ -7,11 +7,11 @@ import org.junit.Test
 class UiMovieDetailMapperTest {
 
     private val mapper = UiMovieDetailMapper()
-    
+
     @Test
     fun `given DomainMovieDetail, when fromDomainToUi, then UiMovieDetail`() {
         val domainMovieDetail = makeDomainMovieDetail()
-        
+
         val uiMovieDetail = with(mapper) { domainMovieDetail.fromDomainToUi() }
 
         assertEquals("title", domainMovieDetail.title, uiMovieDetail.title)

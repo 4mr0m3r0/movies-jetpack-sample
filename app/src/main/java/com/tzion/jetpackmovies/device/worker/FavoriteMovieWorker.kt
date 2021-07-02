@@ -9,7 +9,8 @@ import dagger.hilt.android.qualifiers.ActivityContext
 
 class FavoriteMovieWorker(
     @ActivityContext private val context: Context,
-    workerParameters: WorkerParameters): Worker(context, workerParameters) {
+    workerParameters: WorkerParameters
+) : Worker(context, workerParameters) {
 
     override fun doWork(): Result {
         val notificationBuilder = NotificationBuilder(NotificationChannelRegister())

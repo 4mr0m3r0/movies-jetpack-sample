@@ -15,5 +15,4 @@ interface Repository {
     suspend fun saveFavoriteMovie(favoriteMovie: DomainFavoriteMovie)
 
     fun getFavoriteMovies(): DataSource.Factory<Int, DomainFavoriteMovie>
-
 }

@@ -1,6 +1,6 @@
 package com.tzion.jetpackmovies.factory
 
-import java.util.*
+import java.util.UUID
 import java.util.concurrent.ThreadLocalRandom
 
 object RandomFactory {

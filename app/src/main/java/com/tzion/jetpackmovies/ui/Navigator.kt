@@ -16,5 +16,4 @@ class Navigator @Inject constructor() {
 //        val action = FindMoviesByNameFragmentDirections.actionFindMoviesByNameToMovieDetail(movieId)
 //        view?.findNavController()?.navigate(action)
 //    }
-
 }

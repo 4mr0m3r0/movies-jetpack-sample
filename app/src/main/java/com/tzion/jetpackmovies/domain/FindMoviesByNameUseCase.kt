@@ -11,5 +11,4 @@ open class FindMoviesByNameUseCase @Inject constructor(private val repository: R
         require(!name.isNullOrEmpty())
         return repository.findMoviesByName(name)
     }
-
 }

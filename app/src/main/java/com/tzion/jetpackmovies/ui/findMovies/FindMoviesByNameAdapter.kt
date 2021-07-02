@@ -37,7 +37,6 @@ class FindMoviesByNameAdapter @Inject constructor(
             setImage(movie.poster)
             itemView.tag = movie
         }
-
     }
 
     private fun createOnClickListener(movieId: String): View.OnClickListener {

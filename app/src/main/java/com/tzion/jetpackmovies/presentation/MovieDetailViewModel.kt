@@ -19,7 +19,7 @@ class MovieDetailViewModel @ViewModelInject constructor(
     private val getMovieDetailUseCase: GetMovieDetailUseCase,
     private val manageFavoriteMoviesUseCase: ManageFavoriteMoviesUseCase,
     private val mapper: UiMovieDetailMapper
-): ViewModel() {
+) : ViewModel() {
 
     private val liveData: MutableLiveData<MovieDetailUiState> = MutableLiveData()
 

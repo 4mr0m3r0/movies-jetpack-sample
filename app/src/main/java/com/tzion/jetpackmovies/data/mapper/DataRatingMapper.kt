@@ -14,5 +14,4 @@ class DataRatingMapper @Inject constructor() {
         source = source,
         value = value
     )
-
 }

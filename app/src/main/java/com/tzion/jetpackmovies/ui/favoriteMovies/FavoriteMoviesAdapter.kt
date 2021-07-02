@@ -41,7 +41,6 @@ class FavoriteMoviesAdapter @Inject constructor() :
                 oldItem: UiFavoriteMovie,
                 newItem: UiFavoriteMovie
             ): Boolean = oldItem == newItem
-
         }
     }
 }

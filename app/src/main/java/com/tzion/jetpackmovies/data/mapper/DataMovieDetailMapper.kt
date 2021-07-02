@@ -30,5 +30,4 @@ class DataMovieDetailMapper @Inject constructor() {
         production = production,
         website = website
     )
-
 }

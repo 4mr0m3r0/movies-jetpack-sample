@@ -13,11 +13,15 @@ import com.tzion.jetpackmovies.ui.MainActivity
 import javax.inject.Inject
 
 class NotificationBuilder @Inject constructor(
-    private val notificationRegister: NotificationChannelRegister) {
+    private val notificationRegister: NotificationChannelRegister
+) {
 
     fun showFavoriteMovieNotification(context: Context) {
         with(NotificationManagerCompat.from(context)) {
-            notify(FAVORITE_MOVIE_NOTIFICATION_ID, makeFavoriteMovieNotificationBuilder(context).build())
+            notify(
+                FAVORITE_MOVIE_NOTIFICATION_ID,
+                makeFavoriteMovieNotificationBuilder(context).build()
+            )
         }
     }
 
@@ -36,7 +40,8 @@ class NotificationBuilder @Inject constructor(
             flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
         }
         return PendingIntent.getActivity(
-            context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+            context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT
+        )
     }
 
     fun createFavoriteMovieNotificationChannel(context: Context) {

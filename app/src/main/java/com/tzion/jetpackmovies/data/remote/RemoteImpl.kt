@@ -8,7 +8,8 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class RemoteImpl @Inject constructor(
-    private val webServiceRetrofit: WebServiceRetrofit): Remote {
+    private val webServiceRetrofit: WebServiceRetrofit
+) : Remote {
 
     override fun findMoviesByName(name: String): Flow<RemoteSearch> = flow {
         emit(webServiceRetrofit.getMoviesByTitle(name))

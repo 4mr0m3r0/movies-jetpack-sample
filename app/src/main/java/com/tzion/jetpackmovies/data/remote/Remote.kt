@@ -9,5 +9,4 @@ interface Remote {
     fun findMoviesByName(name: String): Flow<RemoteSearch>
 
     fun getMovieDetailById(movieId: String): Flow<RemoteMovieDetail>
-
 }

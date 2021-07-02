@@ -8,5 +8,4 @@ interface Cache {
     suspend fun saveFavoriteMovie(favoriteMovie: CacheFavoriteMovie)
 
     fun getFavoriteMovies(): DataSource.Factory<Int, CacheFavoriteMovie>
-
 }

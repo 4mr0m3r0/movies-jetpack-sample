@@ -18,5 +18,4 @@ class DataMovieMapper @Inject constructor() {
         poster = poster,
         type = type
     )
-
 }

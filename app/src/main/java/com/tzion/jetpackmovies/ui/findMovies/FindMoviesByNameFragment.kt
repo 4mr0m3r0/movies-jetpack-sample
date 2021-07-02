@@ -24,14 +24,18 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class FindMoviesByNameFragment: Fragment() {
+class FindMoviesByNameFragment : Fragment() {
 
-    @Inject lateinit var findMoviesByNameAdapter: FindMoviesByNameAdapter
+    @Inject
+    lateinit var findMoviesByNameAdapter: FindMoviesByNameAdapter
     private val findMoviesViewModel by viewModels<FindMoviesViewModel>()
     private lateinit var binding: FragmentFindMoviesByNameBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentFindMoviesByNameBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         setupFragment()
@@ -55,7 +59,8 @@ class FindMoviesByNameFragment: Fragment() {
     }
 
     private fun observeFindMoviesViewModel() {
-        findMoviesViewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderUiState(it) })
+        findMoviesViewModel.getLiveData()
+            .observe(viewLifecycleOwner, Observer { renderUiState(it) })
     }
 
     private fun renderUiState(uiState: FindMoviesUiState) {

@@ -20,5 +20,4 @@ interface FavoriteMovieDao {
 
     @Query(DELETE_ALL_FROM_FAVORITE_MOVIES)
     suspend fun deleteAll()
-
 }

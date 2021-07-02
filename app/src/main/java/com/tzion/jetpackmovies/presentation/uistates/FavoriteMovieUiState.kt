@@ -16,5 +16,4 @@ sealed class FavoriteMovieUiState(
     ) : FavoriteMovieUiState(favoriteMovies = uiFavoriteMovies)
 
     data class Error(val throwable: Throwable) : FavoriteMovieUiState(error = throwable)
-
 }

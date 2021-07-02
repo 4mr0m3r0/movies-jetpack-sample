@@ -60,5 +60,4 @@ class DataFavoriteMovieMapper @Inject constructor() {
         production = production,
         website = website
     )
-
 }

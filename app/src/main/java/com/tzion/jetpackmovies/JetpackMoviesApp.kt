@@ -5,7 +5,7 @@ import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
 
 @HiltAndroidApp
-class JetpackMoviesApp: Application() {
+class JetpackMoviesApp : Application() {
 
     override fun onCreate() {
         super.onCreate()

@@ -1,4 +1,9 @@
 # Movies
+![State](https://img.shields.io/badge/kotlin-v1.5.10-blueviolet)
+![State](https://img.shields.io/badge/gradle-v6.7.1-blue)
+![State](https://img.shields.io/badge/Detekt-passing-brightgreen)
+![State](https://img.shields.io/badge/UnitTest-incomplete-red)
+
 A demo Android app with: 
  * Kotlin Flow. 
  * Coroutines. 

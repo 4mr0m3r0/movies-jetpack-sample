@@ -1,7 +1,12 @@
 package com.tzion.jetpackmovies.ui.findMovies
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
@@ -11,13 +16,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.tzion.jetpackmovies.R
-import com.tzion.jetpackmovies.common.DefaultValues
 import com.tzion.jetpackmovies.databinding.FragmentFindMoviesByNameBinding
 import com.tzion.jetpackmovies.presentation.FindMoviesViewModel
 import com.tzion.jetpackmovies.presentation.model.UiMovie
 import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState
 import dagger.hilt.android.AndroidEntryPoint
-import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -41,13 +44,14 @@ class FindMoviesByNameFragment: Fragment() {
     }
 
     private fun setUpRecyclerView() {
-        try {
-            binding.rvDisplayMovies.addItemDecoration(DividerItemDecoration(context, LinearLayoutManager.VERTICAL))
-            binding.rvDisplayMovies.itemAnimator = DefaultItemAnimator()
-            binding.rvDisplayMovies.adapter = findMoviesByNameAdapter
-        } catch (e: Exception) {
-            Timber.e(e)
-        }
+        binding.rvDisplayMovies.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                LinearLayoutManager.VERTICAL
+            )
+        )
+        binding.rvDisplayMovies.itemAnimator = DefaultItemAnimator()
+        binding.rvDisplayMovies.adapter = findMoviesByNameAdapter
     }
 
     private fun observeFindMoviesViewModel() {
@@ -91,7 +95,7 @@ class FindMoviesByNameFragment: Fragment() {
             }
 
             override fun onQueryTextSubmit(text: String?): Boolean {
-                findMoviesByName(text ?: DefaultValues.emptyString())
+                findMoviesByName(text.orEmpty())
                 return false
             }
         })
@@ -107,5 +111,4 @@ class FindMoviesByNameFragment: Fragment() {
             else -> super.onOptionsItemSelected(item)
         }
     }
-
 }

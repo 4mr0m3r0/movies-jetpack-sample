@@ -1,9 +1,6 @@
 package com.tzion.jetpackmovies.data
 
-import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
-import androidx.paging.LivePagedListBuilder
-import androidx.paging.PagedList
 import com.tzion.jetpackmovies.data.cache.Cache
 import com.tzion.jetpackmovies.data.mapper.DataFavoriteMovieMapper
 import com.tzion.jetpackmovies.data.mapper.DataMovieDetailMapper
@@ -22,7 +19,8 @@ class DataRepository @Inject constructor(
     private val cache: Cache,
     private val movieMapper: DataMovieMapper,
     private val movieDetailMapper: DataMovieDetailMapper,
-    private val favoriteMovieMapper: DataFavoriteMovieMapper): Repository {
+    private val favoriteMovieMapper: DataFavoriteMovieMapper
+) : Repository {
 
     override fun findMoviesByName(name: String): Flow<List<DomainMovie>> = remote
         .findMoviesByName(name)
@@ -46,5 +44,4 @@ class DataRepository @Inject constructor(
                 cacheFavoriteMovie.fromCacheToDomain()
             }
         }
-
 }

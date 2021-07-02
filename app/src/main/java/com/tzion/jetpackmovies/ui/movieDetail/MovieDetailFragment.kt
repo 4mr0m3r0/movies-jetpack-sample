@@ -1,7 +1,12 @@
 package com.tzion.jetpackmovies.ui.movieDetail
 
 import android.os.Bundle
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -19,9 +24,10 @@ import timber.log.Timber
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MovieDetailFragment: Fragment() {
+class MovieDetailFragment : Fragment() {
 
-    @Inject lateinit var attrsMapper: AttrsMapper
+    @Inject
+    lateinit var attrsMapper: AttrsMapper
     private val movieDetailViewModel by viewModels<MovieDetailViewModel>()
     private lateinit var binding: FragmentMovieDetailBinding
     private lateinit var movieDetailDisplayed: UiMovieDetail
@@ -72,8 +78,10 @@ class MovieDetailFragment: Fragment() {
         movieDetailViewModel.loadMovieDetailById(args.movieId)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentMovieDetailBinding.inflate(inflater, container, false)
         setHasOptionsMenu(true)
         return binding.root
@@ -101,11 +109,13 @@ class MovieDetailFragment: Fragment() {
     private fun makeFavoriteConfirmationMsg() {
         Snackbar.make(
             binding.root,
-            getString(R.string.was_added_to_your_favorite_movie_list, binding.templateDetailMovie.getTitle()),
+            getString(
+                R.string.was_added_to_your_favorite_movie_list,
+                binding.templateDetailMovie.getTitle()
+            ),
             Snackbar.LENGTH_LONG
         ).setAction(R.string.undo) {
             Timber.d("Action for Snackbar")
         }.show()
     }
-
 }

@@ -10,5 +10,4 @@ abstract class TestApplicationModule {
 
     @Binds
     abstract fun bindContext(application: Application): Context
-
 }

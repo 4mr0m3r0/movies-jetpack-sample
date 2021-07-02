@@ -1,8 +1,6 @@
 package com.tzion.jetpackmovies.domain.repository
 
-import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
-import androidx.paging.PagedList
 import com.tzion.jetpackmovies.domain.model.DomainFavoriteMovie
 import com.tzion.jetpackmovies.domain.model.DomainMovie
 import com.tzion.jetpackmovies.domain.model.DomainMovieDetail

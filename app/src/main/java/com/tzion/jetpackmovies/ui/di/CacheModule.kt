@@ -24,5 +24,4 @@ abstract class CacheModule {
 
     @Binds
     abstract fun bindCache(cache: CacheImpl): Cache
-
 }

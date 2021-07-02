@@ -1,8 +1,8 @@
 package com.tzion.jetpackmovies.ui.di
 
 import com.nhaarman.mockito_kotlin.mock
-import com.tzion.jetpackmovies.data.remote.retrofit.WebServiceRetrofit
 import com.tzion.jetpackmovies.data.remote.Remote
+import com.tzion.jetpackmovies.data.remote.retrofit.WebServiceRetrofit
 import dagger.Module
 import dagger.Provides
 
@@ -20,5 +20,4 @@ object TestRemoteModule {
     fun providesMoviesRemote(): Remote {
         return mock()
     }
-
 }

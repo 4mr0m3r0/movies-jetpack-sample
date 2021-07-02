@@ -7,7 +7,12 @@ import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.RecyclerViewActions
-import androidx.test.espresso.matcher.ViewMatchers.*
+import androidx.test.espresso.matcher.ViewMatchers.Visibility
+import androidx.test.espresso.matcher.ViewMatchers.hasDescendant
+import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
+import androidx.test.espresso.matcher.ViewMatchers.withEffectiveVisibility
+import androidx.test.espresso.matcher.ViewMatchers.withId
+import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.tzion.jetpackmovies.JetpackMoviesApp
 import com.tzion.jetpackmovies.R
@@ -44,7 +49,11 @@ class DisplayMoviesActivityTest {
 
     @Test
     fun whenActivityLunch_thenShouldShowMakeASearchText() {
-        onView(withId(R.id.tv_instructions)).check(matches(withText(applicationContext.getString(R.string.make_a_search))))
+        onView(
+            withId(R.id.tv_instructions)
+        ).check(
+            matches(withText(applicationContext.getString(R.string.make_a_search)))
+        )
     }
 
     @Test
@@ -92,5 +101,4 @@ class DisplayMoviesActivityTest {
             )
         }
     }
-
 }

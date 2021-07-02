@@ -21,5 +21,4 @@ class FavoriteMovieWorker(
     companion object {
         const val WORK_NAME = "Favorite_Movie_Worker"
     }
-
 }

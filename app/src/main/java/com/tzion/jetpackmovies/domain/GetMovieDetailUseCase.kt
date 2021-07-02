@@ -11,5 +11,4 @@ class GetMovieDetailUseCase @Inject constructor(private val repository: Reposito
         require(!movieId.isNullOrEmpty())
         return repository.getMovieDetailById(movieId)
     }
-
 }

@@ -9,8 +9,13 @@ import androidx.annotation.RequiresApi
 class NotificationChannelRegister {
 
     @RequiresApi(Build.VERSION_CODES.O)
-    fun createNotificationChannel(channelId: String, channelName: String, channelDescription: String,
-                                  channelImportance: Int, context: Context) {
+    fun createNotificationChannel(
+        channelId: String,
+        channelName: String,
+        channelDescription: String,
+        channelImportance: Int,
+        context: Context
+    ) {
         registerTheChannelWithSystem(
             context,
             makeNotificationChannel(channelId, channelName, channelDescription, channelImportance)
@@ -18,8 +23,12 @@ class NotificationChannelRegister {
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    private fun makeNotificationChannel(channelId: String, channelName: String, channelDescription: String,
-                                        channelImportance: Int): NotificationChannel =
+    private fun makeNotificationChannel(
+        channelId: String,
+        channelName: String,
+        channelDescription: String,
+        channelImportance: Int
+    ): NotificationChannel =
         NotificationChannel(channelId, channelName, channelImportance).apply {
             description = channelDescription
         }
@@ -30,5 +39,4 @@ class NotificationChannelRegister {
             context.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(channel)
     }
-
 }

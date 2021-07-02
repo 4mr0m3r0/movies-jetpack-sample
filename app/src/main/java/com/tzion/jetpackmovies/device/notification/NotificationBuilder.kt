@@ -57,5 +57,4 @@ class NotificationBuilder @Inject constructor(
         const val CHANNEL_NAME = "Favorite Movies"
         const val CHANNEL_DESCRIPTION = "Movies you select as favorite"
     }
-
 }

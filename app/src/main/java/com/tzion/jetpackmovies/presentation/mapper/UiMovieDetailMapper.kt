@@ -1,8 +1,5 @@
 package com.tzion.jetpackmovies.presentation.mapper
 
-import android.content.Context
-import com.tzion.jetpackmovies.R
-import com.tzion.jetpackmovies.common.DefaultValues
 import com.tzion.jetpackmovies.domain.model.DomainFavoriteMovie
 import com.tzion.jetpackmovies.domain.model.DomainMovieDetail
 import com.tzion.jetpackmovies.presentation.model.UiMovieDetail
@@ -11,22 +8,22 @@ import javax.inject.Inject
 class UiMovieDetailMapper @Inject constructor() {
 
     fun DomainMovieDetail.fromDomainToUi() = UiMovieDetail(
-        title = title ?: DefaultValues.emptyString(),
-        year = year ?: DefaultValues.emptyString(),
-        released = released ?: DefaultValues.emptyString(),
-        runtime = runtime ?: DefaultValues.emptyString(),
-        genre = genre ?: DefaultValues.emptyString(),
-        director = director ?: DefaultValues.emptyString(),
-        writer = writer ?: DefaultValues.emptyString(),
-        actors = actors ?: DefaultValues.emptyString(),
-        plot = plot ?: DefaultValues.emptyString(),
-        language = language ?: DefaultValues.emptyString(),
-        country = country ?: DefaultValues.emptyString(),
-        awards = awards ?: DefaultValues.emptyString(),
-        poster = poster ?: DefaultValues.emptyString(),
-        rating = rating ?: DefaultValues.emptyString(),
-        votes = votes ?: DefaultValues.emptyString(),
-        type = type ?: DefaultValues.emptyString()
+        title = title.orEmpty(),
+        year = year.orEmpty(),
+        released = released.orEmpty(),
+        runtime = runtime.orEmpty(),
+        genre = genre.orEmpty(),
+        director = director.orEmpty(),
+        writer = writer.orEmpty(),
+        actors = actors.orEmpty(),
+        plot = plot.orEmpty(),
+        language = language.orEmpty(),
+        country = country.orEmpty(),
+        awards = awards.orEmpty(),
+        poster = poster.orEmpty(),
+        rating = rating.orEmpty(),
+        votes = votes.orEmpty(),
+        type = type.orEmpty()
     )
 
     fun UiMovieDetail.fromUiMovieDetailToDomainFavoriteMovie(movieId: String) = DomainFavoriteMovie(
@@ -45,14 +42,13 @@ class UiMovieDetailMapper @Inject constructor() {
         country = country,
         awards = awards,
         poster = poster,
-        metascore = DefaultValues.emptyString(),
+        metascore = "",
         rating = rating,
         votes = votes,
         type = type,
-        dvd = DefaultValues.emptyString(),
-        boxOffice = DefaultValues.emptyString(),
-        production = DefaultValues.emptyString(),
-        website = DefaultValues.emptyString()
+        dvd = "",
+        boxOffice = "",
+        production = "",
+        website = ""
     )
-
 }

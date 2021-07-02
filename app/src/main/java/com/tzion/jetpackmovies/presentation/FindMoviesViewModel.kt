@@ -9,6 +9,7 @@ import com.tzion.jetpackmovies.domain.FindMoviesByNameUseCase
 import com.tzion.jetpackmovies.domain.exception.NoMoviesResultsException
 import com.tzion.jetpackmovies.presentation.mapper.UiMovieMapper
 import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -16,7 +17,7 @@ import kotlinx.coroutines.launch
 class FindMoviesViewModel @ViewModelInject constructor(
     private val findMoviesUseCase: FindMoviesByNameUseCase,
     private val mapper: UiMovieMapper
-): ViewModel() {
+) : ViewModel() {
 
     private val liveData: MutableLiveData<FindMoviesUiState> = MutableLiveData()
 
@@ -24,25 +25,23 @@ class FindMoviesViewModel @ViewModelInject constructor(
 
     fun findMoviesByName(name: String?) {
         viewModelScope.launch {
-            try {
-                liveData.value = FindMoviesUiState.Loading
-                findMoviesUseCase
-                    .findMovieByName(name)
-                    .map { domainMovies ->
-                        with(mapper) { domainMovies.fromDomainToUi() }
+            liveData.value = FindMoviesUiState.Loading
+            findMoviesUseCase
+                .findMovieByName(name)
+                .map { domainMovies ->
+                    with(mapper) { domainMovies.fromDomainToUi() }
+                }
+                .catch { cause ->
+                    liveData.value = FindMoviesUiState.Error(cause)
+                }
+                .collect { movies ->
+                    if (movies.isNullOrEmpty()) {
+                        liveData.value =
+                            FindMoviesUiState.Error(NoMoviesResultsException("No movies result"))
+                    } else {
+                        liveData.value = FindMoviesUiState.Success(movies)
                     }
-                    .collect { movies ->
-                        if (movies.isNullOrEmpty()) {
-                            liveData.value = FindMoviesUiState.Error(NoMoviesResultsException("No movies result"))
-                        } else {
-                            liveData.value = FindMoviesUiState.Success(movies)
-                        }
-                    }
-            } catch (e: Throwable) {
-                liveData.value = FindMoviesUiState.Error(e)
-            }
+                }
         }
-
     }
-
 }

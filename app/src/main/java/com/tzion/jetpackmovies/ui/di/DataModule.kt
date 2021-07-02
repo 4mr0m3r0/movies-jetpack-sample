@@ -13,5 +13,4 @@ abstract class DataModule {
 
     @Binds
     abstract fun bindDataRepository(dataRepository: DataRepository): Repository
-
 }

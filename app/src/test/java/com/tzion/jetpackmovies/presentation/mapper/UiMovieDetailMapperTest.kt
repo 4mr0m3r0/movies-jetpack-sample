@@ -1,11 +1,11 @@
 package com.tzion.jetpackmovies.presentation.mapper
 
 import com.tzion.jetpackmovies.factory.MovieDetailFactory.makeDomainMovieDetail
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class UiMovieDetailMapperTest {
-    
+
     private val mapper = UiMovieDetailMapper()
     
     @Test
@@ -28,9 +28,6 @@ class UiMovieDetailMapperTest {
         assertEquals("awards", domainMovieDetail.awards, uiMovieDetail.awards)
         assertEquals("poster", domainMovieDetail.poster, uiMovieDetail.poster)
         assertEquals("rating", domainMovieDetail.rating, uiMovieDetail.rating)
-        assertEquals("imdbRating", domainMovieDetail.imdbRating, uiMovieDetail.imdbRating)
-        assertEquals("imdbVotes", domainMovieDetail.imdbVotes, uiMovieDetail.imdbVotes)
         assertEquals("type", domainMovieDetail.type, uiMovieDetail.type)
     }
-    
 }

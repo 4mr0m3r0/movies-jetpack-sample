@@ -2,16 +2,19 @@ package com.tzion.jetpackmovies.presentation.uistates
 
 import androidx.paging.PagedList
 import com.tzion.jetpackmovies.presentation.model.UiFavoriteMovie
-import com.tzion.jetpackmovies.presentation.model.UiMovieDetail
 
-sealed class FavoriteMovieUiState(val loading: Boolean = false,
-                                  val favoriteMovies: PagedList<UiFavoriteMovie>? = null,
-                                  val error: Throwable? = null) {
+sealed class FavoriteMovieUiState(
+    val loading: Boolean = false,
+    val favoriteMovies: PagedList<UiFavoriteMovie>? = null,
+    val error: Throwable? = null
+) {
 
-    object Loading: FavoriteMovieUiState(loading = true)
+    object Loading : FavoriteMovieUiState(loading = true)
 
-    data class Success(val uiFavoriteMovies: PagedList<UiFavoriteMovie>): FavoriteMovieUiState(favoriteMovies = uiFavoriteMovies)
+    data class Success(
+        val uiFavoriteMovies: PagedList<UiFavoriteMovie>
+    ) : FavoriteMovieUiState(favoriteMovies = uiFavoriteMovies)
 
-    data class Error(val throwable: Throwable): FavoriteMovieUiState(error = throwable)
+    data class Error(val throwable: Throwable) : FavoriteMovieUiState(error = throwable)
 
 }

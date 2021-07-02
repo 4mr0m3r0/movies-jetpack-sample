@@ -16,12 +16,13 @@ interface WebServiceRetrofit {
     @GET("/")
     suspend fun getMoviesByTitle(
         @Query(SEARCH_CRITERIA) searchCriteria: String,
-        @Query(API_KEY) apiKey: String = API_KEY_VALUE): RemoteSearch
+        @Query(API_KEY) apiKey: String = API_KEY_VALUE
+    ): RemoteSearch
 
     @GET("/")
     suspend fun getMovieDetailById(
         @Query(ID_CRITERIA) movieId: String,
         @Query(PLOT_CRITERIA) plot: String = PLOT_FULL,
-        @Query(API_KEY) apiKey: String = API_KEY_VALUE): RemoteMovieDetail
-
+        @Query(API_KEY) apiKey: String = API_KEY_VALUE
+    ): RemoteMovieDetail
 }

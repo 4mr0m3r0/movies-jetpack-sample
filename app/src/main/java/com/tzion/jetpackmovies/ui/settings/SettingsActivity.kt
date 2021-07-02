@@ -6,9 +6,10 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.tzion.jetpackmovies.R
 
-class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
+class SettingsActivity : AppCompatActivity(),
+    PreferenceFragmentCompat.OnPreferenceStartFragmentCallback {
 
-    private val TITLE_TAG = "settingsActivityTitle"
+    private val titleTag = "settingsActivityTitle"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,7 +20,7 @@ class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferen
                 .replace(R.id.settings, SettingsFragment())
                 .commit()
         } else {
-            title = savedInstanceState.getCharSequence(TITLE_TAG)
+            title = savedInstanceState.getCharSequence(titleTag)
         }
         supportFragmentManager.addOnBackStackChangedListener {
             if (supportFragmentManager.backStackEntryCount == 0) {
@@ -32,7 +33,7 @@ class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferen
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         // Save current activity title so we can set it again after a configuration change
-        outState.putCharSequence(TITLE_TAG, title)
+        outState.putCharSequence(titleTag, title)
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -69,5 +70,4 @@ class SettingsActivity: AppCompatActivity(), PreferenceFragmentCompat.OnPreferen
             setPreferencesFromResource(R.xml.preference_screen, rootKey)
         }
     }
-
 }

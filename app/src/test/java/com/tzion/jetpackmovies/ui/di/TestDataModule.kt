@@ -15,5 +15,4 @@ object TestDataModule {
     fun providesDataRepository(): Repository {
         return mock()
     }
-
 }

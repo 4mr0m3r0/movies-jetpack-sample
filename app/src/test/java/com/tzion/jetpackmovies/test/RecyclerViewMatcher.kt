@@ -20,17 +20,10 @@ open class RecyclerViewMatcher constructor(var recyclerViewId: Int) {
             var childView: View? = null
 
             override fun describeTo(description: Description) {
-                var idDescription = Integer.toString(recyclerViewId)
+                var idDescription = recyclerViewId.toString()
                 if (this.resources != null) {
-                    idDescription = try {
-                        this.resources!!.getResourceName(recyclerViewId)
-                    } catch (var4: Resources.NotFoundException) {
-                        String.format("%s (resource name not found)",
-                            Integer.valueOf(recyclerViewId))
-                    }
-
+                    idDescription = this.resources?.getResourceName(recyclerViewId).orEmpty()
                 }
-
                 description.appendText("with id: $idDescription")
             }
 
@@ -55,7 +48,6 @@ open class RecyclerViewMatcher constructor(var recyclerViewId: Int) {
                     val targetView = childView?.findViewById<View>(targetViewId)
                     view === targetView
                 }
-
             }
         }
     }
@@ -65,7 +57,5 @@ open class RecyclerViewMatcher constructor(var recyclerViewId: Int) {
         fun withRecyclerView(recyclerViewId: Int): RecyclerViewMatcher {
             return RecyclerViewMatcher(recyclerViewId)
         }
-
     }
-
 }

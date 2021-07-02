@@ -12,11 +12,30 @@ buildscript {
     }
 }
 
+plugins {
+    id "io.gitlab.arturbosch.detekt" version "1.17.1"
+}
+
+dependencies {
+    detektPlugins rootProject.detektFormatting
+}
+
 allprojects {
     repositories {
         mavenCentral()
         google()
     }
+}
+
+detekt {
+    toolVersion = rootProject.detektVersion
+    config = files("$projectDir/config/detekt.yml")
+    buildUponDefaultConfig = true
+    input = files("$projectDir")
+}
+
+tasks.withType(io.gitlab.arturbosch.detekt.Detekt).configureEach {
+    exclude("**/build/**")
 }
 
 task clean(type: Delete) {

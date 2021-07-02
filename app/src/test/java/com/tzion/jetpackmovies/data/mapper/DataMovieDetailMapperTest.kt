@@ -1,7 +1,7 @@
 package com.tzion.jetpackmovies.data.mapper
 
 import com.tzion.jetpackmovies.factory.MovieDetailFactory.makeRemoteMovieDetail
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Test
 
 class DataMovieDetailMapperTest {
@@ -35,5 +35,4 @@ class DataMovieDetailMapperTest {
         assertEquals("production", remoteMovieDetail.production, domainMovieDetail.production)
         assertEquals("website", remoteMovieDetail.website, domainMovieDetail.website)
     }
-
 }

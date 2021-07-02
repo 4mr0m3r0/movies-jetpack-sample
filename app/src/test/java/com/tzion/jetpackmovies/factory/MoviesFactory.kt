@@ -10,21 +10,22 @@ object MoviesFactory {
     }
 
     fun makeMovie() = DomainMovie(
-            RandomFactory.generateString(),
-            RandomFactory.generateString(),
-            RandomFactory.generateString(),
-            RandomFactory.generateString(),
-            RandomFactory.generateString())
+        RandomFactory.generateString(),
+        RandomFactory.generateString(),
+        RandomFactory.generateString(),
+        RandomFactory.generateString(),
+        RandomFactory.generateString()
+    )
 
     fun makeMovieViewList(count: Int): List<UiMovie> {
         return (0..count).map { makeMovieView() }
     }
 
-    fun makeMovieView() =  UiMovie(
-            RandomFactory.generateString(),
-            RandomFactory.generateString(),
-            RandomFactory.generateString(),
-            "https://picsum.photos/200/300/?random",
-            RandomFactory.generateString())
-
+    fun makeMovieView() = UiMovie(
+        RandomFactory.generateString(),
+        RandomFactory.generateString(),
+        RandomFactory.generateString(),
+        "https://picsum.photos/200/300/?random",
+        RandomFactory.generateString()
+    )
 }

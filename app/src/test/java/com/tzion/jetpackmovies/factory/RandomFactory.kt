@@ -12,5 +12,4 @@ object RandomFactory {
     fun generateInt(): Int {
         return ThreadLocalRandom.current().nextInt(0, 1000 + 1)
     }
-
 }

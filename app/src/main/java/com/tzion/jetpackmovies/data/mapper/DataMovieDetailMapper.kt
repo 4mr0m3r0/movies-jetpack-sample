@@ -1,9 +1,7 @@
 package com.tzion.jetpackmovies.data.mapper
 
-import com.tzion.jetpackmovies.data.cache.model.CacheFavoriteMovie
 import com.tzion.jetpackmovies.data.remote.model.RemoteMovieDetail
 import com.tzion.jetpackmovies.domain.model.DomainMovieDetail
-import com.tzion.jetpackmovies.common.DefaultValues
 import javax.inject.Inject
 
 class DataMovieDetailMapper @Inject constructor() {

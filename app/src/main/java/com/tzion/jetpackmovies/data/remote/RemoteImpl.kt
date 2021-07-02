@@ -17,5 +17,4 @@ class RemoteImpl @Inject constructor(
     override fun getMovieDetailById(movieId: String): Flow<RemoteMovieDetail> = flow {
         emit(webServiceRetrofit.getMovieDetailById(movieId))
     }
-
 }

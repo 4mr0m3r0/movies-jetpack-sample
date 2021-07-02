@@ -8,16 +8,22 @@ import com.bumptech.glide.Glide
 import com.tzion.jetpackmovies.databinding.ItemMovieBinding
 import com.tzion.jetpackmovies.presentation.model.UiMovie
 import com.tzion.jetpackmovies.ui.Navigator
-import timber.log.Timber
 import javax.inject.Inject
 
 class FindMoviesByNameAdapter @Inject constructor(
-    private val navigator: Navigator): RecyclerView.Adapter<FindMoviesByNameAdapter.ViewHolder>() {
+    private val navigator: Navigator
+) : RecyclerView.Adapter<FindMoviesByNameAdapter.ViewHolder>() {
 
     var movies: List<UiMovie> = mutableListOf()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ItemMovieBinding.inflate(LayoutInflater.from(parent.context), parent, false))
+        return ViewHolder(
+            ItemMovieBinding.inflate(
+                LayoutInflater.from(parent.context),
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int {
@@ -45,7 +51,8 @@ class FindMoviesByNameAdapter @Inject constructor(
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder(private val binding: ItemMovieBinding): RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(private val binding: ItemMovieBinding) :
+        RecyclerView.ViewHolder(binding.root) {
 
         fun bind(listener: View.OnClickListener, item: UiMovie) {
             binding.apply {
@@ -56,15 +63,10 @@ class FindMoviesByNameAdapter @Inject constructor(
         }
 
         fun setImage(poster: String?) {
-            try {
-                Glide.with(binding.root)
-                    .load(poster)
-    //                .apply(RequestOptions.circleCropTransform())
-                    .into(binding.acivMovieAvatar)
-            } catch (e: Exception) {
-                Timber.d("adapter setImage ERROR: ${e.stackTrace}")
-            }
+            Glide.with(binding.root)
+                .load(poster)
+//                .apply(RequestOptions.circleCropTransform())
+                .into(binding.acivMovieAvatar)
         }
     }
-
 }

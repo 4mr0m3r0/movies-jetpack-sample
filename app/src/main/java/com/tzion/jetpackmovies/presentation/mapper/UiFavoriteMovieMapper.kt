@@ -1,9 +1,7 @@
 package com.tzion.jetpackmovies.presentation.mapper
 
-import com.tzion.jetpackmovies.common.DefaultValues
 import com.tzion.jetpackmovies.domain.model.DomainFavoriteMovie
 import com.tzion.jetpackmovies.presentation.model.UiFavoriteMovie
-import com.tzion.jetpackmovies.presentation.model.UiMovieDetail
 import javax.inject.Inject
 
 class UiFavoriteMovieMapper @Inject constructor() {
@@ -27,5 +25,4 @@ class UiFavoriteMovieMapper @Inject constructor() {
         votes = votes,
         type = type
     )
-
 }

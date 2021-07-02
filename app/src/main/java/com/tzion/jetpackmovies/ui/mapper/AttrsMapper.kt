@@ -24,5 +24,4 @@ class AttrsMapper @Inject constructor(@ActivityContext private val context: Cont
         rating = "${context.getString(R.string.rating)}: $rating",
         votes = "$votes ${context.getString(R.string.votes)}"
     )
-
 }

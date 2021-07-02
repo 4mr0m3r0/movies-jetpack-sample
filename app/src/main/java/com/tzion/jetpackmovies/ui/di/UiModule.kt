@@ -13,5 +13,4 @@ object UiModule {
     @Provides
     fun providesNotificationChannelRegister(): NotificationChannelRegister =
         NotificationChannelRegister()
-
 }

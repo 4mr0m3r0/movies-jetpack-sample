@@ -2,8 +2,11 @@ package com.tzion.jetpackmovies.data.cache.database
 
 object DatabaseConfigs {
 
+    /**
+     * For Alter a Table might be something like this
+     * const val MIGRATION_ALTER_TABLE = "ALTER TABLE Task ADD notes TEXT NOT NULL DEFAULT ''"
+     */
     object Queries {
-        const val MIGRATION_ALTER_TABLE = "ALTER TABLE Task ADD notes TEXT NOT NULL DEFAULT ''" //TODO this is just an example. Not real.
         const val SELECT_ALL_FROM_FAVORITE_MOVIES = "SELECT * FROM ${Names.Tables.FAVORITE_MOVIES}"
         const val DELETE_ALL_FROM_FAVORITE_MOVIES = "DELETE FROM ${Names.Tables.FAVORITE_MOVIES}"
     }
@@ -42,5 +45,4 @@ object DatabaseConfigs {
         }
 
     }
-
 }

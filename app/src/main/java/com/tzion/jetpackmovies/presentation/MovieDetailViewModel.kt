@@ -10,6 +10,7 @@ import com.tzion.jetpackmovies.domain.ManageFavoriteMoviesUseCase
 import com.tzion.jetpackmovies.presentation.mapper.UiMovieDetailMapper
 import com.tzion.jetpackmovies.presentation.model.UiMovieDetail
 import com.tzion.jetpackmovies.presentation.uistates.MovieDetailUiState
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
@@ -26,19 +27,18 @@ class MovieDetailViewModel @ViewModelInject constructor(
 
     fun loadMovieDetailById(movieId: String?) {
         viewModelScope.launch {
-            try {
-                liveData.value = MovieDetailUiState.Loading
-                getMovieDetailUseCase
-                    .getMovieDetailById(movieId)
-                    .map { domainMovieDetail ->
-                        with(mapper) { domainMovieDetail.fromDomainToUi() }
-                    }
-                    .collect { uiMovieDetail ->
-                        liveData.value = MovieDetailUiState.Success(uiMovieDetail)
-                    }
-            } catch (e: Throwable) {
-                liveData.postValue(MovieDetailUiState.Error(e))
-            }
+            liveData.value = MovieDetailUiState.Loading
+            getMovieDetailUseCase
+                .getMovieDetailById(movieId)
+                .map { domainMovieDetail ->
+                    with(mapper) { domainMovieDetail.fromDomainToUi() }
+                }
+                .catch { cause ->
+                    liveData.postValue(MovieDetailUiState.Error(cause))
+                }
+                .collect { uiMovieDetail ->
+                    liveData.value = MovieDetailUiState.Success(uiMovieDetail)
+                }
         }
     }
 
@@ -49,5 +49,4 @@ class MovieDetailViewModel @ViewModelInject constructor(
             })
         }
     }
-
 }

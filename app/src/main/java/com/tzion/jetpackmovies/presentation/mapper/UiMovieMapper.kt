@@ -1,7 +1,7 @@
 package com.tzion.jetpackmovies.presentation.mapper
 
-import com.tzion.jetpackmovies.presentation.model.UiMovie
 import com.tzion.jetpackmovies.domain.model.DomainMovie
+import com.tzion.jetpackmovies.presentation.model.UiMovie
 import javax.inject.Inject
 
 class UiMovieMapper @Inject constructor() {

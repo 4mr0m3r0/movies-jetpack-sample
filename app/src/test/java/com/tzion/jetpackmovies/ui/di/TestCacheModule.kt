@@ -1,6 +1,6 @@
 package com.tzion.jetpackmovies.ui.di
 
-//@Module
+// @Module
 object TestCacheModule {
 
 //    @Provides
@@ -14,5 +14,4 @@ object TestCacheModule {
 //    fun providesMovieCache(): MovieCache {
 //        return mock()
 //    }
-
 }

@@ -11,7 +11,8 @@ import com.tzion.jetpackmovies.presentation.model.UiFavoriteMovie
 
 class FavoriteMovieViewModel @ViewModelInject constructor(
     manageFavoriteMoviesUseCase: ManageFavoriteMoviesUseCase,
-    private val mapper: UiFavoriteMovieMapper): ViewModel() {
+    private val mapper: UiFavoriteMovieMapper
+) : ViewModel() {
 
     private val config = PagedList.Config.Builder()
         .setPageSize(DATABASE_PAGE_SIZE)
@@ -20,8 +21,9 @@ class FavoriteMovieViewModel @ViewModelInject constructor(
         .build()
 
     private val favoriteMoviesLiveData: LiveData<PagedList<UiFavoriteMovie>> =
-        LivePagedListBuilder(manageFavoriteMoviesUseCase.getFavoriteMovies().mapByPage { favoriteMovies ->
-            with(mapper) { favoriteMovies.map { it.fromDomainToUi() } }
+        LivePagedListBuilder(
+            manageFavoriteMoviesUseCase.getFavoriteMovies().mapByPage { favoriteMovies ->
+                with(mapper) { favoriteMovies.map { it.fromDomainToUi() } }
         }, config).build()
 
     fun favoriteMoviesLiveData(): LiveData<PagedList<UiFavoriteMovie>> = favoriteMoviesLiveData
@@ -31,5 +33,4 @@ class FavoriteMovieViewModel @ViewModelInject constructor(
         private const val INITIAL_LOAD_SIZE_HINT = 20
         private const val PREFETCH_DISTANCE = 10
     }
-
 }

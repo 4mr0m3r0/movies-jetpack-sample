@@ -20,11 +20,13 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MainActivity: AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var appBarConfiguration : AppBarConfiguration
-    @Inject lateinit var notificationBuilder: NotificationBuilder
+    private lateinit var appBarConfiguration: AppBarConfiguration
+
+    @Inject
+    lateinit var notificationBuilder: NotificationBuilder
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,16 +49,24 @@ class MainActivity: AppCompatActivity() {
     private fun getNavHostFragment(): NavHostFragment = supportFragmentManager
         .findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
-    private fun makeAppBarConfigurationWithDestinations(): AppBarConfiguration = AppBarConfiguration(
+    private fun makeAppBarConfigurationWithDestinations(): AppBarConfiguration =
+        AppBarConfiguration(
             setOf(R.id.findMoviesByNameFragment, R.id.favoriteMoviesFragment),
-            binding.drawerLayout)
+            binding.drawerLayout
+        )
 
-    private fun setupActionBar(navController: NavController, appBarConfiguration: AppBarConfiguration) {
+    private fun setupActionBar(
+        navController: NavController,
+        appBarConfiguration: AppBarConfiguration
+    ) {
         setupActionBarWithNavController(navController, appBarConfiguration)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return NavigationUI.navigateUp(findNavController(R.id.nav_host_fragment), appBarConfiguration)
+        return NavigationUI.navigateUp(
+            findNavController(R.id.nav_host_fragment),
+            appBarConfiguration
+        )
     }
 
     private fun setupNavigationMenu(navController: NavController) {
@@ -76,5 +86,4 @@ class MainActivity: AppCompatActivity() {
             request.makeFavoriteMovieWorkRequest()
         )
     }
-
 }

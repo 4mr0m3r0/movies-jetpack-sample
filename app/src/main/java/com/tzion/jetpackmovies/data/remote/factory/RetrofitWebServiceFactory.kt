@@ -25,8 +25,8 @@ class RetrofitWebServiceFactory <T> {
     private fun makeOkHttpClient(httpLoggingInterceptor: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(httpLoggingInterceptor)
-            .connectTimeout(120, TimeUnit.SECONDS)
-            .readTimeout(120, TimeUnit.SECONDS)
+            .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+            .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
             .build()
     }
 
@@ -40,4 +40,7 @@ class RetrofitWebServiceFactory <T> {
         return logging
     }
 
+    private companion object {
+        const val DEFAULT_TIMEOUT = 120L
+    }
 }

@@ -51,7 +51,7 @@ class FindMoviesByNameFragment: Fragment() {
     }
 
     private fun observeFindMoviesViewModel() {
-        findMoviesViewModel.getLiveData().observe(this, Observer { renderUiState(it) })
+        findMoviesViewModel.getLiveData().observe(viewLifecycleOwner, Observer { renderUiState(it) })
     }
 
     private fun renderUiState(uiState: FindMoviesUiState) {

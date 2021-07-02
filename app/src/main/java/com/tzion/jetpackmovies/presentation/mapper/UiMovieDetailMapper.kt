@@ -30,7 +30,7 @@ class UiMovieDetailMapper @Inject constructor() {
         movieId = movieId,
         title = title,
         year = year,
-        rated = DefaultValues.emptyString(),
+        rated = "",
         released = released,
         runtime = runtime,
         genre = genre,

@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">Movies</string>
-    <string name="make_a_search">Find a movie</string>
+    <string name="find_a_movie">Find a movie</string>
     <string name="search_title">Search</string>
     <string name="title">Title</string>
     <string name="year">Year</string>
@@ -23,4 +23,8 @@
     <string name="was_added_to_your_favorite_movie_list">%s was added to your favorite movie list</string>
     <string name="review_your_favorite_list">Review your favorite list</string>
     <string name="undo">Undo</string>
+    <string name="go_back">Go Back</string>
+    <string name="detail">Detail</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="empty_list">Empty list</string>
 </resources>

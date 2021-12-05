@@ -1,7 +1,7 @@
 package com.tzion.jetpackmovies.factory
 
 import com.tzion.jetpackmovies.domain.model.DomainMovie
-import com.tzion.jetpackmovies.presentation.model.UiMovie
+import com.tzion.jetpackmovies.presentation.model.Movie
 
 object MoviesFactory {
 
@@ -17,11 +17,11 @@ object MoviesFactory {
         RandomFactory.generateString()
     )
 
-    fun makeMovieViewList(count: Int): List<UiMovie> {
+    fun makeMovieViewList(count: Int): List<Movie> {
         return (0..count).map { makeMovieView() }
     }
 
-    fun makeMovieView() = UiMovie(
+    fun makeMovieView() = Movie(
         RandomFactory.generateString(),
         RandomFactory.generateString(),
         RandomFactory.generateString(),

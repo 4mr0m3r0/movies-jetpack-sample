@@ -28,8 +28,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="@tools:sample/lorem/random"
-        style="@style/HeadlineH5"/>
+        tools:text="@tools:sample/lorem/random" />
 
     <TextView
         android:id="@+id/tv_runtime"
@@ -42,8 +41,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        tools:text="@string/runtime"
-        style="@style/Body2"/>
+        tools:text="@string/runtime" />
 
     <TextView
         android:id="@+id/tv_released"
@@ -56,8 +54,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_runtime"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        tools:text="@string/released"
-        style="@style/Body2"/>
+        tools:text="@string/released" />
 
     <TextView
         android:id="@+id/tv_rating"
@@ -70,8 +67,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_runtime"
-        tools:text="@string/rating"
-        style="@style/Body2"/>
+        tools:text="@string/rating" />
 
     <TextView
         android:id="@+id/tv_votes"
@@ -84,12 +80,10 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/tv_rating"
         app:layout_constraintTop_toBottomOf="@+id/tv_released"
-        tools:text="@string/votes"
-        style="@style/Body2"/>
+        tools:text="@string/votes" />
 
     <TextView
         android:id="@+id/tv_plot"
-        style="@style/Body2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -110,12 +104,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tv_plot"
-        tools:text="@string/genre"
-        style="@style/Body2"/>
+        tools:text="@string/genre" />
 
     <TextView
         android:id="@+id/tv_actors"
-        style="@style/Body2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -128,7 +120,6 @@
 
     <TextView
         android:id="@+id/tv_writer"
-        style="@style/Body2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -141,7 +132,6 @@
 
     <TextView
         android:id="@+id/tv_director"
-        style="@style/Body2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -154,7 +144,6 @@
 
     <TextView
         android:id="@+id/tv_language"
-        style="@style/Body2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -166,7 +155,6 @@
 
     <TextView
         android:id="@+id/tv_country"
-        style="@style/Body2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"

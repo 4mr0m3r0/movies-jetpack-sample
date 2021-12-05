@@ -1,13 +1,13 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
-apply plugin: "androidx.navigation.safeargs.kotlin"
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "kotlin-kapt"
+    id "dagger.hilt.android.plugin"
+    id "androidx.navigation.safeargs.kotlin"
+}
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
     defaultConfig {
         applicationId "com.tzion.jetpack"
         minSdkVersion rootProject.minSdkVersion
@@ -53,8 +53,11 @@ android {
     }
 
     buildFeatures {
-        dataBinding = true
-        viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion rootProject.composeVersion
     }
 
     testOptions.unitTests.includeAndroidResources = true
@@ -66,15 +69,10 @@ kapt {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    def dependencies = rootProject.ext.dependencies
-    def kaptDependencies = rootProject.ext.kaptDependencies
-    def testDependencies = rootProject.ext.testDependencies
+    implementation rootProject.ext.dependencies
 
-    implementation dependencies
-    kapt kaptDependencies
+    kapt rootProject.ext.kaptDependencies
 
-    testImplementation testDependencies
-
+    testImplementation rootProject.ext.testDependencies
     androidTestImplementation androidTestDependencies
 }

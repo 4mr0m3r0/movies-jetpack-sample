@@ -1,12 +1,14 @@
 package com.tzion.jetpackmovies.device.worker
 
 import android.content.Context
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.tzion.jetpackmovies.common.NotificationChannelRegister
 import com.tzion.jetpackmovies.device.notification.NotificationBuilder
 import dagger.hilt.android.qualifiers.ActivityContext
 
+@ExperimentalAnimationApi
 class FavoriteMovieWorker(
     @ActivityContext private val context: Context,
     workerParameters: WorkerParameters

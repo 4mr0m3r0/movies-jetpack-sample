@@ -2,12 +2,12 @@ package com.tzion.jetpackmovies.presentation.mapper
 
 import com.tzion.jetpackmovies.domain.model.DomainFavoriteMovie
 import com.tzion.jetpackmovies.domain.model.DomainMovieDetail
-import com.tzion.jetpackmovies.presentation.model.UiMovieDetail
+import com.tzion.jetpackmovies.presentation.model.MovieDetail
 import javax.inject.Inject
 
 class UiMovieDetailMapper @Inject constructor() {
 
-    fun DomainMovieDetail.fromDomainToUi() = UiMovieDetail(
+    fun DomainMovieDetail.fromDomainToUi() = MovieDetail(
         title = title.orEmpty(),
         year = year.orEmpty(),
         released = released.orEmpty(),
@@ -26,7 +26,7 @@ class UiMovieDetailMapper @Inject constructor() {
         type = type.orEmpty()
     )
 
-    fun UiMovieDetail.fromUiMovieDetailToDomainFavoriteMovie(movieId: String) = DomainFavoriteMovie(
+    fun MovieDetail.fromUiMovieDetailToDomainFavoriteMovie(movieId: String) = DomainFavoriteMovie(
         movieId = movieId,
         title = title,
         year = year,

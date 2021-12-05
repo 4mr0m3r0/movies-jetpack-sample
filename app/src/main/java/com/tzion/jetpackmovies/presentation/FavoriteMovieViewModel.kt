@@ -1,6 +1,5 @@
 package com.tzion.jetpackmovies.presentation
 
-import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.LivePagedListBuilder
@@ -8,8 +7,11 @@ import androidx.paging.PagedList
 import com.tzion.jetpackmovies.domain.ManageFavoriteMoviesUseCase
 import com.tzion.jetpackmovies.presentation.mapper.UiFavoriteMovieMapper
 import com.tzion.jetpackmovies.presentation.model.UiFavoriteMovie
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class FavoriteMovieViewModel @ViewModelInject constructor(
+@HiltViewModel
+class FavoriteMovieViewModel @Inject constructor(
     manageFavoriteMoviesUseCase: ManageFavoriteMoviesUseCase,
     private val mapper: UiFavoriteMovieMapper
 ) : ViewModel() {

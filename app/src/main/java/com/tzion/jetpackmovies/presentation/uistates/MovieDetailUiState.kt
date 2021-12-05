@@ -1,17 +1,9 @@
 package com.tzion.jetpackmovies.presentation.uistates
 
-import com.tzion.jetpackmovies.presentation.model.UiMovieDetail
+import com.tzion.jetpackmovies.presentation.model.MovieDetail
 
-sealed class MovieDetailUiState(
-    val loading: Boolean = false,
-    val movieDetail: UiMovieDetail = UiMovieDetail(),
-    val error: Throwable? = null
-) {
-
-    object Loading : MovieDetailUiState(loading = true)
-
-    data class Success(val uiMovieDetail: UiMovieDetail) :
-        MovieDetailUiState(movieDetail = uiMovieDetail)
-
-    data class Error(val throwable: Throwable) : MovieDetailUiState(error = throwable)
+sealed class MovieDetailUiState {
+    object LoadingUiState : MovieDetailUiState()
+    data class DetailDisplayUiState(val movieDetail: MovieDetail) : MovieDetailUiState()
+    object ErrorUiState : MovieDetailUiState()
 }

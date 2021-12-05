@@ -1,13 +1,9 @@
 package com.tzion.jetpackmovies.presentation.uistates
 
-import com.tzion.jetpackmovies.presentation.model.UiMovie
+import com.tzion.jetpackmovies.presentation.model.Movie
 
-sealed class FindMoviesUiState(
-    val loading: Boolean = false,
-    val movies: List<UiMovie> = arrayListOf(),
-    val error: Throwable? = null
-) {
-    object Loading : FindMoviesUiState(loading = true)
-    data class Success(val uiMovies: List<UiMovie>) : FindMoviesUiState(movies = uiMovies)
-    data class Error(val throwable: Throwable) : FindMoviesUiState(error = throwable)
+sealed class FindMoviesUiState {
+    object LoadingUiSate : FindMoviesUiState()
+    data class MoviesResultDisplayUiState(val movies: List<Movie>) : FindMoviesUiState()
+    data class ErrorUiState(val throwable: Throwable) : FindMoviesUiState()
 }

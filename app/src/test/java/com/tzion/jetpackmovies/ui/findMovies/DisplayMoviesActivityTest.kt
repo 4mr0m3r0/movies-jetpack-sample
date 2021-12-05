@@ -17,7 +17,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import com.tzion.jetpackmovies.JetpackMoviesApp
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.factory.MoviesFactory
-import com.tzion.jetpackmovies.presentation.model.UiMovie
+import com.tzion.jetpackmovies.presentation.model.Movie
 import com.tzion.jetpackmovies.test.RecyclerViewMatcher
 import org.junit.Before
 import org.junit.Test
@@ -52,7 +52,7 @@ class DisplayMoviesActivityTest {
         onView(
             withId(R.id.tv_instructions)
         ).check(
-            matches(withText(applicationContext.getString(R.string.make_a_search)))
+            matches(withText(applicationContext.getString(R.string.find_a_movie)))
         )
     }
 
@@ -91,12 +91,14 @@ class DisplayMoviesActivityTest {
         onView(withId(R.id.aciv_search_display_movies)).check(matches(isDisplayed()))
     }
 
-    private fun checkMoviesAreDisplayed(movies: List<UiMovie>) {
+    private fun checkMoviesAreDisplayed(movies: List<Movie>) {
         movies.forEachIndexed { index, movie ->
             onView(withId(R.id.rv_display_movies)).perform(
                 RecyclerViewActions.scrollToPosition<RecyclerView.ViewHolder>(index)
             )
-            onView(RecyclerViewMatcher.withRecyclerView(R.id.rv_display_movies).atPosition(index)).check(
+            onView(
+                RecyclerViewMatcher.withRecyclerView(R.id.rv_display_movies).atPosition(index)
+            ).check(
                 matches(hasDescendant(withText(movie.title)))
             )
         }

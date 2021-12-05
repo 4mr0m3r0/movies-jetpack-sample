@@ -1,7 +1,7 @@
 package com.tzion.jetpackmovies.presentation.mapper
 
 import com.tzion.jetpackmovies.domain.model.DomainMovie
-import com.tzion.jetpackmovies.presentation.model.UiMovie
+import com.tzion.jetpackmovies.presentation.model.Movie
 import javax.inject.Inject
 
 class UiMovieMapper @Inject constructor() {
@@ -10,7 +10,7 @@ class UiMovieMapper @Inject constructor() {
         domainMovie.fromDomainToUi()
     }
 
-    fun DomainMovie.fromDomainToUi() = UiMovie(
+    fun DomainMovie.fromDomainToUi() = Movie(
         movieId = movieId ?: "",
         title = title ?: "",
         year = year ?: "",

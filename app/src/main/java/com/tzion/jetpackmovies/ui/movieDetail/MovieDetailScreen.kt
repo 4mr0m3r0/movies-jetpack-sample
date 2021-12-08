@@ -17,7 +17,7 @@ fun MovieDetailScreen(onBack: () -> Unit, movieId: String) {
     Column {
         MovieTopAppBar(
             contentText = stringResource(R.string.detail),
-            onBackClick = onBack
+            navigationEvent = onBack
         )
         val detailViewModel: MovieDetailViewModel = viewModel()
         val mapper = AttrsDetailMapper(context)

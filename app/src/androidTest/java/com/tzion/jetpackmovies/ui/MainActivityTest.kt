@@ -1,5 +1,6 @@
 package com.tzion.jetpackmovies.ui
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.contrib.DrawerActions
@@ -14,6 +15,7 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
+@ExperimentalAnimationApi
 @RunWith(AndroidJUnit4::class)
 class MainActivityTest {
 

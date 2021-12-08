@@ -1,10 +1,10 @@
 package com.tzion.jetpackmovies.ui.di
 
-import com.nhaarman.mockito_kotlin.mock
 import com.tzion.jetpackmovies.data.remote.Remote
 import com.tzion.jetpackmovies.data.remote.retrofit.WebServiceRetrofit
 import dagger.Module
 import dagger.Provides
+import io.mockk.mockk
 
 @Module
 object TestRemoteModule {
@@ -12,12 +12,12 @@ object TestRemoteModule {
     @Provides
     @JvmStatic
     fun providesMovieRestApi(): WebServiceRetrofit {
-        return mock()
+        return mockk()
     }
 
     @Provides
     @JvmStatic
     fun providesMoviesRemote(): Remote {
-        return mock()
+        return mockk()
     }
 }

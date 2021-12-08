@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.ui.theme
+package com.tzion.jetpackmovies.uicomponent.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.MaterialTheme

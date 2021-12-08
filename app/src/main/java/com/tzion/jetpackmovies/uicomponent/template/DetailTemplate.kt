@@ -10,9 +10,9 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
 import com.skydoves.landscapist.glide.GlideImage
 import com.tzion.jetpackmovies.R
-import com.tzion.jetpackmovies.ui.theme.MoviesTheme
 import com.tzion.jetpackmovies.uicomponent.text.Body2
 import com.tzion.jetpackmovies.uicomponent.text.HeadlineH5
+import com.tzion.jetpackmovies.uicomponent.theme.MoviesTheme
 
 data class AttrsDetailTemplate(
     val poster: String = "",
@@ -41,22 +41,22 @@ fun DetailTemplate(
         GlideImage(
             imageModel = attributes.poster
         )
-        HeadlineH5(content = attributes.title)
+        HeadlineH5(text = attributes.title)
         Row {
-            Body2(content = attributes.runtime)
-            Body2(content = attributes.released)
+            Body2(text = attributes.runtime)
+            Body2(text = attributes.released)
         }
         Row {
-            Body2(content = attributes.rating)
-            Body2(content = attributes.votes)
+            Body2(text = attributes.rating)
+            Body2(text = attributes.votes)
         }
-        Body2(content = attributes.plot)
-        Body2(content = attributes.genre)
-        Body2(content = attributes.actors)
-        Body2(content = attributes.writer)
-        Body2(content = attributes.director)
-        Body2(content = attributes.language)
-        Body2(content = attributes.country)
+        Body2(text = attributes.plot)
+        Body2(text = attributes.genre)
+        Body2(text = attributes.actors)
+        Body2(text = attributes.writer)
+        Body2(text = attributes.director)
+        Body2(text = attributes.language)
+        Body2(text = attributes.country)
     }
 }
 

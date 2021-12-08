@@ -9,30 +9,30 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.tzion.jetpackmovies.uicomponent.theme.MoviesTheme
 
 @Composable
-fun Body2(text: String, modifier: Modifier = Modifier) {
+fun Caption(text: String, modifier: Modifier = Modifier) {
     Text(
         text = text,
-        style = MaterialTheme.typography.body2,
+        style = MaterialTheme.typography.caption,
         modifier = modifier
     )
 }
 
-@Preview("Body2 Light")
+@Preview("Caption Light")
 @Composable
-fun PreviewBody2Light() {
+fun PreviewCaptionLight() {
     MoviesTheme {
         Surface {
-            Body2("Body2")
+            Caption("Caption")
         }
     }
 }
 
-@Preview("Body2 Dark")
+@Preview("Caption Dark")
 @Composable
-fun PreviewBody2Dark() {
+fun PreviewCaptionDark() {
     MoviesTheme(darkTheme = true) {
         Surface {
-            Body2("Body2")
+            Caption("Caption")
         }
     }
 }

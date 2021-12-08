@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.ui.theme
+package com.tzion.jetpackmovies.uicomponent.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle
@@ -50,7 +50,7 @@ val Typography = Typography(
     ),
     subtitle1 = TextStyle(
         fontFamily = Montserrat,
-        fontWeight = FontWeight.Normal,
+        fontWeight = FontWeight.Medium,
         fontSize = 16.sp
     ),
     subtitle2 = TextStyle(

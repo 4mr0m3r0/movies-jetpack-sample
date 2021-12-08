@@ -27,4 +27,5 @@
     <string name="detail">Detail</string>
     <string name="something_went_wrong">Something went wrong</string>
     <string name="empty_list">Empty list</string>
+    <string name="type_a_name">Type a name</string>
 </resources>

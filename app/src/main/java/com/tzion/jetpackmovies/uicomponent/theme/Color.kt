@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.ui.theme
+package com.tzion.jetpackmovies.uicomponent.theme
 
 import androidx.compose.ui.graphics.Color
 

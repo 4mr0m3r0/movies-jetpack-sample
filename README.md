@@ -1,23 +1,56 @@
 # Movies
+
 ![State](https://img.shields.io/badge/kotlin-v1.5.31-blueviolet)
 ![State](https://img.shields.io/badge/gradle-v7.0.2-blue)
 ![State](https://img.shields.io/badge/Detekt-passing-brightgreen)
 ![State](https://img.shields.io/badge/UnitTest-incomplete-red)
 
-A demo Android app with: 
- - Kotlin Flow 
- - Coroutines
- - Jetpack Compose
- - Jetpack Components: Paging, Navigation, WorkManager, Hilt
- - Android KTK
- - Clean Architecture
- 
+# Table of Contents
 
-Description
-------------  
-Find movies by name. See the details of the movie chose. You can add it as a favorite. List all the favorite movies you added.
+1. [Description](#description)
+    2. [Skills you may find in this project](#skills-you-may-find-in-this-project)
+    3. [Flowchart](#flowchart)
+    4. [Screenshots](#screenshots)
+5. [Useful Resources](#useful-Resources)
+6. [Conferences](#conferences)
+7. [Youtube Channels](#youtube-channels)
+8. [Other Project Samples](#other-project-samples)
+9. [Community](#community)
+
+# Description
+
+With this demo app you may search movies by name, see the details of it, or mark it as a favorite
+one.
+Moreover, you will find a section listing favorite movies you chose.
+
+### Skills you may find in this project
+
+| Jetpack       | Kotlin & Quality    | Dependency Management   | Others          |
+|---------------|---------------------|-------------------------|-----------------|
+| `Compose`     | `Coroutines`        | `TOML` Version Catalogs | `Landscapist`   |
+| `WorkManager` | `Asynchronous Flow` | `Gradle Kotlin DSL`     | `Atomic Design` |
+| `Hilt`        | `Detekt`            |                         | `Material 3`    |
+| `Room`        | `Ktlint`            |                         | `Retrofit`      |
+| `Paging`      |                     |                         | `OkHttp`        |
+| `Navigation`  |                     |                         | `Timber`        |
+|               |                     |                         |                 |
+
+### Flowchart
+
+```mermaid
+graph LR
+A[Navigation Drawer] --> B[Find Movie Screen]
+A --> G
+B -- input search --> C{Any Result?}
+C -- Yes --> D[Listing Movies Screen]
+C -- No --> E[Empty Screen]
+D -- select --> F[Detail Screen]
+F -- add to favorites --> F
+G[Favorite Screen]
+```
 
 ### Screenshots
+
 ![Default Screen](screenshots/default.png "Default Screen")
 ![Search Screen](screenshots/search.png "Search Screen")
 ![Detail Screen](screenshots/detail.png "Detail Screen")
@@ -25,16 +58,20 @@ Find movies by name. See the details of the movie chose. You can add it as a fav
 ![Menu Screen](screenshots/menu.png "Menu Screen")
 ![Favorites Screen](screenshots/favorites.png "Favorites Screen")
 
-Useful Resources for Learning
-----------------------------
+# Application Components
+
+# Useful Resources
 
 ### Kotlin Flow
+
 kotlinlang.org [link][1]
 
 ### Coroutines
+
 kotlinlang.org [link][2]
 
 ### Jetpack Components
+
 Android Developers Website [link][3]
 
 #### Samples
@@ -60,12 +97,10 @@ Main doc [here][6]
 * [Android Architecture Patterns Part 3: Model-View-ViewModel][14] by Florina Muntenescu 
 * [Why to choose MVVM over MVP — Android Architecture][15]
 
-Conferences
-----------------
+# Conferences
 Look inside Videos in www.droidcon.com [website][16]
 
-Youtube Channels
-----------------
+# Youtube Channels
 * [Android Developers][17]
 * [droidcon NYC][18]
 * [Droidcon Italy][19]
@@ -73,20 +108,30 @@ Youtube Channels
 * [droidcon Berlin][21]
 * [Android Programming Dev tutorials][22]
 
-Other samples
--------------
+# Other Project Samples
+
 * MVI - RxJava with modules as layers [here][23]
 * MVI - Kotlin Flow and modularization with dynamic features [here][24]
 * Compose with Atomic Design approach [here][25]
 
+# Community
+
+- Kotlin Community: https://kotlinlang.org/community/
 
 [1]: https://kotlinlang.org/docs/reference/coroutines/flow.html
+
 [2]: https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html
+
 [3]: https://developer.android.com/jetpack
+
 [4]: https://medium.com/androiddevelopers/introducing-android-sunflower-e421b43fe0c2
+
 [5]: https://github.com/android/sunflower
+
 [6]: https://developer.android.com/training/dependency-injection/hilt-android
+
 [7]: https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+
 [8]: https://five.agency/android-architecture-part-1-every-new-beginning-is-hard/
 [9]: https://github.com/android10/Android-CleanArchitecture
 [10]: https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164/ref=sr_1_2?ie=UTF8&qid=1541340796&sr=8-2&keywords=clean+architecture

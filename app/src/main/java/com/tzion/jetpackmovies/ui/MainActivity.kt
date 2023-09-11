@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.ExperimentalAnimationApi
-import androidx.compose.material.Surface
+import androidx.compose.material3.Surface
 import com.tzion.jetpackmovies.ui.navigation.NavGraph
 import com.tzion.jetpackmovies.uicomponent.theme.MoviesTheme
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,21 +1,20 @@
 package com.tzion.jetpackmovies.uicomponent.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.MaterialTheme.shapes
-import androidx.compose.material.darkColors
-import androidx.compose.material.lightColors
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.darkColorScheme
+import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 
-private val LightThemeColors = lightColors(
+private val LightThemeColors = lightColorScheme(
     primary = PrimaryColor,
-    primaryVariant = PrimaryDarkColor,
+    primaryContainer = PrimaryDarkColor,
     secondary = SecondaryColor
 )
 
-private val DarkThemeColors = darkColors(
+private val DarkThemeColors = darkColorScheme(
     primary = PrimaryLightColor,
-    primaryVariant = PrimaryDarkColor,
+    primaryContainer = PrimaryDarkColor,
     secondary = SecondaryLightColor
 )
 
@@ -26,7 +25,7 @@ fun MoviesTheme(
 ) {
 
     MaterialTheme(
-        colors = if (darkTheme) DarkThemeColors else LightThemeColors,
+        colorScheme = if (darkTheme) DarkThemeColors else LightThemeColors,
         typography = Typography,
         shapes = shapes,
         content = content

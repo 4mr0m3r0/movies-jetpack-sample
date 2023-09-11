@@ -1,40 +1,32 @@
 package com.tzion.jetpackmovies.uicomponent
 
 import androidx.compose.foundation.layout.RowScope
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.primarySurface
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.dimensionResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.uicomponent.theme.MoviesTheme
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieTopAppBar(
     contentText: String,
-    navigationEvent: () -> Unit,
+    navigationIcon: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {}
 ) {
     TopAppBar(
-        elevation = dimensionResource(R.dimen.top_app_bar_elevation),
         title = {
             Text(contentText)
         },
-        backgroundColor = MaterialTheme.colors.primarySurface,
-        navigationIcon = {
-            IconButton(onClick = navigationEvent) {
-                Icon(Icons.Filled.ArrowBack, stringResource(R.string.go_back))
-            }
-        },
+        navigationIcon = navigationIcon,
         actions = actions
     )
 }
@@ -46,7 +38,7 @@ fun PreviewMovieTopAppBarLight() {
         Surface {
             MovieTopAppBar(
                 contentText = "Find a Movie",
-                navigationEvent = {},
+                navigationIcon = {},
                 actions = {
                     IconButton(onClick = {}) {
                         Icon(
@@ -67,7 +59,7 @@ fun PreviewMovieTopAppBarDark() {
         Surface {
             MovieTopAppBar(
                 contentText = "Find a Movie",
-                navigationEvent = {},
+                navigationIcon = {},
                 actions = {
                     IconButton(onClick = {}) {
                         Icon(

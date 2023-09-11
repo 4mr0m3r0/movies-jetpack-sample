@@ -1,6 +1,6 @@
 package com.tzion.jetpackmovies.uicomponent.theme
 
-import androidx.compose.material.Typography
+import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
@@ -18,62 +18,62 @@ val Montserrat = FontFamily(
 )
 
 val Typography = Typography(
-    h1 = TextStyle(
+    displayLarge = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Light,
         fontSize = 82.sp
     ),
-    h2 = TextStyle(
+    displayMedium = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Light,
         fontSize = 60.sp
     ),
-    h3 = TextStyle(
+    headlineLarge = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
         fontSize = 48.sp
     ),
-    h4 = TextStyle(
+    headlineMedium = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
         fontSize = 34.sp
     ),
-    h5 = TextStyle(
+    headlineSmall = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
         fontSize = 24.sp
     ),
-    h6 = TextStyle(
+    titleLarge = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
         fontSize = 21.sp
     ),
-    subtitle1 = TextStyle(
+    titleMedium = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Medium,
         fontSize = 16.sp
     ),
-    subtitle2 = TextStyle(
+    titleSmall = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
         fontSize = 14.sp
     ),
-    body1 = TextStyle(
+    bodyLarge = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
         fontSize = 18.sp
     ),
-    body2 = TextStyle(
+    bodyMedium = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Light,
         fontSize = 14.sp
     ),
-    button = TextStyle(
+    bodySmall = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Bold,
         fontSize = 14.sp
     ),
-    caption = TextStyle(
+    labelLarge = TextStyle(
         fontFamily = Montserrat,
         fontWeight = FontWeight.Normal,
         fontSize = 12.sp

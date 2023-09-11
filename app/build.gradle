@@ -2,16 +2,16 @@ plugins {
     id "com.android.application"
     id "kotlin-android"
     id "kotlin-kapt"
-    id "dagger.hilt.android.plugin"
-    id "androidx.navigation.safeargs.kotlin"
+    alias(libs.plugins.dagger.hilt.android)
 }
 
 android {
-    compileSdkVersion rootProject.compileSdkVersion
+    namespace = "com.tzion.jetpackmovies"
+    compileSdk 34
     defaultConfig {
         applicationId "com.tzion.jetpack"
-        minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
+        minSdkVersion 21
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -24,12 +24,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     flavorDimensions "default"
@@ -57,7 +57,7 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion rootProject.composeVersion
+        kotlinCompilerExtensionVersion = "1.4.4"
     }
 
     testOptions.unitTests.includeAndroidResources = true
@@ -65,14 +65,53 @@ android {
 
 kapt {
     correctErrorTypes = true
-    generateStubs = true
 }
 
 dependencies {
-    implementation rootProject.ext.dependencies
+    implementation(platform(libs.compose.bom))
+    debugImplementation(platform(libs.compose.bom))
 
-    kapt rootProject.ext.kaptDependencies
+    implementation libs.accompanist.navigation.animation
+    implementation libs.hilt.android
+    implementation libs.hilt.navigation.compose
+    implementation libs.activity.compose
+    implementation libs.appcompat
+    implementation libs.core.ktx
+    implementation libs.compose.ui
+    implementation libs.compose.foundation
+    implementation libs.compose.material
+    implementation libs.compose.material.icons.core
+    implementation libs.coroutines.android
+    implementation libs.glide
+    implementation libs.gson
+    implementation libs.landscapist
+    implementation libs.lifecycle.viewmodel.compose
+    implementation libs.lifecycle.runtime
+    implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.navigation.compose
+    implementation libs.okhttp
+    implementation libs.okhttp.logging.interceptor
+    implementation libs.paging
+    implementation libs.preference.ktx
+    implementation libs.retrofit
+    implementation libs.retrofit.converter.gson
+    implementation libs.room.runtime
+    implementation libs.room
+    implementation libs.timber
+    implementation libs.work
 
-    testImplementation rootProject.ext.testDependencies
-    androidTestImplementation androidTestDependencies
+    kapt libs.hilt.compiler
+    kapt libs.lifecycle.compiler
+    kapt libs.glide.compiler
+    kapt libs.room.compiler
+
+//    testImplementation rootProject.ext.testDependencies
+
+    androidTestImplementation libs.android.test.runner
+    androidTestImplementation libs.android.test.espresso
+    androidTestImplementation libs.android.test.rules
+    androidTestImplementation libs.android.test.ext
+    androidTestImplementation libs.android.test.espresso.contrib
+
+    debugImplementation(libs.compose.ui.tooling)
 }

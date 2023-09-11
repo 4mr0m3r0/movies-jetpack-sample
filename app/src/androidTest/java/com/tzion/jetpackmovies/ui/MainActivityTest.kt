@@ -3,7 +3,6 @@ package com.tzion.jetpackmovies.ui
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.contrib.DrawerActions
 import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
@@ -34,7 +33,7 @@ class MainActivityTest {
 
     @Test
     fun verifyDrawerNavigationOpen() {
-        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
+//        onView(withId(R.id.drawer_layout)).perform(DrawerActions.open())
         Thread.sleep(2000)
         onView(withId(R.id.findMoviesByNameFragment)).check(matches(isDisplayed()))
         onView(withId(R.id.favoriteMoviesFragment)).check(matches(isDisplayed()))

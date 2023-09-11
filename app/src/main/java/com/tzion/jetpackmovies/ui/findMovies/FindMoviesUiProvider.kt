@@ -16,12 +16,12 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Snackbar
-import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.Snackbar
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -101,7 +101,7 @@ fun ErrorMessage(message: String?) {
 @Composable
 fun FindMovieTopAppBar(
     contentText: String,
-    onBackEvent: () -> Unit,
+    navigationIcon: @Composable () -> Unit = {},
     onSearchEvent: (String) -> Unit = {}
 ) {
     val topAppBarVisible = remember { mutableStateOf(true) }
@@ -113,7 +113,7 @@ fun FindMovieTopAppBar(
     ) {
         MovieTopAppBar(
             contentText = contentText,
-            navigationEvent = onBackEvent,
+            navigationIcon = navigationIcon,
             actions = {
                 IconButton(onClick = {
                     topAppBarVisible.value = false

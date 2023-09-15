@@ -21,12 +21,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import com.tzion.jetpackmovies.ui.findMovies.FindMovieScreen
-import com.tzion.jetpackmovies.ui.movieDetail.MovieDetailScreen
 import kotlinx.coroutines.launch
 
 @ExperimentalAnimationApi
@@ -73,46 +69,4 @@ fun NavGraph(startDestination: String = Routes.FindMovie.route) {
             }
         }
     )
-}
-
-@ExperimentalAnimationApi
-private fun NavGraphBuilder.findMovie(
-    navActions: NavActions,
-    onMenu: () -> Unit
-) = composable(
-    route = Routes.FindMovie.route,
-    enterTransition = { enterTransition },
-    exitTransition = { exitTransition },
-    popEnterTransition = { popEnterTransition },
-    popExitTransition = { popExitTransition }
-) {
-    FindMovieScreen(
-        onBack = navActions.upPress,
-        onMenu = onMenu
-    )
-}
-
-@ExperimentalAnimationApi
-private fun NavGraphBuilder.movieDetail(navActions: NavActions) = composable(
-    route = Routes.MovieDetail.route,
-    enterTransition = { enterTransition },
-    exitTransition = { exitTransition },
-    popEnterTransition = { popEnterTransition },
-    popExitTransition = { popExitTransition }
-) { backStackEntry ->
-    MovieDetailScreen(
-        onBack = navActions.upPress,
-        movieId = backStackEntry.arguments?.getString("movieId").orEmpty()
-    )
-}
-
-@ExperimentalAnimationApi
-private fun NavGraphBuilder.favoriteMovie(navActions: NavActions) = composable(
-    route = Routes.FavoriteMovie.route,
-    enterTransition = { enterTransition },
-    exitTransition = { exitTransition },
-    popEnterTransition = { popEnterTransition },
-    popExitTransition = { popExitTransition }
-) {
-
 }

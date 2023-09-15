@@ -105,7 +105,14 @@ dependencies {
     kapt libs.glide.compiler
     kapt libs.room.compiler
 
-//    testImplementation rootProject.ext.testDependencies
+    testImplementation libs.test.compose.ui
+    testImplementation libs.test.junit
+    testImplementation libs.test.kotlin.junit
+    testImplementation libs.test.assertj.core
+    testImplementation libs.test.mockk
+    testImplementation libs.test.arch
+    testImplementation libs.test.room
+    testImplementation libs.test.robolectric
 
     androidTestImplementation libs.android.test.runner
     androidTestImplementation libs.android.test.espresso

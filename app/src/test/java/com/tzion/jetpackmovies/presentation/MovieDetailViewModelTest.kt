@@ -26,6 +26,6 @@ class MovieDetailViewModelTest {
 
     @Test
     fun `getLiveData not null`() {
-        assertNotNull(viewModel.getLiveData())
+        assertNotNull(viewModel.uiState())
     }
 }

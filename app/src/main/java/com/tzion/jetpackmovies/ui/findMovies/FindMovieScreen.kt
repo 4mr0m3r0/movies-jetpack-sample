@@ -14,6 +14,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.presentation.FindMoviesViewModel
+import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState.DefaultUiState
+import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState.ErrorUiState
+import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState.MoviesDisplayUiState
+import com.tzion.jetpackmovies.ui.findMovies.composable.DefaultDisplay
+import com.tzion.jetpackmovies.ui.findMovies.composable.ErrorMessage
+import com.tzion.jetpackmovies.ui.findMovies.composable.FindMovieTopAppBar
+import com.tzion.jetpackmovies.ui.findMovies.composable.MoviesDisplay
 
 @Composable
 fun FindMovieScreen(onBack: () -> Unit, onMenu: () -> Unit) {
@@ -54,5 +61,12 @@ private fun FindMovieContent(
     paddingValues: PaddingValues
 ) {
     val uiState = findMoviesViewModel.uiState().collectAsState()
-    UiStateRender(uiState.value)
+    when (val currentState = uiState.value) {
+        DefaultUiState -> DefaultDisplay()
+        is MoviesDisplayUiState -> MoviesDisplay(
+            screenState = currentState.screenState,
+            paddingValues = paddingValues
+        )
+        is ErrorUiState -> ErrorMessage(message = currentState.throwable.localizedMessage)
+    }
 }

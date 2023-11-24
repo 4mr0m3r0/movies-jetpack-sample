@@ -15,6 +15,7 @@ import androidx.compose.ui.unit.dp
 import com.tzion.jetpackmovies.presentation.uistates.MovieScreenState
 import com.tzion.jetpackmovies.uicomponent.MovieCard
 import com.tzion.jetpackmovies.uicomponent.TopLoading
+import java.util.Locale
 
 @Composable
 fun MoviesDisplay(screenState: MovieScreenState, paddingValues: PaddingValues) {
@@ -38,8 +39,8 @@ fun MoviesDisplay(screenState: MovieScreenState, paddingValues: PaddingValues) {
             content = {
                 items(screenState.movies) { movie ->
                     MovieCard(
-                        headline = movie.title,
-                        supportingText = "${movie.type} ${movie.year}",
+                        headline = movie.year,
+                        supportingText = movie.type capitalizedAndConcatenatedWith movie.title,
                         contentDescription = movie.title,
                         image = movie.poster
                     )
@@ -48,3 +49,8 @@ fun MoviesDisplay(screenState: MovieScreenState, paddingValues: PaddingValues) {
         )
     }
 }
+
+private infix fun String.capitalizedAndConcatenatedWith(title: String): String = "${replaceFirstChar { 
+    if (it.isLowerCase()) it.titlecase(Locale.ROOT)
+    else it.toString()
+}}: $title"

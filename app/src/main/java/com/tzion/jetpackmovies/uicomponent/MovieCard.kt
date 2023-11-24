@@ -46,18 +46,24 @@ fun MovieCard(
             text = headline,
             modifier = Modifier.padding(
                 top = 8.dp,
-                start = 16.dp,
-                end = 16.dp
+                start = ContentPadding,
+                end = ContentPadding,
             ),
             style = MaterialTheme.typography.headlineSmall
         )
         Text(
             text = supportingText,
-            modifier = Modifier.padding(horizontal = 16.dp),
-            style = MaterialTheme.typography.bodyMedium
+            modifier = Modifier.padding(
+                start = ContentPadding,
+                end = ContentPadding,
+                bottom = ContentPadding,
+            ),
+            style = MaterialTheme.typography.bodyLarge
         )
     }
 }
+
+private val ContentPadding = 16.dp
 
 @Preview("Light")
 @Composable

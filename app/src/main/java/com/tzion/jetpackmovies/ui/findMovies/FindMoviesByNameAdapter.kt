@@ -1,5 +1,5 @@
 package com.tzion.jetpackmovies.ui.findMovies
-
+//TODO: Remove this file
 //import android.view.LayoutInflater
 //import android.view.View
 //import android.view.ViewGroup

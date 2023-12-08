@@ -22,5 +22,8 @@ data class DomainMovieDetail(
     val dvd: String?,
     val boxOffice: String?,
     val production: String?,
-    val website: String?
-)
+    val website: String?,
+    val tomatoMeter: TomatoMeter? = null
+) {
+    enum class TomatoMeter { FRESH, ROTTEN, EMPTY }
+}

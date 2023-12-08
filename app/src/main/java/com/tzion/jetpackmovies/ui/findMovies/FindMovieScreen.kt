@@ -12,6 +12,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavHostController
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.presentation.FindMoviesViewModel
 import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState.DefaultUiState
@@ -23,12 +24,12 @@ import com.tzion.jetpackmovies.ui.findMovies.composable.FindMovieTopAppBar
 import com.tzion.jetpackmovies.ui.findMovies.composable.MoviesDisplay
 
 @Composable
-fun FindMovieScreen(onBack: () -> Unit, onMenu: () -> Unit) {
+fun FindMovieScreen(onBack: () -> Unit, onMenu: () -> Unit, navController: NavHostController) {
     val searchInput = remember { mutableStateOf("") }
     Scaffold(
         topBar = {
             FindMovieTopAppBar(
-                contentText = stringResource(R.string.find_a_movie),
+                text = stringResource(R.string.find_a_movie),
                 navigationIcon = {
                     IconButton(onClick = onMenu) {
                         Icon(
@@ -42,14 +43,15 @@ fun FindMovieScreen(onBack: () -> Unit, onMenu: () -> Unit) {
                 }
             )
         },
-        content = {
+        content = { paddingValues ->
             val findMoviesViewModel = hiltViewModel<FindMoviesViewModel>()
             if (searchInput.value.isNotEmpty()) {
                 findMoviesViewModel.findMoviesByName(searchInput.value)
             }
             FindMovieContent(
                 findMoviesViewModel = findMoviesViewModel,
-                paddingValues = it
+                paddingValues = paddingValues,
+                navController = navController
             )
         }
     )
@@ -58,14 +60,16 @@ fun FindMovieScreen(onBack: () -> Unit, onMenu: () -> Unit) {
 @Composable
 private fun FindMovieContent(
     findMoviesViewModel: FindMoviesViewModel,
-    paddingValues: PaddingValues
+    paddingValues: PaddingValues,
+    navController: NavHostController
 ) {
     val uiState = findMoviesViewModel.uiState().collectAsState()
     when (val currentState = uiState.value) {
         DefaultUiState -> DefaultDisplay()
         is MoviesDisplayUiState -> MoviesDisplay(
             screenState = currentState.screenState,
-            paddingValues = paddingValues
+            paddingValues = paddingValues,
+            navController = navController
         )
         is ErrorUiState -> ErrorMessage(message = currentState.throwable.localizedMessage)
     }

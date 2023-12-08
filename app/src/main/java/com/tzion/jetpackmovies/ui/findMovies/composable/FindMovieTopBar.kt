@@ -26,7 +26,7 @@ import com.tzion.jetpackmovies.uicomponent.TopSearchTextField
 
 @Composable
 fun FindMovieTopAppBar(
-    contentText: String,
+    text: String,
     navigationIcon: @Composable () -> Unit = {},
     onSearchEvent: (String) -> Unit = {}
 ) {
@@ -38,7 +38,7 @@ fun FindMovieTopAppBar(
         exit = slideOutHorizontally() + shrinkHorizontally() + fadeOut()
     ) {
         MovieTopAppBar(
-            contentText = contentText,
+            text = text,
             navigationIcon = navigationIcon,
             actions = {
                 IconButton(onClick = {

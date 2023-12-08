@@ -2,6 +2,7 @@ package com.tzion.jetpackmovies.uicomponent
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -18,17 +19,30 @@ import com.tzion.jetpackmovies.uicomponent.theme.MoviesTheme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieTopAppBar(
-    contentText: String,
+    text: String,
     navigationIcon: @Composable () -> Unit = {},
     actions: @Composable RowScope.() -> Unit = {}
 ) {
     TopAppBar(
         title = {
-            Text(contentText)
+            Text(text)
         },
         navigationIcon = navigationIcon,
         actions = actions
     )
+}
+
+@Composable
+fun NavigationArrowBack(
+    navigationEvent: () -> Unit,
+    contentDescription: String,
+) {
+    IconButton(onClick = navigationEvent) {
+        Icon(
+            imageVector = Icons.Filled.ArrowBack,
+            contentDescription = contentDescription
+        )
+    }
 }
 
 @Preview("MovieTopAppBar Light")
@@ -37,7 +51,7 @@ fun PreviewMovieTopAppBarLight() {
     MoviesTheme {
         Surface {
             MovieTopAppBar(
-                contentText = "Find a Movie",
+                text = "Find a Movie",
                 navigationIcon = {},
                 actions = {
                     IconButton(onClick = {}) {
@@ -58,7 +72,7 @@ fun PreviewMovieTopAppBarDark() {
     MoviesTheme(darkTheme = true) {
         Surface {
             MovieTopAppBar(
-                contentText = "Find a Movie",
+                text = "Find a Movie",
                 navigationIcon = {},
                 actions = {
                     IconButton(onClick = {}) {

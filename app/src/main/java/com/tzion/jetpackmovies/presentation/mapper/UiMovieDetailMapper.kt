@@ -3,6 +3,7 @@ package com.tzion.jetpackmovies.presentation.mapper
 import com.tzion.jetpackmovies.domain.model.DomainFavoriteMovie
 import com.tzion.jetpackmovies.domain.model.DomainMovieDetail
 import com.tzion.jetpackmovies.presentation.model.MovieDetail
+import com.tzion.jetpackmovies.presentation.model.MovieDetail.TomatoMeter
 import javax.inject.Inject
 
 class UiMovieDetailMapper @Inject constructor() {
@@ -23,7 +24,13 @@ class UiMovieDetailMapper @Inject constructor() {
         poster = poster.orEmpty(),
         rating = rating.orEmpty(),
         votes = votes.orEmpty(),
-        type = type.orEmpty()
+        type = type.orEmpty(),
+        tomatoMeter = when (tomatoMeter) {
+            DomainMovieDetail.TomatoMeter.FRESH -> TomatoMeter.FRESH
+            DomainMovieDetail.TomatoMeter.ROTTEN -> TomatoMeter.ROTTEN
+            DomainMovieDetail.TomatoMeter.EMPTY -> TomatoMeter.EMPTY
+            null -> TomatoMeter.EMPTY
+        }
     )
 
     fun MovieDetail.fromUiMovieDetailToDomainFavoriteMovie(movieId: String) = DomainFavoriteMovie(

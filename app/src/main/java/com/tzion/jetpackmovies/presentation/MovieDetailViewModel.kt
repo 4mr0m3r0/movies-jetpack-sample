@@ -23,21 +23,21 @@ class MovieDetailViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val uiState: MutableStateFlow<MovieDetailUiState> =
-        MutableStateFlow(MovieDetailUiState.LoadingUiState)
+        MutableStateFlow(MovieDetailUiState.Loading)
 
     fun uiState(): StateFlow<MovieDetailUiState> = uiState
 
     fun loadMovieDetailById(movieId: String?) {
         viewModelScope.launch {
-            uiState.value = MovieDetailUiState.LoadingUiState
+            uiState.value = MovieDetailUiState.Loading
             getMovieDetailUseCase
                 .getMovieDetailById(movieId)
                 .map { domainMovieDetail ->
                     with(mapper) { domainMovieDetail.fromDomainToUi() }
                 }
-                .catch { uiState.value = MovieDetailUiState.ErrorUiState }
+                .catch { uiState.value = MovieDetailUiState.Error }
                 .collect { uiMovieDetail ->
-                    uiState.value = MovieDetailUiState.DetailDisplayUiState(uiMovieDetail)
+                    uiState.value = MovieDetailUiState.Display(uiMovieDetail)
                 }
         }
     }

@@ -16,5 +16,8 @@ data class MovieDetail(
     val poster: String = "",
     val rating: String = "",
     val votes: String = "",
-    val type: String = ""
-)
+    val type: String = "",
+    val tomatoMeter: TomatoMeter
+) {
+    enum class TomatoMeter { FRESH, ROTTEN, EMPTY }
+}

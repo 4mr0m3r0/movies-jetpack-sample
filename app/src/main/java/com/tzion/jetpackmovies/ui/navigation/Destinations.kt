@@ -2,6 +2,7 @@ package com.tzion.jetpackmovies.ui.navigation
 
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.tzion.jetpackmovies.ui.favoriteMovies.FavoriteMoviesScreen
 import com.tzion.jetpackmovies.ui.findMovies.FindMovieScreen
@@ -10,7 +11,8 @@ import com.tzion.jetpackmovies.ui.movieDetail.MovieDetailScreen
 @ExperimentalAnimationApi
 fun NavGraphBuilder.findMovie(
     navActions: NavActions,
-    onMenu: () -> Unit
+    onMenu: () -> Unit,
+    navController: NavHostController
 ) = composable(
     route = Routes.FindMovie.route,
     enterTransition = { enterTransition },
@@ -20,7 +22,8 @@ fun NavGraphBuilder.findMovie(
 ) {
     FindMovieScreen(
         onBack = navActions.upPress,
-        onMenu = onMenu
+        onMenu = onMenu,
+        navController = navController
     )
 }
 

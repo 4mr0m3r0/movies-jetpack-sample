@@ -77,7 +77,8 @@ fun NavGraph(startDestination: String = Routes.FindMovie.route) {
             ) {
                 findMovie(
                     navActions = navActions,
-                    onMenu = { scope.launch { drawerState.open() } }
+                    onMenu = { scope.launch { drawerState.open() } },
+                    navController = navController
                 )
                 movieDetail(navActions)
                 favoriteMovie(navActions)

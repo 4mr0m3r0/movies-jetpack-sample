@@ -1,5 +1,6 @@
 package com.tzion.jetpackmovies.ui.findMovies.composable
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -12,13 +13,18 @@ import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.tzion.jetpackmovies.presentation.uistates.MovieScreenState
 import com.tzion.jetpackmovies.uicomponent.MovieCard
 import com.tzion.jetpackmovies.uicomponent.TopLoading
 import java.util.Locale
 
 @Composable
-fun MoviesDisplay(screenState: MovieScreenState, paddingValues: PaddingValues) {
+fun MoviesDisplay(
+    screenState: MovieScreenState,
+    paddingValues: PaddingValues,
+    navController: NavHostController
+) {
     Column(
         modifier = Modifier
             .padding(
@@ -42,7 +48,10 @@ fun MoviesDisplay(screenState: MovieScreenState, paddingValues: PaddingValues) {
                         headline = movie.year,
                         supportingText = movie.type capitalizedAndConcatenatedWith movie.title,
                         contentDescription = movie.title,
-                        image = movie.poster
+                        image = movie.poster,
+                        modifier = Modifier.clickable {
+                            navController.navigate("movieDetail/${movie.movieId}")
+                        }
                     )
                 }
             }

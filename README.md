@@ -1,21 +1,21 @@
 # Movies
 
-![State](https://img.shields.io/badge/kotlin-v1.5.31-blueviolet)
-![State](https://img.shields.io/badge/gradle-v7.0.2-blue)
+![State](https://img.shields.io/badge/kotlin-v1.9.20-blueviolet)
+![State](https://img.shields.io/badge/gradle-v8.1.0-blue)
 ![State](https://img.shields.io/badge/Detekt-passing-brightgreen)
 ![State](https://img.shields.io/badge/UnitTest-incomplete-red)
 
 # Table of Contents
 
 1. [Description](#description)
-    2. [Skills you may find in this project](#skills-you-may-find-in-this-project)
-    3. [Flowchart](#flowchart)
-    4. [Screenshots](#screenshots)
-5. [Useful Resources](#useful-Resources)
-6. [Conferences](#conferences)
-7. [Youtube Channels](#youtube-channels)
-8. [Other Project Samples](#other-project-samples)
-9. [Community](#community)
+   1. [Skills you may find in this project](#skills-you-may-find-in-this-project)
+   2. [Flowchart](#flowchart)
+   3. [Screenshots](#screenshots)
+2. [Useful Resources](#useful-Resources)
+3. [Conferences](#conferences)
+4. [Youtube Channels](#youtube-channels)
+5. [Other Project Samples](#other-project-samples)
+6. [Community](#community)
 
 # Description
 
@@ -23,19 +23,19 @@ With this demo app you may search movies by name, see the details of it, or mark
 one.
 Moreover, you will find a section listing favorite movies you chose.
 
-### Skills you may find in this project
+## Skills you may find in this project
 
-| Jetpack       | Kotlin & Quality    | Dependency Management   | Others          |
-|---------------|---------------------|-------------------------|-----------------|
-| `Compose`     | `Coroutines`        | `TOML` Version Catalogs | `Landscapist`   |
-| `WorkManager` | `Asynchronous Flow` | `Gradle Kotlin DSL`     | `Atomic Design` |
-| `Hilt`        | `Detekt`            |                         | `Material 3`    |
-| `Room`        | `Ktlint`            |                         | `Retrofit`      |
-| `Paging`      |                     |                         | `OkHttp`        |
-| `Navigation`  |                     |                         | `Timber`        |
-|               |                     |                         |                 |
+| Jetpack       | Kotlin & Quality    | Dependency Management | Others          |
+|---------------|---------------------|-----------------------|-----------------|
+| `Compose`     | `Coroutines`        | `Version Catalogs`    | `Landscapist`   |
+| `WorkManager` | `Asynchronous Flow` | `Gradle Kotlin DSL`   | `Atomic Design` |
+| `Hilt`        | `Detekt`            |                       | `Material 3`    |
+| `Room`        | `Ktlint`            |                       | `Retrofit`      |
+| `Paging`      |                     |                       | `OkHttp`        |
+| `Navigation`  |                     |                       | `Timber`        |
+|               |                     |                       |                 |
 
-### Flowchart
+## Flowchart
 
 ```mermaid
 graph LR
@@ -49,36 +49,43 @@ F -- add to favorites --> F
 G[Favorite Screen]
 ```
 
-### Screenshots
+## Screenshots
 
 ![Default Screen](screenshots/default.png "Default Screen")
-![Search Screen](screenshots/search.png "Search Screen")
+![Search Screen](screenshots/searching.png "Search Screen")
 ![Detail Screen](screenshots/detail.png "Detail Screen")
 ![Add to Favorite Screen](screenshots/add_favorite.png "Add to Favorite Screen")
 ![Menu Screen](screenshots/menu.png "Menu Screen")
 ![Favorites Screen](screenshots/favorites.png "Favorites Screen")
 
-# Application Components
+# Android Platform Architecture
+<img src="https://developer.android.com/static/guide/platform/images/android-stack_2x.png" alt="image" width="600" height="auto">
 
-# Useful Resources
+## Application Components
+* Activities
+* Services
+* Broadcast receivers
+* Content providers: https://developer.android.com/guide/topics/providers/content-providers
 
-### Kotlin Flow
+# Resources
+![Default Screen](https://blog.jetbrains.com/wp-content/uploads/2019/01/kotlin-2.svg)
+* 📝 **Kotlin Docs:** https://kotlinlang.org/docs/home.html
+* 🚀 **Kotlin Release:** https://github.com/JetBrains/kotlin/releases
+* 📣 **Kotlin Blog:** https://blog.jetbrains.com/kotlin/
+* 🎥 **Kotlin Youtube Channel:** https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw
+* 🤖 **Kotlin Reddit:** https://www.reddit.com/r/Kotlin/
+* 🤯 **Kotlin StackOverflow:** https://stackoverflow.com/questions/tagged/kotlin
+* 🗺️ **Kotlin Community:** https://kotlinlang.org/community/
 
-kotlinlang.org [link][1]
 
-### Coroutines
+![Default Screen](https://developer.android.com/static/images/logos/android.svg)
 
-kotlinlang.org [link][2]
-
-### Jetpack Components
-
-Android Developers Website [link][3]
+* 📝 **Platform Architecture:** https://developer.android.com/guide/platform
+* 👩‍💻👨‍💻 **Android Developers:** https://developer.android.com/
+* **Android Jetpack:** https://developer.android.com/jetpack
 
 #### Samples
  * [Sunflower][4]: A Demo app uses many different Jetpack components to demonstrate Android development best practices. Checkout the code [here][5].
-
-### Hilt
-Main doc [here][6]
 
 ### Clean Architecture
 ![CleanArchitecture](screenshots/CleanArchitecture.jpg "Clean Architecture")
@@ -114,15 +121,6 @@ Look inside Videos in www.droidcon.com [website][16]
 * MVI - Kotlin Flow and modularization with dynamic features [here][24]
 * Compose with Atomic Design approach [here][25]
 
-# Community
-
-- Kotlin Community: https://kotlinlang.org/community/
-
-[1]: https://kotlinlang.org/docs/reference/coroutines/flow.html
-
-[2]: https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html
-
-[3]: https://developer.android.com/jetpack
 
 [4]: https://medium.com/androiddevelopers/introducing-android-sunflower-e421b43fe0c2
 

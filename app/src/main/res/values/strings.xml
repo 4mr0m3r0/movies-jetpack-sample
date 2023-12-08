@@ -28,4 +28,7 @@
     <string name="something_went_wrong">Something went wrong</string>
     <string name="empty_list">Empty list</string>
     <string name="type_a_name">Type a name</string>
+    <string name="red_tomato">Red Tomato</string>
+    <string name="rotten_tomato">Rotten Tomato</string>
+    <string name="empty_tomato">Empty Tomato</string>
 </resources>

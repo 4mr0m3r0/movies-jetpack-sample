@@ -2,8 +2,8 @@ package com.tzion.jetpackmovies.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.tzion.jetpackmovies.domain.GetMovieDetailUseCase
-import com.tzion.jetpackmovies.domain.ManageFavoriteMoviesUseCase
+import com.tzion.jetpackmovies.domain.GetMovieDetail
+import com.tzion.jetpackmovies.domain.ManageFavoriteMovies
 import com.tzion.jetpackmovies.presentation.mapper.UiMovieDetailMapper
 import com.tzion.jetpackmovies.presentation.model.MovieDetail
 import com.tzion.jetpackmovies.presentation.uistates.MovieDetailUiState
@@ -17,8 +17,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
-    private val getMovieDetailUseCase: GetMovieDetailUseCase,
-    private val manageFavoriteMoviesUseCase: ManageFavoriteMoviesUseCase,
+    private val getMovieDetail: GetMovieDetail,
+    private val manageFavoriteMovies: ManageFavoriteMovies,
     private val mapper: UiMovieDetailMapper
 ) : ViewModel() {
 
@@ -30,7 +30,7 @@ class MovieDetailViewModel @Inject constructor(
     fun loadMovieDetailById(movieId: String?) {
         viewModelScope.launch {
             uiState.value = MovieDetailUiState.Loading
-            getMovieDetailUseCase
+            getMovieDetail
                 .getMovieDetailById(movieId)
                 .map { domainMovieDetail ->
                     with(mapper) { domainMovieDetail.fromDomainToUi() }
@@ -44,7 +44,7 @@ class MovieDetailViewModel @Inject constructor(
 
     fun addMovieToFavorites(movieId: String, movieDetail: MovieDetail) {
         viewModelScope.launch {
-            manageFavoriteMoviesUseCase.saveFavoriteMovie(with(mapper) {
+            manageFavoriteMovies.saveFavoriteMovie(with(mapper) {
                 movieDetail.fromUiMovieDetailToDomainFavoriteMovie(movieId)
             })
         }

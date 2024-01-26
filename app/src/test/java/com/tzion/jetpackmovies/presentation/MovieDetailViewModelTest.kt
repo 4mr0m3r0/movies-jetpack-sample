@@ -1,9 +1,9 @@
 package com.tzion.jetpackmovies.presentation
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import com.tzion.jetpackmovies.domain.GetMovieDetailUseCase
-import com.tzion.jetpackmovies.domain.ManageFavoriteMoviesUseCase
-import com.tzion.jetpackmovies.domain.repository.Repository
+import com.tzion.jetpackmovies.domain.GetMovieDetail
+import com.tzion.jetpackmovies.domain.ManageFavoriteMovies
+import com.tzion.jetpackmovies.domain.gateway.DataGateway
 import com.tzion.jetpackmovies.presentation.mapper.UiMovieDetailMapper
 import io.mockk.mockk
 import org.junit.Assert.assertNotNull
@@ -14,13 +14,13 @@ class MovieDetailViewModelTest {
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
-    private val repository = mockk<Repository>()
-    private val getMovieDetailUseCase = GetMovieDetailUseCase(repository)
-    private val manageFavoriteMoviesUseCase = ManageFavoriteMoviesUseCase(repository)
+    private val dataGateway = mockk<DataGateway>()
+    private val getMovieDetail = GetMovieDetail(dataGateway)
+    private val manageFavoriteMovies = ManageFavoriteMovies(dataGateway)
     private val mapper = UiMovieDetailMapper()
     private val viewModel = MovieDetailViewModel(
-        getMovieDetailUseCase = getMovieDetailUseCase,
-        manageFavoriteMoviesUseCase = manageFavoriteMoviesUseCase,
+        getMovieDetail = getMovieDetail,
+        manageFavoriteMovies = manageFavoriteMovies,
         mapper = mapper
     )
 

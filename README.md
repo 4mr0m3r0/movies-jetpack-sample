@@ -11,11 +11,10 @@
    1. [Skills you may find in this project](#skills-you-may-find-in-this-project)
    2. [Flowchart](#flowchart)
    3. [Screenshots](#screenshots)
-2. [Useful Resources](#useful-Resources)
+2. [Resources](#Resources)
 3. [Conferences](#conferences)
 4. [Youtube Channels](#youtube-channels)
-5. [Other Project Samples](#other-project-samples)
-6. [Community](#community)
+5. [More Android Samples](#more-android-samples)
 
 # Description
 
@@ -23,7 +22,7 @@ With this demo app you may search movies by name, see the details of it, or mark
 one.
 Moreover, you will find a section listing favorite movies you chose.
 
-## Skills you may find in this project
+## Skills you may find in the code
 
 | Jetpack       | Kotlin & Quality    | Dependency Management | Others          |
 |---------------|---------------------|-----------------------|-----------------|
@@ -34,6 +33,13 @@ Moreover, you will find a section listing favorite movies you chose.
 | `Paging`      |                     |                       | `OkHttp`        |
 | `Navigation`  |                     |                       | `Timber`        |
 |               |                     |                       |                 |
+
+## Design Patterns implemented in the code
+| Creational | Structural | Behavioral              |
+|------------|------------|-------------------------|
+| Singleton  |            | Command                 |
+|            |            | Chain of Responsibility |
+|            |            | State                   |
 
 ## Flowchart
 
@@ -57,15 +63,6 @@ G[Favorite Screen]
 ![Add to Favorite Screen](screenshots/add_favorite.png "Add to Favorite Screen")
 ![Menu Screen](screenshots/menu.png "Menu Screen")
 ![Favorites Screen](screenshots/favorites.png "Favorites Screen")
-
-# Android Platform Architecture
-<img src="https://developer.android.com/static/guide/platform/images/android-stack_2x.png" alt="image" width="600" height="auto">
-
-## Application Components
-* Activities
-* Services
-* Broadcast receivers
-* Content providers: https://developer.android.com/guide/topics/providers/content-providers
 
 # Resources
 ![Default Screen](https://blog.jetbrains.com/wp-content/uploads/2019/01/kotlin-2.svg)
@@ -115,11 +112,13 @@ Look inside Videos in www.droidcon.com [website][16]
 * [droidcon Berlin][21]
 * [Android Programming Dev tutorials][22]
 
-# Other Project Samples
-
-* MVI - RxJava with modules as layers [here][23]
-* MVI - Kotlin Flow and modularization with dynamic features [here][24]
-* Compose with Atomic Design approach [here][25]
+# More Android Samples
+For more samples in this series of Android Development, please, feel free to check them. Each one of them 
+cover an specific topic.  
+* **Modularization by layers.** _Skills: MVI, RxJava._ 👉 https://github.com/4mr0m3r0/movies-mvi-sample
+* **Modularization by features.** _Skills: MVI, Coroutines, Flow._ 👉 https://github.com/4mr0m3r0/movies-modularization-sample
+* **Implementing a Design System.** _Skills: Jetpack Compose, Atomic Design Methodology._ 👉 https://github.com/4mr0m3r0/atomic-design-sample
+* **Android Services.** _Skills: Services, Broadcast Receivers, Content Providers._ 👉 https://github.com/4mr0m3r0/android-services-sample 
 
 
 [4]: https://medium.com/androiddevelopers/introducing-android-sunflower-e421b43fe0c2
@@ -145,32 +144,3 @@ Look inside Videos in www.droidcon.com [website][16]
 [20]: https://www.youtube.com/channel/UCKubKoe1CBw_-n_GXetEQbg
 [21]: https://www.youtube.com/channel/UCF4O2pQ8vBV8YmSAWb5QRPw
 [22]: https://www.youtube.com/channel/UCSwuCetC3YlO1Y7bqVW5GHg
-[23]: https://github.com/4mr0m3r0/movies-mvi-sample
-[24]: https://github.com/4mr0m3r0/movies-modularization-sample
-[25]: https://github.com/4mr0m3r0/atomic-design-sample
-
-License
--------
-````
-MIT License
-
-Copyright (c) 2019 Angel Manuel Romero Alfonso
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-````

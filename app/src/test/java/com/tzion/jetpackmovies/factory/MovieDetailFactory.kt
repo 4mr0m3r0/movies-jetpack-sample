@@ -1,7 +1,7 @@
 package com.tzion.jetpackmovies.factory
 
-import com.tzion.jetpackmovies.data.remote.model.RemoteMovieDetail
 import com.tzion.jetpackmovies.domain.model.DomainMovieDetail
+import com.tzion.jetpackmovies.network.model.RemoteMovieDetail
 
 object MovieDetailFactory {
 

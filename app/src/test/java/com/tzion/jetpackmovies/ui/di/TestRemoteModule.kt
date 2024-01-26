@@ -1,7 +1,6 @@
 package com.tzion.jetpackmovies.ui.di
 
-import com.tzion.jetpackmovies.data.remote.Remote
-import com.tzion.jetpackmovies.data.remote.retrofit.WebServiceRetrofit
+import com.tzion.jetpackmovies.network.retrofit.WebServiceRetrofit
 import dagger.Module
 import dagger.Provides
 import io.mockk.mockk

@@ -1,6 +1,6 @@
 package com.tzion.jetpackmovies.data.mapper
 
-import com.tzion.jetpackmovies.data.cache.model.CacheFavoriteMovie
+import com.tzion.jetpackmovies.data.model.CacheFavoriteMovie
 import com.tzion.jetpackmovies.domain.model.DomainFavoriteMovie
 import javax.inject.Inject
 

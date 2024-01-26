@@ -17,7 +17,7 @@ package com.tzion.jetpackmovies.ui.findMovies
 //import androidx.recyclerview.widget.LinearLayoutManager
 //import com.tzion.jetpackmovies.R
 //import com.tzion.jetpackmovies.databinding.FragmentFindMoviesByNameBinding
-//import com.tzion.jetpackmovies.presentation.FindMoviesViewModel
+//import com.tzion.jetpackmovies.presentation.findmovies.FindMoviesViewModel
 //import com.tzion.jetpackmovies.presentation.model.Movie
 //import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState
 //import dagger.hilt.android.AndroidEntryPoint

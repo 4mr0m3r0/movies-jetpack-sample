@@ -1,7 +1,7 @@
 package com.tzion.jetpackmovies.presentation.findmovies.state
 
 class FindListingMovies : FindState {
-    override fun pressSearchButton(context: FindContext) {
+    override fun pressSearchButton(context: FindStateContext) {
         changeState(
             context = context,
             state = FindSearchingMovies.getInstance()
@@ -9,7 +9,7 @@ class FindListingMovies : FindState {
         context.searchMovie()
     }
 
-    override fun selectMovie(context: FindContext) {
+    override fun selectMovie(context: FindStateContext) {
         changeState(
             context = context,
             state = FindOpenedDetail.getInstance()

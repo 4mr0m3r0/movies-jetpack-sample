@@ -1,7 +1,7 @@
 package com.tzion.jetpackmovies.presentation.findmovies.state
 
 class FindNotifyingError : FindState {
-    override fun pressSearchButton(context: FindContext) {
+    override fun pressSearchButton(context: FindStateContext) {
         changeState(
             context = context,
             state = FindSearchingMovies.getInstance()

@@ -35,6 +35,7 @@ Moreover, you will find a section listing favorite movies you chose.
 |               |                     |                       |                 |
 
 ## Design Patterns implemented in the code
+
 | Creational | Structural | Behavioral              |
 |------------|------------|-------------------------|
 | Singleton  |            | Command                 |

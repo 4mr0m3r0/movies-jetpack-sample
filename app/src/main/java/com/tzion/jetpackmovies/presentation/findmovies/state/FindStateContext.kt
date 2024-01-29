@@ -1,5 +1,7 @@
 package com.tzion.jetpackmovies.presentation.findmovies.state
 
+import com.tzion.jetpackmovies.presentation.model.Movie
+
 /** Init
  *********************************************
  **  start Empty-Screen displayEmptyScreen  **
@@ -33,7 +35,7 @@ package com.tzion.jetpackmovies.presentation.findmovies.state
  ** pressSearchButton Searching-Movies searchMovie **
  ****************************************************
  */
-class FindContext {
+open class FindStateContext : FindStateMachineActions {
     private val initState: FindState = FindInit.getInstance()
     private var state = initState
 
@@ -46,8 +48,8 @@ class FindContext {
     fun noResults() {
         state.noResults(this)
     }
-    fun successfulResults() {
-        state.successfulResults(this)
+    fun successfulResults(movies: List<Movie>) {
+        state.successfulResults(context = this, movies = movies)
     }
     fun searchFailed() {
         state.searchFailed(this)
@@ -57,23 +59,5 @@ class FindContext {
     }
     fun changeState(state: FindState) {
         this.state = state
-    }
-    fun displayEmptyScreen() {
-        //TODO: Perhaps this emits a flow?
-    }
-    fun searchMovie() {
-        //TODO: Perhaps this emits a flow?
-    }
-    fun displayNoResultsScreen() {
-        //TODO: Perhaps this emits a flow?
-    }
-    fun displayMovies() {
-        //TODO: Perhaps this emits a flow?
-    }
-    fun displayErrorScreen() {
-        //TODO: Perhaps this emits a flow?
-    }
-    fun openMovieDetail() {
-        //TODO: Perhaps this emits a flow?
     }
 }

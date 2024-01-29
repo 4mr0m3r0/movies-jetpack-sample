@@ -1,10 +1,10 @@
 package com.tzion.jetpackmovies.presentation.findmovies.state
 
 class FindInit : FindState {
-    override fun start(context: FindContext) {
+    override fun start(context: FindStateContext) {
         changeState(
             context = context,
-            state = FindEmpty.getInstance()
+            state = FindEmptyScreen.getInstance()
         )
         context.displayEmptyScreen()
     }

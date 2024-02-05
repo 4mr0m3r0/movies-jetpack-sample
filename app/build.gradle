@@ -88,6 +88,7 @@ dependencies {
     implementation libs.lifecycle.viewmodel.compose
     implementation libs.lifecycle.runtime
     implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.lifecycle.compose
     implementation libs.navigation.compose
     implementation libs.okhttp
     implementation libs.okhttp.logging.interceptor

@@ -23,7 +23,6 @@ fun NavGraphBuilder.findMovie(
     FindMovieScreen(
         onBack = navActions.upPress,
         onMenu = onMenu,
-        navController = navController
     )
 }
 

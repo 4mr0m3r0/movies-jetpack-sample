@@ -7,32 +7,29 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavHostController
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.presentation.findmovies.composable.DefaultDisplay
 import com.tzion.jetpackmovies.presentation.findmovies.composable.ErrorMessage
 import com.tzion.jetpackmovies.presentation.findmovies.composable.FindMovieTopAppBar
 import com.tzion.jetpackmovies.presentation.findmovies.composable.MoviesDisplay
-import com.tzion.jetpackmovies.presentation.findmovies.handler.FindIntentHandler
-import com.tzion.jetpackmovies.presentation.findmovies.handler.FindIntentRequest
-import com.tzion.jetpackmovies.presentation.findmovies.handler.FindIntentRequest.PressingSearchKeyboard
-import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState.DefaultUiState
-import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState.ErrorUiState
-import com.tzion.jetpackmovies.presentation.uistates.FindMoviesUiState.MoviesDisplayUiState
+import com.tzion.jetpackmovies.presentation.findmovies.intenthandler.FindRequest
 
 @Composable
 fun FindMovieScreen(
     onBack: () -> Unit, onMenu: () -> Unit,
-    navController: NavHostController,
-    intentHandler: FindIntentHandler,
-    viewModel: FindMoviesStateHolder = hiltViewModel()
+    viewModel: FindMoviesViewModel = hiltViewModel<FindMoviesViewModel>()
 ) {
-    val searchInput = remember { mutableStateOf("") }
+    LaunchedEffect(true) {
+        viewModel.intentHandler.handleRequest(
+            request = FindRequest.EnterScreen,
+            sendUserIntent = viewModel.sendUserIntent
+        )
+    }
     Scaffold(
         topBar = {
             FindMovieTopAppBar(
@@ -46,29 +43,17 @@ fun FindMovieScreen(
                     }
                 },
                 onSearchEvent = { querySearch ->
-                    searchInput.value = querySearch
-                    intentHandler.handleRequest(
-                        FindIntentRequest.PressingSearchButton(
-                            query = querySearch,
-                            viewModel = viewModel
-                        )
+                    viewModel.intentHandler.handleRequest(
+                        request = FindRequest.SearchButton(query = querySearch),
+                        sendUserIntent = viewModel.sendUserIntent
                     )
                 }
             )
         },
         content = { paddingValues ->
-            if (searchInput.value.isNotEmpty()) {
-                intentHandler.handleRequest(
-                    PressingSearchKeyboard(
-                        query = searchInput.value,
-                        viewModel = viewModel
-                    )
-                )
-            }
             FindMovieContent(
                 viewModel = viewModel,
                 paddingValues = paddingValues,
-                navController = navController
             )
         }
     )
@@ -76,18 +61,19 @@ fun FindMovieScreen(
 
 @Composable
 private fun FindMovieContent(
-    viewModel: FindMoviesStateHolder,
+    viewModel: FindMoviesViewModel,
     paddingValues: PaddingValues,
-    navController: NavHostController
 ) {
-    val uiState = viewModel.uiState().collectAsState()
-    when (val currentState = uiState.value) {
-        DefaultUiState -> DefaultDisplay()
-        is MoviesDisplayUiState -> MoviesDisplay(
-            screenState = currentState.screenState,
+    val uiState by viewModel.screenState.collectAsStateWithLifecycle()
+    when  {
+        uiState.isEmptyScreen -> DefaultDisplay()
+        uiState.thereAreNoResults -> println("There are no results")
+        uiState.errorMessage != null -> ErrorMessage(message = uiState.errorMessage)
+        else -> MoviesDisplay(
+            screenState = uiState,
             paddingValues = paddingValues,
-            navController = navController
+            intentHandler = viewModel.intentHandler,
+            sendUserIntent = viewModel.sendUserIntent,
         )
-        is ErrorUiState -> ErrorMessage(message = currentState.throwable.localizedMessage)
     }
 }

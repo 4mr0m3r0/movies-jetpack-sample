@@ -13,7 +13,7 @@ class FindEmptyScreen : FindState {
         private var instance: FindState? = null
 
         fun getInstance(): FindState = instance ?: synchronized(this) {
-            FindInit().also { instance = it }
+            FindEmptyScreen().also { instance = it }
         }
     }
 }

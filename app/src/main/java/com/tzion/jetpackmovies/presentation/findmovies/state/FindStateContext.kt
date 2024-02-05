@@ -38,11 +38,14 @@ import com.tzion.jetpackmovies.presentation.model.Movie
 open class FindStateContext : FindStateMachineActions {
     private val initState: FindState = FindInit.getInstance()
     private var state = initState
+    protected var query: String? = null
+        private set
 
     fun start() {
         state.start(this)
     }
-    fun pressSearchButton() {
+    fun pressSearchButton(query: String?) {
+        this.query = query
         state.pressSearchButton(this)
     }
     fun noResults() {
@@ -51,10 +54,10 @@ open class FindStateContext : FindStateMachineActions {
     fun successfulResults(movies: List<Movie>) {
         state.successfulResults(context = this, movies = movies)
     }
-    fun searchFailed() {
-        state.searchFailed(this)
+    fun searchFailed(error: String?) {
+        state.searchFailed(context = this, error = error)
     }
-    fun selectMovie() {
+    fun tapMovie() {
         state.selectMovie(this)
     }
     fun changeState(state: FindState) {

@@ -9,7 +9,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.tzion.jetpackmovies.R
-import com.tzion.jetpackmovies.presentation.MovieDetailViewModel
+import com.tzion.jetpackmovies.presentation.moviedetail.MovieDetailStateHolder
 import com.tzion.jetpackmovies.presentation.uistates.MovieDetailUiState
 import com.tzion.jetpackmovies.ui.movieDetail.composable.DetailDisplay
 import com.tzion.jetpackmovies.ui.movieDetail.composable.DetailError
@@ -49,7 +49,7 @@ private fun MovieDetailContent(
     movieId: String,
     paddingValues: PaddingValues
 ) {
-    val detailViewModel: MovieDetailViewModel = hiltViewModel()
+    val detailViewModel: MovieDetailStateHolder = hiltViewModel()
     val uiState = detailViewModel.uiState().collectAsState()
     remember(movieId) {
         detailViewModel.loadMovieDetailById(movieId)

@@ -7,7 +7,7 @@ interface FindState {
     fun pressSearchButton(context: FindStateContext) {}
     fun noResults(context: FindStateContext) {}
     fun successfulResults(context: FindStateContext, movies: List<Movie>) {}
-    fun searchFailed(context: FindStateContext) {}
+    fun searchFailed(context: FindStateContext, error: String?) {}
     fun selectMovie(context: FindStateContext) {}
     fun changeState(context: FindStateContext, state: FindState) {
         context.changeState(state)

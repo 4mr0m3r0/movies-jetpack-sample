@@ -1,18 +1,21 @@
 package com.tzion.jetpackmovies.domain
 
-import com.tzion.jetpackmovies.domain.gateway.DataGateway
+import com.tzion.jetpackmovies.domain.gateway.NetworkGateway
 import com.tzion.jetpackmovies.domain.model.DomainMovieDetail
 import com.tzion.jetpackmovies.domain.model.DomainMovieDetail.TomatoMeter.EMPTY
 import com.tzion.jetpackmovies.domain.model.DomainMovieDetail.TomatoMeter.FRESH
 import com.tzion.jetpackmovies.domain.model.DomainMovieDetail.TomatoMeter.ROTTEN
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.asSharedFlow
 
-class GetMovieDetail(private val dataGateway: DataGateway) {
+class GetMovieDetail(private val networkGateway: NetworkGateway) {
+    private val movie = MutableSharedFlow<DomainMovieDetail>()
+    val movieOutput = movie.asSharedFlow()
 
-    fun getMovieDetailById(movieId: String?): Flow<DomainMovieDetail> {
+    suspend fun getMovieDetailById(movieId: String?) {
         require(!movieId.isNullOrEmpty())
-        return dataGateway.getMovieDetailById(movieId).map { it.addTomatoMeter() }
+        val movieById = networkGateway.getMovieDetailById(movieId).also { it.addTomatoMeter() }
+        movie.emit(movieById)
     }
 
     private fun DomainMovieDetail.addTomatoMeter(): DomainMovieDetail = try {

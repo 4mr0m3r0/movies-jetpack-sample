@@ -19,12 +19,12 @@ class FindSearchingMovies : FindState {
         context.displayMovies(movies)
     }
 
-    override fun searchFailed(context: FindStateContext) {
+    override fun searchFailed(context: FindStateContext, error: String?) {
         changeState(
             context = context,
             state = FindNotifyingError.getInstance()
         )
-        context.displayErrorScreen()
+        context.displayErrorScreen(error)
     }
 
     companion object {

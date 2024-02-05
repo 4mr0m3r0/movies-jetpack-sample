@@ -13,17 +13,20 @@ import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavHostController
-import com.tzion.jetpackmovies.presentation.uistates.MovieScreenState
+import com.tzion.jetpackmovies.presentation.findmovies.FindUserIntent
+import com.tzion.jetpackmovies.presentation.findmovies.FindUserInterface
+import com.tzion.jetpackmovies.presentation.findmovies.intenthandler.FindIntentHandler
+import com.tzion.jetpackmovies.presentation.findmovies.intenthandler.FindRequest
 import com.tzion.jetpackmovies.uicomponent.MovieCard
 import com.tzion.jetpackmovies.uicomponent.TopLoading
 import java.util.Locale
 
 @Composable
 fun MoviesDisplay(
-    screenState: MovieScreenState,
+    screenState: FindUserInterface.ScreenState,
     paddingValues: PaddingValues,
-    navController: NavHostController
+    intentHandler: FindIntentHandler,
+    sendUserIntent: (userIntent: FindUserIntent) -> Unit,
 ) {
     Column(
         modifier = Modifier
@@ -50,7 +53,10 @@ fun MoviesDisplay(
                         contentDescription = movie.title,
                         image = movie.poster,
                         modifier = Modifier.clickable {
-                            navController.navigate("movieDetail/${movie.movieId}")
+                            intentHandler.handleRequest(
+                                request =  FindRequest.TapCard,
+                                sendUserIntent = sendUserIntent
+                            )
                         }
                     )
                 }

@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.presentation
+package com.tzion.jetpackmovies.presentation.moviedetail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -8,15 +8,14 @@ import com.tzion.jetpackmovies.presentation.mapper.UiMovieDetailMapper
 import com.tzion.jetpackmovies.presentation.model.MovieDetail
 import com.tzion.jetpackmovies.presentation.uistates.MovieDetailUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class MovieDetailViewModel @Inject constructor(
+class MovieDetailStateHolder @Inject constructor(
     private val getMovieDetail: GetMovieDetail,
     private val manageFavoriteMovies: ManageFavoriteMovies,
     private val mapper: UiMovieDetailMapper
@@ -27,18 +26,19 @@ class MovieDetailViewModel @Inject constructor(
 
     fun uiState(): StateFlow<MovieDetailUiState> = uiState
 
-    fun loadMovieDetailById(movieId: String?) {
-        viewModelScope.launch {
-            uiState.value = MovieDetailUiState.Loading
-            getMovieDetail
-                .getMovieDetailById(movieId)
-                .map { domainMovieDetail ->
-                    with(mapper) { domainMovieDetail.fromDomainToUi() }
-                }
-                .catch { uiState.value = MovieDetailUiState.Error }
-                .collect { uiMovieDetail ->
-                    uiState.value = MovieDetailUiState.Display(uiMovieDetail)
-                }
+    fun loadMovieDetailById(movieId: String?, coroutineScope: CoroutineScope = viewModelScope) {
+        coroutineScope.launch {
+
+//            uiState.value = MovieDetailUiState.Loading
+//            getMovieDetail
+//                .getMovieDetailById(movieId)
+//                .map { domainMovieDetail ->
+//                    with(mapper) { domainMovieDetail.fromDomainToUi() }
+//                }
+//                .catch { uiState.value = MovieDetailUiState.Error }
+//                .collect { uiMovieDetail ->
+//                    uiState.value = MovieDetailUiState.Display(uiMovieDetail)
+//                }
         }
     }
 

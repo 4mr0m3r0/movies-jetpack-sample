@@ -1,0 +1,19 @@
+@startuml
+participant Screen
+participant ViewModel
+participant "User Intent" as Intent
+participant "State Machine" as Machine
+participant "State Context" as Context
+participant "Use Case" as UseCase
+
+Screen -> ViewModel: processUserIntent
+ViewModel -> Intent: execute
+Intent -> Machine
+Machine -> Context: update state
+Machine <-- Context: action
+Machine -> UseCase
+Machine <-- UseCase: flow
+ViewModel <-- Machine: stateIn
+ViewModel -> ViewModel: handle navigation
+Screen <-- ViewModel: collectAsStateWithLifecycle
+@enduml

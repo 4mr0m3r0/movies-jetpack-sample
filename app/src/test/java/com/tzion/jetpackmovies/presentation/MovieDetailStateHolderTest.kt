@@ -5,12 +5,13 @@ import com.tzion.jetpackmovies.domain.GetMovieDetail
 import com.tzion.jetpackmovies.domain.ManageFavoriteMovies
 import com.tzion.jetpackmovies.domain.gateway.DataGateway
 import com.tzion.jetpackmovies.presentation.mapper.UiMovieDetailMapper
+import com.tzion.jetpackmovies.presentation.moviedetail.MovieDetailStateHolder
 import io.mockk.mockk
 import org.junit.Assert.assertNotNull
 import org.junit.Rule
 import org.junit.Test
 
-class MovieDetailViewModelTest {
+class MovieDetailStateHolderTest {
 
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -18,7 +19,7 @@ class MovieDetailViewModelTest {
     private val getMovieDetail = GetMovieDetail(dataGateway)
     private val manageFavoriteMovies = ManageFavoriteMovies(dataGateway)
     private val mapper = UiMovieDetailMapper()
-    private val viewModel = MovieDetailViewModel(
+    private val viewModel = MovieDetailStateHolder(
         getMovieDetail = getMovieDetail,
         manageFavoriteMovies = manageFavoriteMovies,
         mapper = mapper

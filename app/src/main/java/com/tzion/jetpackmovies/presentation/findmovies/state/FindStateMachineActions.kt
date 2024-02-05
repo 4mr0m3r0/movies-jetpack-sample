@@ -7,6 +7,6 @@ interface FindStateMachineActions {
     fun searchMovie() {}
     fun displayNoResultsScreen() {}
     fun displayMovies(movies: List<Movie>) {}
-    fun displayErrorScreen() {}
+    fun displayErrorScreen(error: String?) {}
     fun openMovieDetail() {}
 }

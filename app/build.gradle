@@ -61,6 +61,14 @@ android {
     }
 
     testOptions.unitTests.includeAndroidResources = true
+
+    //https://stackoverflow.com/questions/44342455/more-than-one-file-was-found-with-os-independent-path-meta-inf-license
+    //https://github.com/mockk/mockk/issues/1049
+    packagingOptions {
+        resources.excludes.add("META-INF/LICENSE.md")
+        resources.excludes.add("META-INF/LICENSE-notice.md")
+        resources.excludes.add("MANIFEST.MF")
+    }
 }
 
 kapt {
@@ -69,20 +77,18 @@ kapt {
 
 dependencies {
     implementation(platform(libs.compose.bom))
-    debugImplementation(platform(libs.compose.bom))
-
     implementation libs.accompanist.navigation.animation
     implementation libs.hilt.android
     implementation libs.hilt.navigation.compose
     implementation libs.activity.compose
     implementation libs.appcompat
     implementation libs.core.ktx
-    implementation libs.compose.ui
+    implementation libs.compose.ui.main
     implementation libs.compose.foundation
-    implementation libs.compose.material
+    implementation libs.compose.material3
     implementation libs.compose.material.icons.core
     implementation libs.coroutines.android
-    implementation libs.glide
+    implementation libs.glide.main
     implementation libs.gson
     implementation libs.landscapist
     implementation libs.lifecycle.viewmodel.compose
@@ -90,14 +96,14 @@ dependencies {
     implementation libs.lifecycle.viewmodel.ktx
     implementation libs.lifecycle.compose
     implementation libs.navigation.compose
-    implementation libs.okhttp
+    implementation libs.okhttp.main
     implementation libs.okhttp.logging.interceptor
     implementation libs.paging
     implementation libs.preference.ktx
-    implementation libs.retrofit
+    implementation libs.retrofit.main
     implementation libs.retrofit.converter.gson
     implementation libs.room.runtime
-    implementation libs.room
+    implementation libs.room.ktx
     implementation libs.timber
     implementation libs.work
 
@@ -110,16 +116,25 @@ dependencies {
     testImplementation libs.test.junit
     testImplementation libs.test.kotlin.junit
     testImplementation libs.test.assertj.core
-    testImplementation libs.test.mockk
+    testImplementation libs.test.mockk.main
     testImplementation libs.test.arch
     testImplementation libs.test.room
     testImplementation libs.test.robolectric
 
+    androidTestImplementation(platform(libs.compose.bom))
     androidTestImplementation libs.android.test.runner
-    androidTestImplementation libs.android.test.espresso
+    androidTestImplementation libs.android.test.espresso.core
     androidTestImplementation libs.android.test.rules
     androidTestImplementation libs.android.test.ext
     androidTestImplementation libs.android.test.espresso.contrib
+    androidTestImplementation libs.test.compose.ui
+    androidTestImplementation libs.test.hilt.android
+    androidTestImplementation libs.test.mockk.android
+//    androidTestImplementation libs.test.mockk.agent
 
-    debugImplementation(libs.compose.ui.tooling)
+    kaptAndroidTest libs.test.hilt.compiler
+
+    debugImplementation(platform(libs.compose.bom))
+    debugImplementation libs.compose.ui.tooling.main
+    debugImplementation libs.test.compose.manifest
 }

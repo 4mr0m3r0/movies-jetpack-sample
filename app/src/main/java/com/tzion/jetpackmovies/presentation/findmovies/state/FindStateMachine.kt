@@ -1,12 +1,17 @@
 package com.tzion.jetpackmovies.presentation.findmovies.state
 
+import android.content.Context
 import com.tzion.jetpackmovies.domain.FindMoviesByName
+import com.tzion.jetpackmovies.presentation.findmovies.FindSideEffect
+import com.tzion.jetpackmovies.presentation.findmovies.FindSideEffect.NavigateToDetail
 import com.tzion.jetpackmovies.presentation.findmovies.FindUserInterface
-import com.tzion.jetpackmovies.presentation.findmovies.FindUserInterface.ScreenState
-import com.tzion.jetpackmovies.presentation.findmovies.mapper.UiMovieMapper
-import com.tzion.jetpackmovies.presentation.model.Movie
+import com.tzion.jetpackmovies.presentation.mapper.ViewPosterMapper
+import com.tzion.jetpackmovies.presentation.model.ViewPoster
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
@@ -14,41 +19,39 @@ import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 class FindStateMachine @Inject constructor(
-    private val mapper: UiMovieMapper,
-    private val useCase: FindMoviesByName
-) : FindStateContext() {
+    private val mapper: ViewPosterMapper,
+    private val useCase: FindMoviesByName,
+    @ApplicationContext private val content: Context
+) : FindStateContext(content = content) {
     var coroutineScope: CoroutineScope? = null
-    val defaultScreenState = ScreenState()
+    val defaultScreenState = FindUserInterface.default()
     private val _screenState: MutableStateFlow<FindUserInterface> = MutableStateFlow(defaultScreenState)
     val screenState = _screenState.asStateFlow()
+    private val _sideEffect: MutableSharedFlow<FindSideEffect> = MutableSharedFlow()
+    val sideEffect = _sideEffect.asSharedFlow()
 
-    override fun displayEmptyScreen() {
-        _screenState.update { ScreenState(isEmptyScreen = true) }
-    }
     override fun searchMovie() {
-        _screenState.update { ScreenState(isLoading = true) }
+        _screenState.update { FindUserInterface(isLoading = true) }
         coroutineScope?.launch {
-            useCase.findMovieByName(name = query).collect { domainMovies ->
-                if (domainMovies.isEmpty()) {
+            useCase.find(name = query).collect { posters ->
+                if (posters.isEmpty()) {
                     noResults()
                 } else {
-                    successfulResults(
-                        movies = with(mapper) { domainMovies.fromDomainToUi() }
-                    )
+                    successfulResults(posters = with(mapper) { posters.toViewPoster() })
                 }
             }
         }
     }
     override fun displayNoResultsScreen() = runBlocking {
-        _screenState.update { ScreenState(thereAreNoResults = true) }
+        _screenState.update { FindUserInterface(thereAreNoResults = true) }
     }
-    override fun displayMovies(movies: List<Movie>) = runBlocking {
-        _screenState.update { ScreenState(movies = movies) }
+    override fun displayMovies(posters: List<ViewPoster>) = runBlocking {
+        _screenState.update { FindUserInterface(posters = posters) }
     }
     override fun displayErrorScreen(error: String?) = runBlocking {
-        _screenState.update { ScreenState(errorMessage = error) }
+        _screenState.update { FindUserInterface(errorMessage = error) }
     }
-    override fun openMovieDetail() = runBlocking {
-        _screenState.update { FindUserInterface.NavigateToDetail }
+    override fun openMovieDetail(movieId: String) = runBlocking {
+        _sideEffect.emit(NavigateToDetail(movieId = movieId))
     }
 }

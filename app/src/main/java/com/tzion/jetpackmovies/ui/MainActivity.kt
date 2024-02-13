@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.material3.Surface
 import androidx.lifecycle.lifecycleScope
-import com.tzion.jetpackmovies.ui.navigation.NavGraph
+import com.tzion.jetpackmovies.presentation.navigation.NavGraph
 import com.tzion.jetpackmovies.uicomponent.theme.MoviesTheme
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch

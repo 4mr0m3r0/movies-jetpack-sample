@@ -12,7 +12,7 @@ package com.tzion.jetpackmovies.ui.favoriteMovies
 //import androidx.recyclerview.widget.DividerItemDecoration
 //import androidx.recyclerview.widget.LinearLayoutManager
 //import com.tzion.jetpackmovies.databinding.FragmentFavoriteMoviesBinding
-//import com.tzion.jetpackmovies.presentation.FavoriteMovieViewModel
+//import com.tzion.jetpackmovies.presentation.favoritemovies.FavoriteMovieViewModel
 //import com.tzion.jetpackmovies.presentation.model.UiFavoriteMovie
 //import dagger.hilt.android.AndroidEntryPoint
 //import javax.inject.Inject

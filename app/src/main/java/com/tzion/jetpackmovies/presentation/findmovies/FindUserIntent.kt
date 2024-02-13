@@ -1,17 +1,11 @@
 package com.tzion.jetpackmovies.presentation.findmovies
 
-import com.tzion.jetpackmovies.domain.ManageFavoriteMovies
-import com.tzion.jetpackmovies.domain.model.DomainFavoriteMovie
+import com.tzion.jetpackmovies.domain.ManageFavoriteMovie
+import com.tzion.jetpackmovies.domain.entities.Movie
 import com.tzion.jetpackmovies.presentation.findmovies.state.FindStateMachine
 
 interface FindUserIntent {
     suspend fun execute(stateMachine: FindStateMachine)
-}
-
-class EnterFindSectionIntent : FindUserIntent {
-    override suspend fun execute(stateMachine: FindStateMachine) {
-        stateMachine.start()
-    }
 }
 
 class SearchMovieIntent : FindUserIntent {
@@ -21,15 +15,16 @@ class SearchMovieIntent : FindUserIntent {
     }
 }
 
-class SelectMovieAsFavoriteIntent(private val manageFavoriteMovies: ManageFavoriteMovies) : FindUserIntent {
-    var favoriteMovie: DomainFavoriteMovie? = null
+class SelectMovieAsFavoriteIntent(private val manageFavoriteMovie: ManageFavoriteMovie) : FindUserIntent {
+    var favoriteMovie: Movie.Favorite? = null
     override suspend fun execute(stateMachine: FindStateMachine) {
-        manageFavoriteMovies.saveFavoriteMovie(favoriteMovie = favoriteMovie)
+        manageFavoriteMovie.saveFavoriteMovie(favoriteMovie = favoriteMovie)
     }
 }
 
 class TapOnAMovieIntent : FindUserIntent {
+    var movieId: String? = null
     override suspend fun execute(stateMachine: FindStateMachine) {
-        stateMachine.tapMovie()
+        stateMachine.tapMovie(movieId = movieId)
     }
 }

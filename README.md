@@ -5,13 +5,16 @@
 ![State](https://img.shields.io/badge/Detekt-passing-brightgreen)
 ![State](https://img.shields.io/badge/UnitTest-incomplete-red)
 
+## 🚧 👷🏗️  Under Modifications  🔨👷 🚧
+
 # Table of Contents
 
 1. [Description](#description)
-   1. [Skills you may find in this project](#skills-you-may-find-in-this-project)
+   1. [Skills you may find](#skills-you-may-find)
+   2. [Design Patterns implemented](#design-patterns-implemented)
    2. [Flowchart](#flowchart)
    3. [Screenshots](#screenshots)
-2. [Resources](#Resources)
+2. [Resources](#resources)
 3. [Conferences](#conferences)
 4. [Youtube Channels](#youtube-channels)
 5. [More Android Samples](#more-android-samples)
@@ -22,23 +25,22 @@ With this demo app you may search movies by name, see the details of it, or mark
 one.
 Moreover, you will find a section listing favorite movies you chose.
 
-## Skills you may find in the code
+## Skills you may find
 
-| Jetpack       | Kotlin & Quality    | Dependency Management | Others          |
-|---------------|---------------------|-----------------------|-----------------|
-| `Compose`     | `Coroutines`        | `Version Catalogs`    | `Landscapist`   |
-| `WorkManager` | `Asynchronous Flow` | `Gradle Kotlin DSL`   | `Atomic Design` |
-| `Hilt`        | `Detekt`            |                       | `Material 3`    |
-| `Room`        | `Ktlint`            |                       | `Retrofit`      |
-| `Paging`      |                     |                       | `OkHttp`        |
-| `Navigation`  |                     |                       | `Timber`        |
-|               |                     |                       |                 |
+| Jetpack       | Kotlin & Quality    | Dependency Management | Others        | Testing           |
+|---------------|---------------------|-----------------------|---------------|-------------------|
+| `Compose`     | `Coroutines`        | `Version Catalogs`    | `Landscapist` | `Mockk`           |
+| `WorkManager` | `Asynchronous Flow` | `Gradle Kotlin DSL`   | `Material 3`  | `ComposeTestRule` |
+| `Hilt`        | `Detekt`            |                       | `Retrofit`    |                   |
+| `Room`        | `Ktlint`            |                       | `OkHttp`      |                   |
+| `Paging`      |                     |                       | `Timber`      |                   |
+| `Navigation`  |                     |                       |               |                   |
 
-## Design Patterns implemented in the code
+## Design Patterns implemented
 
 | Creational | Structural | Behavioral              |
 |------------|------------|-------------------------|
-| Singleton  |            | Command                 |
+| Singleton  | Facade     | Command                 |
 |            |            | Chain of Responsibility |
 |            |            | State                   |
 

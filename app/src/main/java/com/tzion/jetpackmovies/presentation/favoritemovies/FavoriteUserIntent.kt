@@ -1,10 +1,9 @@
 package com.tzion.jetpackmovies.presentation.favoritemovies
 
-import com.tzion.jetpackmovies.domain.ManageFavoriteMovies
-import com.tzion.jetpackmovies.presentation.UserIntent
+import com.tzion.jetpackmovies.domain.ManageFavoriteMovie
 
-class EnterFavoriteSection(private val manageFavoriteMovies: ManageFavoriteMovies) : UserIntent {
+class EnterFavoriteSection(private val manageFavoriteMovie: ManageFavoriteMovie) : UserIntent {
     override suspend fun execute() {
-        manageFavoriteMovies.fetchFavoriteMovies()
+        manageFavoriteMovie.fetchFavoriteMovies()
     }
 }

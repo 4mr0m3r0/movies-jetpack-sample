@@ -1,12 +1,11 @@
 package com.tzion.jetpackmovies.presentation.findmovies.state
 
-import com.tzion.jetpackmovies.presentation.model.Movie
+import com.tzion.jetpackmovies.presentation.model.ViewPoster
 
 interface FindStateMachineActions {
-    fun displayEmptyScreen() {}
     fun searchMovie() {}
     fun displayNoResultsScreen() {}
-    fun displayMovies(movies: List<Movie>) {}
+    fun displayMovies(posters: List<ViewPoster>) {}
     fun displayErrorScreen(error: String?) {}
-    fun openMovieDetail() {}
+    fun openMovieDetail(movieId: String) {}
 }

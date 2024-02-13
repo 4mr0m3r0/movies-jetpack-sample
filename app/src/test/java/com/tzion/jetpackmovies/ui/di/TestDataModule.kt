@@ -1,6 +1,6 @@
 package com.tzion.jetpackmovies.ui.di
 
-import com.tzion.jetpackmovies.domain.gateway.DataGateway
+import com.tzion.jetpackmovies.domain.boundary.DataGateway
 import dagger.Module
 import dagger.Provides
 import io.mockk.mockk

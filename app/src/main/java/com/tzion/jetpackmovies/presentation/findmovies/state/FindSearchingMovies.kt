@@ -1,6 +1,6 @@
 package com.tzion.jetpackmovies.presentation.findmovies.state
 
-import com.tzion.jetpackmovies.presentation.model.Movie
+import com.tzion.jetpackmovies.presentation.model.ViewPoster
 
 class FindSearchingMovies : FindState {
     override fun noResults(context: FindStateContext) {
@@ -11,12 +11,12 @@ class FindSearchingMovies : FindState {
         context.displayNoResultsScreen()
     }
 
-    override fun successfulResults(context: FindStateContext, movies: List<Movie>) {
+    override fun successfulResults(context: FindStateContext, posters: List<ViewPoster>) {
         changeState(
             context = context,
             state = FindListingMovies.getInstance()
         )
-        context.displayMovies(movies)
+        context.displayMovies(posters)
     }
 
     override fun searchFailed(context: FindStateContext, error: String?) {

@@ -1,6 +1,7 @@
 package com.tzion.jetpackmovies.uicomponent
 
 import androidx.compose.foundation.layout.RowScope
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Search
@@ -10,6 +11,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -21,14 +24,18 @@ import com.tzion.jetpackmovies.uicomponent.theme.MoviesTheme
 fun MovieTopAppBar(
     text: String,
     navigationIcon: @Composable () -> Unit = {},
-    actions: @Composable RowScope.() -> Unit = {}
+    actions: @Composable RowScope.() -> Unit = {},
+    windowInsets: WindowInsets = TopAppBarDefaults.windowInsets,
+    scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
     TopAppBar(
         title = {
             Text(text)
         },
         navigationIcon = navigationIcon,
-        actions = actions
+        actions = actions,
+        windowInsets = windowInsets,
+        scrollBehavior = scrollBehavior
     )
 }
 
@@ -45,6 +52,7 @@ fun NavigationArrowBack(
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview("MovieTopAppBar Light")
 @Composable
 fun PreviewMovieTopAppBarLight() {
@@ -66,6 +74,7 @@ fun PreviewMovieTopAppBarLight() {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Preview("MovieTopAppBar Dark")
 @Composable
 fun PreviewMovieTopAppBarDark() {

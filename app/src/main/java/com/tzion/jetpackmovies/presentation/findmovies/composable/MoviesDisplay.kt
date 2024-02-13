@@ -23,7 +23,7 @@ import java.util.Locale
 
 @Composable
 fun MoviesDisplay(
-    screenState: FindUserInterface.ScreenState,
+    screenState: FindUserInterface,
     paddingValues: PaddingValues,
     intentHandler: FindIntentHandler,
     sendUserIntent: (userIntent: FindUserIntent) -> Unit,
@@ -46,15 +46,15 @@ fun MoviesDisplay(
             verticalItemSpacing = 8.dp,
             horizontalArrangement = Arrangement.spacedBy(8.dp),
             content = {
-                items(screenState.movies) { movie ->
+                items(screenState.posters, key = { it.movieId }) { poster ->
                     MovieCard(
-                        headline = movie.year,
-                        supportingText = movie.type capitalizedAndConcatenatedWith movie.title,
-                        contentDescription = movie.title,
-                        image = movie.poster,
+                        headline = poster.year,
+                        supportingText = poster.type capitalizedAndConcatenatedWith poster.title,
+                        contentDescription = poster.title,
+                        image = poster.image,
                         modifier = Modifier.clickable {
                             intentHandler.handleRequest(
-                                request =  FindRequest.TapCard,
+                                request =  FindRequest.TapCard(movieId = poster.movieId),
                                 sendUserIntent = sendUserIntent
                             )
                         }
@@ -65,7 +65,7 @@ fun MoviesDisplay(
     }
 }
 
-private infix fun String.capitalizedAndConcatenatedWith(title: String): String = "${replaceFirstChar { 
+infix fun String.capitalizedAndConcatenatedWith(title: String): String = "${replaceFirstChar { 
     if (it.isLowerCase()) it.titlecase(Locale.ROOT)
     else it.toString()
 }}: $title"

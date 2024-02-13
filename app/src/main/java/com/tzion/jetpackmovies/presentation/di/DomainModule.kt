@@ -1,10 +1,12 @@
 package com.tzion.jetpackmovies.presentation.di
 
 import com.tzion.jetpackmovies.domain.FindMoviesByName
-import com.tzion.jetpackmovies.domain.GetMovieDetail
-import com.tzion.jetpackmovies.domain.ManageFavoriteMovies
-import com.tzion.jetpackmovies.domain.gateway.DataGateway
-import com.tzion.jetpackmovies.domain.gateway.NetworkGateway
+import com.tzion.jetpackmovies.domain.ManageFavoriteMovie
+import com.tzion.jetpackmovies.domain.SeeMovieDetail
+import com.tzion.jetpackmovies.domain.boundary.DataGateway
+import com.tzion.jetpackmovies.domain.boundary.RemoteFacade
+import com.tzion.jetpackmovies.domain.entities.Movie
+import com.tzion.jetpackmovies.domain.entities.TomatoMeter
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,17 +16,28 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 object DomainModule {
     @Provides
-    fun providesFindMoviesByNameUseCase(networkGateway: NetworkGateway) = FindMoviesByName(
-        networkGateway = networkGateway
+    fun providesTomatoMeterEntity() = TomatoMeter()
+
+    @Provides
+    fun providesMovieEntity(tomatoMeter: TomatoMeter) = Movie(tomatoMeter = tomatoMeter)
+
+    @Provides
+    fun providesFindMoviesByNameUseCase(remoteFacade: RemoteFacade, movie: Movie) = FindMoviesByName(
+        remoteFacade = remoteFacade,
+        movie = movie
     )
 
     @Provides
-    fun providesManageFavoriteMovies(dataGateway: DataGateway): ManageFavoriteMovies = ManageFavoriteMovies(
+    fun providesManageFavoriteMovies(dataGateway: DataGateway) = ManageFavoriteMovie(
         dataGateway = dataGateway
     )
 
     @Provides
-    fun providesGetMovieDetail(networkGateway: NetworkGateway): GetMovieDetail = GetMovieDetail(
-        networkGateway = networkGateway
+    fun providesGetMovieDetail(
+        remoteFacade: RemoteFacade,
+        movie: Movie
+    ): SeeMovieDetail = SeeMovieDetail(
+        remoteFacade = remoteFacade,
+        movie = movie
     )
 }

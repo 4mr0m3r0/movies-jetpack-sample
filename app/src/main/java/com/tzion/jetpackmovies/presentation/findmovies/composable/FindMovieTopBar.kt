@@ -9,8 +9,10 @@ import androidx.compose.animation.slideOutHorizontally
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.TopAppBarScrollBehavior
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -24,11 +26,13 @@ import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.uicomponent.MovieTopAppBar
 import com.tzion.jetpackmovies.uicomponent.TopSearchTextField
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FindMovieTopAppBar(
     text: String,
     navigationIcon: @Composable () -> Unit = {},
     onSearchEvent: (String) -> Unit = {},
+    scrollBehavior: TopAppBarScrollBehavior? = null
 ) {
     val topAppBarVisible = remember { mutableStateOf(true) }
     val searchBarVisible = remember { mutableStateOf(false) }
@@ -50,7 +54,8 @@ fun FindMovieTopAppBar(
                         contentDescription = stringResource(R.string.find_a_movie)
                     )
                 }
-            }
+            },
+            scrollBehavior = scrollBehavior
         )
     }
     AnimatedVisibility(

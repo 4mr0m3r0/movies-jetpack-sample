@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.tzion.jetpackmovies.data.model.CacheFavoriteMovie
+import com.tzion.jetpackmovies.data.model.DataFavoriteMovie
 
-@Database(version = 1, entities = [CacheFavoriteMovie::class], exportSchema = false)
+@Database(version = 1, entities = [DataFavoriteMovie::class], exportSchema = false)
 abstract class DatabaseBuilder : RoomDatabase() {
 
     abstract fun favoriteMovieDao(): FavoriteMovieDao

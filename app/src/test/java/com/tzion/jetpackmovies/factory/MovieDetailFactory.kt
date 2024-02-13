@@ -1,6 +1,6 @@
 package com.tzion.jetpackmovies.factory
 
-import com.tzion.jetpackmovies.domain.model.DomainMovieDetail
+import com.tzion.jetpackmovies.domain.entities.Movie
 import com.tzion.jetpackmovies.network.model.RemoteMovieDetail
 
 object MovieDetailFactory {
@@ -33,7 +33,7 @@ object MovieDetailFactory {
         response = RandomFactory.generateString()
     )
 
-    fun makeDomainMovieDetail() = DomainMovieDetail(
+    fun randomMovieInformation() = Movie.Information(
         title = RandomFactory.generateString(),
         year = RandomFactory.generateString(),
         rated = RandomFactory.generateString(),
@@ -47,7 +47,7 @@ object MovieDetailFactory {
         language = RandomFactory.generateString(),
         country = RandomFactory.generateString(),
         awards = RandomFactory.generateString(),
-        poster = RandomFactory.generateString(),
+        image = RandomFactory.generateString(),
         metascore = RandomFactory.generateString(),
         rating = RandomFactory.generateString(),
         votes = RandomFactory.generateString(),

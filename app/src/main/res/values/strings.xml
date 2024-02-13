@@ -31,4 +31,5 @@
     <string name="red_tomato">Red Tomato</string>
     <string name="rotten_tomato">Rotten Tomato</string>
     <string name="empty_tomato">Empty Tomato</string>
+    <string name="current_movie_does_not_have">The current movie does not have an ID. So, it cannot be possible open its detail.</string>
 </resources>

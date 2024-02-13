@@ -1,8 +1,8 @@
 package com.tzion.jetpackmovies.presentation.di
 
 import com.tzion.jetpackmovies.common.EndpointConstantsHelper
-import com.tzion.jetpackmovies.domain.gateway.NetworkGateway
-import com.tzion.jetpackmovies.network.NetworkRetrofit
+import com.tzion.jetpackmovies.domain.boundary.RemoteFacade
+import com.tzion.jetpackmovies.network.MovieNetwork
 import com.tzion.jetpackmovies.network.factory.RetrofitWebServiceFactory
 import com.tzion.jetpackmovies.network.retrofit.WebServiceRetrofit
 import dagger.Binds
@@ -15,7 +15,7 @@ import dagger.hilt.components.SingletonComponent
 @InstallIn(SingletonComponent::class)
 interface NetworkModule {
     @Binds
-    fun bindNetworkGateway(networkRetrofit: NetworkRetrofit): NetworkGateway
+    fun bindNetworkGateway(movieNetwork: MovieNetwork): RemoteFacade
 
     companion object {
         @Provides

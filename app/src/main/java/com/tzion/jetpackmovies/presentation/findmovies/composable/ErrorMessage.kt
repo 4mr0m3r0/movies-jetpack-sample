@@ -10,7 +10,7 @@ import androidx.compose.ui.res.stringResource
 import com.tzion.jetpackmovies.R
 
 @Composable
-fun ErrorMessage(message: String?) {
+fun ErrorMessage(message: String? = null) {
     Snackbar(
         modifier = Modifier.padding(dimensionResource(R.dimen.snackbar_padding))
     ) {

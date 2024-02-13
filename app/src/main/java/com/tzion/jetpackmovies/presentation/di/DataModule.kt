@@ -1,9 +1,9 @@
 package com.tzion.jetpackmovies.presentation.di
 
 import android.content.Context
-import com.tzion.jetpackmovies.data.DataRoom
+import com.tzion.jetpackmovies.data.MovieData
 import com.tzion.jetpackmovies.data.database.DatabaseBuilder
-import com.tzion.jetpackmovies.domain.gateway.DataGateway
+import com.tzion.jetpackmovies.domain.boundary.DataGateway
 import dagger.Binds
 import dagger.Module
 import dagger.Provides
@@ -16,7 +16,7 @@ import dagger.hilt.components.SingletonComponent
 interface DataModule {
 
     @Binds
-    fun bindDataRepository(dataRoom: DataRoom): DataGateway
+    fun bindDataRepository(movieData: MovieData): DataGateway
 
     companion object {
         @Provides

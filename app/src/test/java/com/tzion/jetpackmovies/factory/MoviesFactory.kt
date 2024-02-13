@@ -1,15 +1,15 @@
 package com.tzion.jetpackmovies.factory
 
-import com.tzion.jetpackmovies.domain.model.DomainMovie
-import com.tzion.jetpackmovies.presentation.model.Movie
+import com.tzion.jetpackmovies.domain.entities.Movie
+import com.tzion.jetpackmovies.presentation.model.ViewPoster
 
 object MoviesFactory {
 
-    fun makeMovieList(count: Int): List<DomainMovie> {
-        return (0..count).map { makeMovie() }
+    fun randomPosters(count: Int): List<Movie.Poster> {
+        return (0..count).map { randomPoster() }
     }
 
-    fun makeMovie() = DomainMovie(
+    fun randomPoster() = Movie.Poster(
         RandomFactory.generateString(),
         RandomFactory.generateString(),
         RandomFactory.generateString(),
@@ -17,11 +17,11 @@ object MoviesFactory {
         RandomFactory.generateString()
     )
 
-    fun makeMovieViewList(count: Int): List<Movie> {
+    fun makeMovieViewList(count: Int): List<ViewPoster> {
         return (0..count).map { makeMovieView() }
     }
 
-    fun makeMovieView() = Movie(
+    fun makeMovieView() = ViewPoster(
         RandomFactory.generateString(),
         RandomFactory.generateString(),
         RandomFactory.generateString(),

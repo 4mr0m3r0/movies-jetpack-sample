@@ -1,6 +1,7 @@
 package com.tzion.jetpackmovies.presentation.findmovies.state
 
-import com.tzion.jetpackmovies.presentation.model.Movie
+import android.content.Context
+import com.tzion.jetpackmovies.presentation.model.ViewPoster
 
 /** Init
  *********************************************
@@ -35,15 +36,12 @@ import com.tzion.jetpackmovies.presentation.model.Movie
  ** pressSearchButton Searching-Movies searchMovie **
  ****************************************************
  */
-open class FindStateContext : FindStateMachineActions {
-    private val initState: FindState = FindInit.getInstance()
+open class FindStateContext(private val content: Context) : FindStateMachineActions {
+    private val initState: FindState = FindEmptyScreen.getInstance()
     private var state = initState
     protected var query: String? = null
         private set
 
-    fun start() {
-        state.start(this)
-    }
     fun pressSearchButton(query: String?) {
         this.query = query
         state.pressSearchButton(this)
@@ -51,14 +49,14 @@ open class FindStateContext : FindStateMachineActions {
     fun noResults() {
         state.noResults(this)
     }
-    fun successfulResults(movies: List<Movie>) {
-        state.successfulResults(context = this, movies = movies)
+    fun successfulResults(posters: List<ViewPoster>) {
+        state.successfulResults(context = this, posters = posters)
     }
     fun searchFailed(error: String?) {
         state.searchFailed(context = this, error = error)
     }
-    fun tapMovie() {
-        state.selectMovie(this)
+    fun tapMovie(movieId: String?) {
+        state.selectMovie(context = this, movieId = movieId, content = content)
     }
     fun changeState(state: FindState) {
         this.state = state

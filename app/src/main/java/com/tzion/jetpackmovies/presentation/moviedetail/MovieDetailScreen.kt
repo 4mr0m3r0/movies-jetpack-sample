@@ -2,44 +2,46 @@ package com.tzion.jetpackmovies.presentation.moviedetail
 
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
-import androidx.compose.runtime.remember
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringResource
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.produceState
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.tzion.jetpackmovies.R
-import com.tzion.jetpackmovies.presentation.mapper.ViewMovieDetailMapper
 import com.tzion.jetpackmovies.presentation.moviedetail.composable.DetailDisplay
-import com.tzion.jetpackmovies.presentation.moviedetail.composable.DetailError
-import com.tzion.jetpackmovies.presentation.moviedetail.composable.DetailLoading
-import com.tzion.jetpackmovies.presentation.uistates.MovieDetailUiState
-import com.tzion.jetpackmovies.uicomponent.MovieTopAppBar
-import com.tzion.jetpackmovies.uicomponent.NavigationArrowBack
+import com.tzion.jetpackmovies.uicomponent.appbar.TransparentTopAppBar
+import com.tzion.jetpackmovies.uicomponent.button.ArrowBack
+import com.tzion.jetpackmovies.uicomponent.button.Favorite
+import com.tzion.jetpackmovies.uicomponent.theme.BlackAlpha
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MovieDetailScreen(
-    onBack: () -> Unit, movieId: String,
+    onBack: () -> Unit,
     viewModel: MovieDetailViewModel = hiltViewModel<MovieDetailViewModel>()
 ) {
     Scaffold(
         topBar = {
-            MovieTopAppBar(
-                text = stringResource(id = R.string.detail),
+            TransparentTopAppBar(
                 navigationIcon = {
-                    NavigationArrowBack(
-                        navigationEvent = onBack,
-                        contentDescription = stringResource(id = R.string.detail)
+                    ArrowBack(
+                        onClick = onBack,
+                        colors = IconButtonDefaults.iconButtonColors(
+                            containerColor = BlackAlpha
+                        )
+                    )
+                },
+                actions = {
+                    Favorite(
+                        colors = IconButtonDefaults.iconButtonColors(
+                            containerColor = BlackAlpha
+                        )
                     )
                 }
             )
         },
         content = { paddingValues ->
-            val mapper = ViewMovieDetailMapper(context = LocalContext.current)
             MovieDetailContent(
-                movieId = movieId,
                 paddingValues = paddingValues,
                 viewModel = viewModel
             )
@@ -49,21 +51,34 @@ fun MovieDetailScreen(
 
 @Composable
 private fun MovieDetailContent(
-    movieId: String,
     paddingValues: PaddingValues,
     viewModel: MovieDetailViewModel
 ) {
-    val uiState = viewModel.uiState().collectAsState()
-    remember(movieId) {
-        viewModel.loadMovieDetailById(movieId)
-        true
+    val userInterface = produceDetailUserInterface(viewModel = viewModel)
+
+//    val uiState = viewModel.uiState().collectAsState()
+//    remember(movieId) {
+//        viewModel.loadMovieDetailById(movieId)
+//        true
+//    }
+//    when (val currentState = uiState.value) {
+//        MovieDetailUiState.Loading -> DetailLoading()
+//        is MovieDetailUiState.Display -> DetailDisplay(
+//            attributes = currentState.attributes,
+//            paddingValues = paddingValues,
+//        )
+//        MovieDetailUiState.Error -> DetailError()
+//    }
+    DetailDisplay(userInterface = userInterface, paddingValues = paddingValues)
+}
+
+@Composable
+private fun produceDetailUserInterface(viewModel: MovieDetailViewModel): DetailUserInterface {
+    val uiState by produceState(
+        key1 = viewModel,
+        initialValue = DetailUserInterface(isLoading = true),
+    ) {
+        value = viewModel.getMovieInformation()
     }
-    when (val currentState = uiState.value) {
-        MovieDetailUiState.Loading -> DetailLoading()
-        is MovieDetailUiState.Display -> DetailDisplay(
-            attributes = currentState.attributes,
-            paddingValues = paddingValues,
-        )
-        MovieDetailUiState.Error -> DetailError()
-    }
+    return uiState
 }

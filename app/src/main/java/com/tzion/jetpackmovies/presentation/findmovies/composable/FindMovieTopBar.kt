@@ -23,8 +23,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.tzion.jetpackmovies.R
-import com.tzion.jetpackmovies.uicomponent.MovieTopAppBar
-import com.tzion.jetpackmovies.uicomponent.TopSearchTextField
+import com.tzion.jetpackmovies.uicomponent.appbar.MovieTopAppBar
+import com.tzion.jetpackmovies.uicomponent.search.TopSearchTextField
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable

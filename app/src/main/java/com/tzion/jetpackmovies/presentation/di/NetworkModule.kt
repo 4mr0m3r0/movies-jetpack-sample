@@ -10,6 +10,8 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.Dispatchers
 
 @Module
 @InstallIn(SingletonComponent::class)
@@ -18,6 +20,9 @@ interface NetworkModule {
     fun bindNetworkGateway(movieNetwork: MovieNetwork): RemoteFacade
 
     companion object {
+        @Provides
+        fun providesDispatcher(): CoroutineDispatcher = Dispatchers.IO
+
         @Provides
         fun provideWebServiceRetrofit(): WebServiceRetrofit {
             return RetrofitWebServiceFactory<WebServiceRetrofit>().makeRemoteRestApi(

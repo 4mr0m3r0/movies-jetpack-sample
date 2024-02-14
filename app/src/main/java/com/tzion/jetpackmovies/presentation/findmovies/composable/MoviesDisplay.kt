@@ -17,8 +17,8 @@ import com.tzion.jetpackmovies.presentation.findmovies.FindUserIntent
 import com.tzion.jetpackmovies.presentation.findmovies.FindUserInterface
 import com.tzion.jetpackmovies.presentation.findmovies.intenthandler.FindIntentHandler
 import com.tzion.jetpackmovies.presentation.findmovies.intenthandler.FindRequest
-import com.tzion.jetpackmovies.uicomponent.MovieCard
-import com.tzion.jetpackmovies.uicomponent.TopLoading
+import com.tzion.jetpackmovies.uicomponent.card.MovieCard
+import com.tzion.jetpackmovies.uicomponent.progress.TopLoading
 import java.util.Locale
 
 @Composable

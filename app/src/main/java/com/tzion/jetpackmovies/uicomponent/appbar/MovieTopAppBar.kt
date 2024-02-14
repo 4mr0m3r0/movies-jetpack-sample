@@ -1,9 +1,8 @@
-package com.tzion.jetpackmovies.uicomponent
+package com.tzion.jetpackmovies.uicomponent.appbar
 
 import androidx.compose.foundation.layout.RowScope
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -37,19 +36,6 @@ fun MovieTopAppBar(
         windowInsets = windowInsets,
         scrollBehavior = scrollBehavior
     )
-}
-
-@Composable
-fun NavigationArrowBack(
-    navigationEvent: () -> Unit,
-    contentDescription: String,
-) {
-    IconButton(onClick = navigationEvent) {
-        Icon(
-            imageVector = Icons.Filled.ArrowBack,
-            contentDescription = contentDescription
-        )
-    }
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

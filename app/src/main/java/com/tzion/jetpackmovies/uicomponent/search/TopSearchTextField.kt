@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.uicomponent
+package com.tzion.jetpackmovies.uicomponent.search
 
 import androidx.compose.foundation.text.KeyboardActionScope
 import androidx.compose.foundation.text.KeyboardActions

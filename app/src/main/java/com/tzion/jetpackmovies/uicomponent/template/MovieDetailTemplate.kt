@@ -1,6 +1,7 @@
 package com.tzion.jetpackmovies.uicomponent.template
 
 import android.content.Context
+import androidx.annotation.IdRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,8 +15,8 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.skydoves.landscapist.glide.GlideImage
@@ -62,9 +63,9 @@ fun MovieDetailTemplate(
                 text = attributes.votes,
                 modifier = Modifier.padding(start = 24.dp)
             )
-            attributes.tomatoMeterPainter?.let { painter ->
+            attributes.tomatoMeterPainter?.let { id ->
                 Image(
-                    painter = painter,
+                    painter = painterResource(id = id),
                     contentDescription = attributes.tomatoMeterContentDesc,
                     modifier = Modifier
                         .padding(start = 24.dp)
@@ -96,7 +97,7 @@ data class AttrsDetailTemplate(
     val director: String = "",
     val language: String = "",
     val country: String = "",
-    val tomatoMeterPainter: Painter? = null,
+    @IdRes val tomatoMeterPainter: Int? = null,
     val tomatoMeterContentDesc: String? = null,
 )
 

@@ -4,23 +4,23 @@ import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 
 class NavActions(private val navHostController: NavHostController) {
-    fun navigatingWithDrawer(route: Destination) {
-        navHostController.navigate(route = route) {
+    fun navigatingWithDrawer(destination: Destination) {
+        navHostController.navigate(route = destination.route) {
             popUpTo(navHostController.graph.findStartDestination().id) { saveState = true }
             launchSingleTop = true
             restoreState = true
         }
     }
     val findMovie = {
-        navHostController.navigate(route = Route.findMovie)
+        navHostController.navigate(route = Destination.FindMovies.route)
     }
 
     fun movieDetail(movieId: String) {
-        navHostController.navigate(route = Route.makeDetailDestinationWithParam(movieId))
+        navHostController.navigate(route = Destination.MovieDetail.routeWithIdArgument(movieId))
     }
 
     val favoriteMovie = {
-        navHostController.navigate(route = Route.favoriteMovie)
+        navHostController.navigate(route = Destination.FavoriteMovie.route)
     }
 
     val upPress: () -> Unit = {

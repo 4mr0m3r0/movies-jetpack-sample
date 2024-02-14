@@ -12,7 +12,7 @@ fun NavGraphBuilder.findMovie(
     onMenu: () -> Unit,
     navActions: NavActions
 ) = composable(
-    route = Route.findMovie,
+    route = Destination.FindMovies.route,
     enterTransition = { enterTransition },
     exitTransition = { exitTransition },
     popEnterTransition = { popEnterTransition },
@@ -26,7 +26,8 @@ fun NavGraphBuilder.findMovie(
 
 @ExperimentalAnimationApi
 fun NavGraphBuilder.movieDetail(navActions: NavActions) = composable(
-    route = Route.movieDetail,
+    route = Destination.MovieDetail.route,
+//    arguments = listOf(navArgument(Argument.Name.MOVIE_ID) { type = NavType.StringType }),
     enterTransition = { enterTransition },
     exitTransition = { exitTransition },
     popEnterTransition = { popEnterTransition },
@@ -34,13 +35,13 @@ fun NavGraphBuilder.movieDetail(navActions: NavActions) = composable(
 ) { backStackEntry ->
     MovieDetailScreen(
         onBack = navActions.upPress,
-        movieId = backStackEntry.arguments?.getString("movieId").orEmpty()
+//        movieId = backStackEntry.arguments?.getString(Argument.Name.MOVIE_ID).orEmpty()
     )
 }
 
 @ExperimentalAnimationApi
 fun NavGraphBuilder.favoriteMovie(navActions: NavActions) = composable(
-    route = Route.favoriteMovie,
+    route = Destination.FavoriteMovie.route,
     enterTransition = { enterTransition },
     exitTransition = { exitTransition },
     popEnterTransition = { popEnterTransition },

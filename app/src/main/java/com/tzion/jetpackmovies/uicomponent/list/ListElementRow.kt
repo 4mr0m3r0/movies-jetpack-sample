@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.uicomponent
+package com.tzion.jetpackmovies.uicomponent.list
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column

@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.uicomponent
+package com.tzion.jetpackmovies.uicomponent.card
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Box

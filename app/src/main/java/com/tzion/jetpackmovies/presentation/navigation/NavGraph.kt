@@ -38,7 +38,7 @@ import kotlinx.coroutines.launch
 
 @ExperimentalAnimationApi
 @Composable
-fun NavGraph(startDestination: Destination = Route.findMovie) {
+fun NavGraph(startDestination: Destination = Destination.FindMovies) {
     val navController = rememberNavController()
     val navActions = remember(navController) { NavActions(navController) }
     val drawerState = rememberDrawerState(DrawerValue.Closed)
@@ -47,8 +47,8 @@ fun NavGraph(startDestination: Destination = Route.findMovie) {
     var selectedItem by remember { mutableStateOf(items[0]) }
     navController.addOnDestinationChangedListener { _, destination, _ ->
         when (destination.route) {
-            Route.findMovie -> selectedItem = items.first()
-            Route.favoriteMovie -> selectedItem = items.last()
+            Destination.FindMovies.route -> selectedItem = items.first()
+            Destination.FavoriteMovie.route -> selectedItem = items.last()
         }
     }
     ModalNavigationDrawer(
@@ -96,7 +96,7 @@ fun MovieNavHost(
 ) {
     NavHost(
         navController = navController,
-        startDestination = startDestination
+        startDestination = startDestination.route
     ) {
         findMovie(
             onMenu = { scope.launch { drawerState.open() } },
@@ -117,12 +117,12 @@ private fun Companion.defaultDrawerItems(context: Context): List<DrawerItem> = l
         purpose = Purpose.FIND,
         name = context.getString(R.string.find_a_movie),
         icon = Icons.Default.Search,
-        route = Route.findMovie
+        route = Destination.FindMovies
     ),
     DrawerItem(
         purpose = Purpose.FAVORITE,
         name = context.getString(R.string.favorites_movies),
         icon = Icons.Default.Favorite,
-        route = Route.favoriteMovie
+        route = Destination.FavoriteMovie
     ),
 )

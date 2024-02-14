@@ -1,9 +1,6 @@
 package com.tzion.jetpackmovies.presentation.mapper
 
 import android.content.Context
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.domain.entities.Movie
 import com.tzion.jetpackmovies.domain.entities.TomatoMeter
@@ -14,9 +11,8 @@ import com.tzion.jetpackmovies.uicomponent.template.AttrsDetailTemplate
 import dagger.hilt.android.qualifiers.ApplicationContext
 import javax.inject.Inject
 
-class ViewMovieDetailMapper @Inject constructor(@ApplicationContext val context: Context) {
+class UiMovieDetailMapper @Inject constructor(@ApplicationContext val context: Context) {
 
-    @Composable
     fun Movie.Information.toAttributes(): AttrsDetailTemplate {
         val (painterRes, descriptionRes) = getTomatoIconAndDescription(tomatoMeter)
         return AttrsDetailTemplate(
@@ -33,8 +29,8 @@ class ViewMovieDetailMapper @Inject constructor(@ApplicationContext val context:
             poster = image.orEmpty(),
             rating = "${context.getString(R.string.rating)}: $rating",
             votes = "$votes ${context.getString(R.string.votes)}",
-            tomatoMeterPainter = painterResource(id = painterRes),
-            tomatoMeterContentDesc = stringResource(id = descriptionRes)
+            tomatoMeterPainter = painterRes,
+            tomatoMeterContentDesc = context.getString(descriptionRes)
         )
     }
 

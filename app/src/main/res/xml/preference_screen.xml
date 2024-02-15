@@ -4,7 +4,7 @@
 
     <PreferenceCategory
         android:key="notification_category"
-        android:title="@string/make_a_search">
+        android:title="@string/find_a_movie">
         <SwitchPreferenceCompat
             android:key="switch_candle_lighting_notification"
             android:title="@string/search_title"

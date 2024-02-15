@@ -5,6 +5,7 @@ import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
 import android.os.Build
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import com.tzion.jetpackmovies.R
@@ -12,6 +13,7 @@ import com.tzion.jetpackmovies.common.NotificationChannelRegister
 import com.tzion.jetpackmovies.ui.MainActivity
 import javax.inject.Inject
 
+@ExperimentalAnimationApi
 class NotificationBuilder @Inject constructor(
     private val notificationRegister: NotificationChannelRegister
 ) {

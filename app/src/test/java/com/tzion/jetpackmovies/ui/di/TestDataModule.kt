@@ -1,9 +1,9 @@
 package com.tzion.jetpackmovies.ui.di
 
-import com.nhaarman.mockito_kotlin.mock
-import com.tzion.jetpackmovies.domain.repository.Repository
+import com.tzion.jetpackmovies.domain.boundary.DataGateway
 import dagger.Module
 import dagger.Provides
+import io.mockk.mockk
 import javax.inject.Singleton
 
 @Module
@@ -12,7 +12,7 @@ object TestDataModule {
     @Provides
     @JvmStatic
     @Singleton
-    fun providesDataRepository(): Repository {
-        return mock()
+    fun providesDataRepository(): DataGateway {
+        return mockk()
     }
 }

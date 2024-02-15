@@ -1,17 +1,17 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
-apply plugin: "androidx.navigation.safeargs.kotlin"
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "kotlin-kapt"
+    alias(libs.plugins.dagger.hilt.android)
+}
 
 android {
-    compileSdkVersion rootProject.compileSdkVersion
-    buildToolsVersion rootProject.buildToolsVersion
+    namespace = "com.tzion.jetpackmovies"
+    compileSdk 34
     defaultConfig {
         applicationId "com.tzion.jetpack"
-        minSdkVersion rootProject.minSdkVersion
-        targetSdkVersion rootProject.targetSdkVersion
+        minSdkVersion 21
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -24,12 +24,12 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_17.toString()
     }
 
     flavorDimensions "default"
@@ -53,28 +53,89 @@ android {
     }
 
     buildFeatures {
-        dataBinding = true
-        viewBinding = true
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
 
     testOptions.unitTests.includeAndroidResources = true
+
+    //https://stackoverflow.com/questions/44342455/more-than-one-file-was-found-with-os-independent-path-meta-inf-license
+    //https://github.com/mockk/mockk/issues/1049
+    packagingOptions {
+        resources.excludes.add("META-INF/LICENSE.md")
+        resources.excludes.add("META-INF/LICENSE-notice.md")
+        resources.excludes.add("MANIFEST.MF")
+    }
 }
 
 kapt {
     correctErrorTypes = true
-    generateStubs = true
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    def dependencies = rootProject.ext.dependencies
-    def kaptDependencies = rootProject.ext.kaptDependencies
-    def testDependencies = rootProject.ext.testDependencies
+    implementation(platform(libs.compose.bom))
+    implementation libs.accompanist.navigation.animation
+    implementation libs.hilt.android
+    implementation libs.hilt.navigation.compose
+    implementation libs.activity.compose
+    implementation libs.appcompat
+    implementation libs.core.ktx
+    implementation libs.compose.ui.main
+    implementation libs.compose.foundation
+    implementation libs.compose.material3
+    implementation libs.compose.material.icons.core
+    implementation libs.coroutines.android
+    implementation libs.glide.main
+    implementation libs.gson
+    implementation libs.landscapist
+    implementation libs.lifecycle.viewmodel.compose
+    implementation libs.lifecycle.runtime
+    implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.lifecycle.compose
+    implementation libs.lottie
+    implementation libs.navigation.compose
+    implementation libs.okhttp.main
+    implementation libs.okhttp.logging.interceptor
+    implementation libs.paging
+    implementation libs.preference.ktx
+    implementation libs.retrofit.main
+    implementation libs.retrofit.converter.gson
+    implementation libs.room.runtime
+    implementation libs.room.ktx
+    implementation libs.timber
+    implementation libs.work
 
-    implementation dependencies
-    kapt kaptDependencies
+    kapt libs.hilt.compiler
+    kapt libs.lifecycle.compiler
+    kapt libs.glide.compiler
+    kapt libs.room.compiler
 
-    testImplementation testDependencies
+    testImplementation libs.test.compose.ui
+    testImplementation libs.test.junit
+    testImplementation libs.test.kotlin.junit
+    testImplementation libs.test.assertj.core
+    testImplementation libs.test.mockk.main
+    testImplementation libs.test.arch
+    testImplementation libs.test.room
+    testImplementation libs.test.robolectric
 
-    androidTestImplementation androidTestDependencies
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation libs.android.test.runner
+    androidTestImplementation libs.android.test.espresso.core
+    androidTestImplementation libs.android.test.rules
+    androidTestImplementation libs.android.test.ext
+    androidTestImplementation libs.android.test.espresso.contrib
+    androidTestImplementation libs.test.compose.ui
+    androidTestImplementation libs.test.hilt.android
+    androidTestImplementation libs.test.mockk.android
+//    androidTestImplementation libs.test.mockk.agent
+
+    kaptAndroidTest libs.test.hilt.compiler
+
+    debugImplementation(platform(libs.compose.bom))
+    debugImplementation libs.compose.ui.tooling.main
+    debugImplementation libs.test.compose.manifest
 }

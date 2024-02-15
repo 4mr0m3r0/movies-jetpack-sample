@@ -1,46 +1,91 @@
 # Movies
-![State](https://img.shields.io/badge/kotlin-v1.5.10-blueviolet)
-![State](https://img.shields.io/badge/gradle-v6.7.1-blue)
+
+![State](https://img.shields.io/badge/kotlin-v1.9.20-blueviolet)
+![State](https://img.shields.io/badge/gradle-v8.1.0-blue)
 ![State](https://img.shields.io/badge/Detekt-passing-brightgreen)
 ![State](https://img.shields.io/badge/UnitTest-incomplete-red)
 
-A demo Android app with: 
- * Kotlin Flow. 
- * Coroutines. 
- * Jetpack Components: Paging, Navigation, WorkManager, Hilt. 
- * Android KTK.
- * Clean Architecture.
- 
+## 🚧 👷🏗️  Under Modifications  🔨👷 🚧
 
-Description
-------------  
-Find movies by name. See the details of the movie chose. You can add it as a favorite. List all the favorite movies you added.
+# Table of Contents
 
-### Screenshots
+1. [Description](#description)
+   1. [Skills you may find](#skills-you-may-find)
+   2. [Design Patterns implemented](#design-patterns-implemented)
+   2. [Flowchart](#flowchart)
+   3. [Screenshots](#screenshots)
+2. [Resources](#resources)
+3. [Conferences](#conferences)
+4. [Youtube Channels](#youtube-channels)
+5. [More Android Samples](#more-android-samples)
+
+# Description
+
+With this demo app you may search movies by name, see the details of it, or mark it as a favorite
+one.
+Moreover, you will find a section listing favorite movies you chose.
+
+## Skills you may find
+
+| Jetpack       | Kotlin & Quality    | Dependency Management | Others        | Testing           |
+|---------------|---------------------|-----------------------|---------------|-------------------|
+| `Compose`     | `Coroutines`        | `Version Catalogs`    | `Landscapist` | `MockK`           |
+| `WorkManager` | `Asynchronous Flow` | `TOML`                | `Material 3`  | `ComposeTestRule` |
+| `Hilt`        | `Detekt`            | `Gradle Kotlin DSL`   | `Retrofit`    |                   |
+| `Room`        | `Ktlint`            |                       | `OkHttp`      |                   |
+| `Paging`      |                     |                       | `Timber`      |                   |
+| `Navigation`  |                     |                       | `Lottie`      |                   |
+
+## Design Patterns implemented
+
+| Creational | Structural | Behavioral              |
+|------------|------------|-------------------------|
+| Singleton  | Facade     | Command                 |
+|            |            | Chain of Responsibility |
+|            |            | State                   |
+
+## Flowchart
+
+```mermaid
+graph LR
+A[Navigation Drawer] --> B[Find Movie Screen]
+A --> G
+B -- input search --> C{Any Result?}
+C -- Yes --> D[Listing Movies Screen]
+C -- No --> E[Empty Screen]
+D -- select --> F[Detail Screen]
+F -- add to favorites --> F
+G[Favorite Screen]
+```
+
+## Screenshots
+
 ![Default Screen](screenshots/default.png "Default Screen")
-![Search Screen](screenshots/search.png "Search Screen")
+![Search Screen](screenshots/searching.png "Search Screen")
 ![Detail Screen](screenshots/detail.png "Detail Screen")
 ![Add to Favorite Screen](screenshots/add_favorite.png "Add to Favorite Screen")
 ![Menu Screen](screenshots/menu.png "Menu Screen")
 ![Favorites Screen](screenshots/favorites.png "Favorites Screen")
 
-Useful Resources for Learning
-----------------------------
+# Resources
+![Default Screen](https://blog.jetbrains.com/wp-content/uploads/2019/01/kotlin-2.svg)
+* 📝 **Kotlin Docs:** https://kotlinlang.org/docs/home.html
+* 🚀 **Kotlin Release:** https://github.com/JetBrains/kotlin/releases
+* 📣 **Kotlin Blog:** https://blog.jetbrains.com/kotlin/
+* 🎥 **Kotlin Youtube Channel:** https://www.youtube.com/channel/UCP7uiEZIqci43m22KDl0sNw
+* 🤖 **Kotlin Reddit:** https://www.reddit.com/r/Kotlin/
+* 🤯 **Kotlin StackOverflow:** https://stackoverflow.com/questions/tagged/kotlin
+* 🗺️ **Kotlin Community:** https://kotlinlang.org/community/
 
-### Kotlin Flow
-kotlinlang.org [link][1]
 
-### Coroutines
-kotlinlang.org [link][2]
+![Default Screen](https://developer.android.com/static/images/logos/android.svg)
 
-### Jetpack Components
-Android Developers Website [link][3]
+* 📝 **Platform Architecture:** https://developer.android.com/guide/platform
+* 👩‍💻👨‍💻 **Android Developers:** https://developer.android.com/
+* **Android Jetpack:** https://developer.android.com/jetpack
 
 #### Samples
  * [Sunflower][4]: A Demo app uses many different Jetpack components to demonstrate Android development best practices. Checkout the code [here][5].
-
-### Hilt
-Main doc [here][6]
 
 ### Clean Architecture
 ![CleanArchitecture](screenshots/CleanArchitecture.jpg "Clean Architecture")
@@ -59,12 +104,10 @@ Main doc [here][6]
 * [Android Architecture Patterns Part 3: Model-View-ViewModel][14] by Florina Muntenescu 
 * [Why to choose MVVM over MVP — Android Architecture][15]
 
-Conferences
-----------------
+# Conferences
 Look inside Videos in www.droidcon.com [website][16]
 
-Youtube Channels
-----------------
+# Youtube Channels
 * [Android Developers][17]
 * [droidcon NYC][18]
 * [Droidcon Italy][19]
@@ -72,20 +115,23 @@ Youtube Channels
 * [droidcon Berlin][21]
 * [Android Programming Dev tutorials][22]
 
-Other samples
--------------
-* MVI - RxJava with modules as layers [here][23]
-* MVI - Kotlin Flow and modularization with dynamic features [here][24]
-* Compose with Atomic Design approach [here][25]
+# More Android Samples
+For more samples in this series of Android Development, please, feel free to check them. Each one of them 
+cover an specific topic.  
+* **Modularization by layers.** _Skills: MVI, RxJava._ 👉 https://github.com/4mr0m3r0/movies-mvi-sample
+* **Modularization by features.** _Skills: MVI, Coroutines, Flow._ 👉 https://github.com/4mr0m3r0/movies-modularization-sample
+* **Implementing a Design System.** _Skills: Jetpack Compose, Atomic Design Methodology._ 👉 https://github.com/4mr0m3r0/atomic-design-sample
+* **Android Services.** _Skills: Services, Broadcast Receivers, Content Providers._ 👉 https://github.com/4mr0m3r0/android-services-sample 
 
 
-[1]: https://kotlinlang.org/docs/reference/coroutines/flow.html
-[2]: https://kotlinlang.org/docs/reference/coroutines/coroutines-guide.html
-[3]: https://developer.android.com/jetpack
 [4]: https://medium.com/androiddevelopers/introducing-android-sunflower-e421b43fe0c2
+
 [5]: https://github.com/android/sunflower
+
 [6]: https://developer.android.com/training/dependency-injection/hilt-android
+
 [7]: https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+
 [8]: https://five.agency/android-architecture-part-1-every-new-beginning-is-hard/
 [9]: https://github.com/android10/Android-CleanArchitecture
 [10]: https://www.amazon.com/Clean-Architecture-Craftsmans-Software-Structure/dp/0134494164/ref=sr_1_2?ie=UTF8&qid=1541340796&sr=8-2&keywords=clean+architecture
@@ -101,32 +147,3 @@ Other samples
 [20]: https://www.youtube.com/channel/UCKubKoe1CBw_-n_GXetEQbg
 [21]: https://www.youtube.com/channel/UCF4O2pQ8vBV8YmSAWb5QRPw
 [22]: https://www.youtube.com/channel/UCSwuCetC3YlO1Y7bqVW5GHg
-[23]: https://github.com/4mr0m3r0/movies-mvi-sample
-[24]: https://github.com/4mr0m3r0/movies-modularization-sample
-[25]: https://github.com/4mr0m3r0/atomic-design-sample
-
-License
--------
-````
-MIT License
-
-Copyright (c) 2019 Angel Manuel Romero Alfonso
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-````

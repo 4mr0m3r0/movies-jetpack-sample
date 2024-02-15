@@ -3,4 +3,8 @@
     <dimen name="text_size_headline_h5">24sp</dimen>
     <dimen name="text_size_body_2">14sp</dimen>
     <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="top_app_bar_elevation">4dp</dimen>
+    <dimen name="snackbar_padding">8dp</dimen>
+    <dimen name="listing_image_width">84dp</dimen>
+    <dimen name="listing_row_padding">16dp</dimen>
 </resources>

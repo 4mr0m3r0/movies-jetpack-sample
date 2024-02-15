@@ -1,3 +1,19 @@
-rootProject.name='Movies Jetpack Sample'
+pluginManagement {
+    repositories {
+        google()
+        mavenCentral()
+        gradlePluginPortal()
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
+rootProject.name = "Movies Jetpack Sample"
 
 include ':app'
+include ':libraries:ui-components'

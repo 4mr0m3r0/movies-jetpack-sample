@@ -7,7 +7,7 @@
         <item
             android:id="@+id/findMoviesByNameFragment"
             android:icon="@drawable/ic_search_gray_96dp"
-            android:title="@string/make_a_search" />
+            android:title="@string/find_a_movie" />
         <item
             android:id="@+id/favoriteMoviesFragment"
             android:icon="@drawable/ic_favorite_menu"
@@ -16,3 +16,4 @@
     </group>
 
 </menu>
+<!-- TODO: Remove this file -->

@@ -1,11 +1,13 @@
 package com.tzion.jetpackmovies.device.worker
 
+import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.work.Constraints
 import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequest
 import androidx.work.PeriodicWorkRequestBuilder
 import java.util.concurrent.TimeUnit
 
+@ExperimentalAnimationApi
 class FavoriteMovieWorkRequest {
 
     fun makeFavoriteMovieWorkRequest(): PeriodicWorkRequest {

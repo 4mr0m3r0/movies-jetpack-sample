@@ -12,14 +12,4 @@
         <item name="android:textColor">@color/primaryFont</item>
     </style>
 
-    <style name="HeadlineH5" parent="DefaultColorStyle">
-        <item name="android:fontFamily">@font/chelseamarket_regular</item>
-        <item name="android:textSize">@dimen/text_size_headline_h5</item>
-    </style>
-
-    <style name="Body2" parent="DefaultColorStyle">
-        <item name="android:fontFamily">@font/roboto_regular</item>
-        <item name="android:textSize">@dimen/text_size_body_2</item>
-    </style>
-
 </resources>

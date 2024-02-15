@@ -65,6 +65,7 @@ landscapist = { group = "com.github.skydoves", name = "landscapist-glide", versi
 lifecycle-compiler = { group = "androidx.lifecycle", name = "lifecycle-compiler", version.ref = "lifecycle" }
 lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "lifecycle" }
 lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
+lottie = "com.airbnb.android:lottie-compose:5.0.3"
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
 okhttp-main = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp" }
 okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp" }

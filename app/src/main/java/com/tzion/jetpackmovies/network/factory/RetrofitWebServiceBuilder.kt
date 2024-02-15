@@ -6,7 +6,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-class RetrofitWebServiceFactory <T> {
+class RetrofitWebServiceBuilder <T> {
 
     fun makeRemoteRestApi(isDebug: Boolean, tClass: Class<T>, baseUrl: String): T {
         val okHttpClient = makeOkHttpClient(makeLoggingInterceptor(isDebug))

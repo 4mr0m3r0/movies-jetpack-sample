@@ -29,12 +29,12 @@ Moreover, you will find a section listing favorite movies you chose.
 
 | Jetpack       | Kotlin & Quality    | Dependency Management | Others        | Testing           |
 |---------------|---------------------|-----------------------|---------------|-------------------|
-| `Compose`     | `Coroutines`        | `Version Catalogs`    | `Landscapist` | `Mockk`           |
-| `WorkManager` | `Asynchronous Flow` | `Gradle Kotlin DSL`   | `Material 3`  | `ComposeTestRule` |
-| `Hilt`        | `Detekt`            |                       | `Retrofit`    |                   |
+| `Compose`     | `Coroutines`        | `Version Catalogs`    | `Landscapist` | `MockK`           |
+| `WorkManager` | `Asynchronous Flow` | `TOML`                | `Material 3`  | `ComposeTestRule` |
+| `Hilt`        | `Detekt`            | `Gradle Kotlin DSL`   | `Retrofit`    |                   |
 | `Room`        | `Ktlint`            |                       | `OkHttp`      |                   |
 | `Paging`      |                     |                       | `Timber`      |                   |
-| `Navigation`  |                     |                       |               |                   |
+| `Navigation`  |                     |                       | `Lottie`      |                   |
 
 ## Design Patterns implemented
 

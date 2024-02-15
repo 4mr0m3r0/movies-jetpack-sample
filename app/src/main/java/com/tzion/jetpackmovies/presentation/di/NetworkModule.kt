@@ -1,9 +1,9 @@
 package com.tzion.jetpackmovies.presentation.di
 
-import com.tzion.jetpackmovies.common.EndpointConstantsHelper
 import com.tzion.jetpackmovies.domain.boundary.RemoteFacade
 import com.tzion.jetpackmovies.network.MovieNetwork
-import com.tzion.jetpackmovies.network.factory.RetrofitWebServiceFactory
+import com.tzion.jetpackmovies.network.config.WebServiceConfig
+import com.tzion.jetpackmovies.network.factory.RetrofitWebServiceBuilder
 import com.tzion.jetpackmovies.network.retrofit.WebServiceRetrofit
 import dagger.Binds
 import dagger.Module
@@ -25,10 +25,10 @@ interface NetworkModule {
 
         @Provides
         fun provideWebServiceRetrofit(): WebServiceRetrofit {
-            return RetrofitWebServiceFactory<WebServiceRetrofit>().makeRemoteRestApi(
+            return RetrofitWebServiceBuilder<WebServiceRetrofit>().makeRemoteRestApi(
                 isDebug = true,
                 tClass = WebServiceRetrofit::class.java,
-                baseUrl = EndpointConstantsHelper.REST_API_SERVER
+                baseUrl = WebServiceConfig.BASE_URL
             )
         }
     }

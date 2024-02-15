@@ -9,30 +9,30 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.tzion.jetpackmovies.uicomponent.theme.MoviesTheme
 
 @Composable
-fun HeadlineH5(text: String, modifier: Modifier = Modifier) {
+fun HeadlineLarge(text: String, modifier: Modifier = Modifier) {
     Text(
         text = text,
-        style = MaterialTheme.typography.titleLarge,
+        style = MaterialTheme.typography.headlineLarge,
         modifier = modifier
     )
 }
 
-@Preview("HeadlineH5 Light")
+@Preview("Light")
 @Composable
-fun PreviewHeadlineH5Light() {
+private fun PreviewLight() {
     MoviesTheme {
         Surface {
-            HeadlineH5("HeadlineH5")
+            HeadlineLarge("Headline Large")
         }
     }
 }
 
-@Preview("HeadlineH5 Dark")
+@Preview("Dark")
 @Composable
-fun PreviewHeadlineH5Dark() {
+private fun PreviewDark() {
     MoviesTheme(darkTheme = true) {
         Surface {
-            HeadlineH5("HeadlineH5")
+            HeadlineLarge("Headline Large")
         }
     }
 }

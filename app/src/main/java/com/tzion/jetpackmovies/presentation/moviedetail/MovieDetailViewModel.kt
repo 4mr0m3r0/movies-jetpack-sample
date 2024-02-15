@@ -29,16 +29,6 @@ class MovieDetailViewModel @Inject constructor(
     } catch (e: Exception) {
         DetailUserInterface(errorMessage = e.localizedMessage)
     }
-//            uiState.value = MovieDetailUiState.Loading
-//            getMovieDetail
-//                .getMovieDetailById(movieId)
-//                .map { domainMovieDetail ->
-//                    with(mapper) { domainMovieDetail.fromDomainToUi() }
-//                }
-//                .catch { uiState.value = MovieDetailUiState.Error }
-//                .collect { uiMovieDetail ->
-//                    uiState.value = MovieDetailUiState.Display(uiMovieDetail)
-//                }
 
     fun addMovieToFavorites(movieId: String, favoriteMovie: Movie.Favorite) {
         viewModelScope.launch {

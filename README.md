@@ -14,10 +14,11 @@
    2. [Flowchart](#flowchart)
    3. [Skills you may find](#skills-you-may-find)
    4. [Design Patterns implemented](#design-patterns-implemented)
+   5. [Domain model](#domain-model)
+   6. [Architecture](#architecture)
 2. [Resources](#resources)
-3. [Conferences](#conferences)
-4. [Youtube Channels](#youtube-channels)
-5. [More Android Samples](#more-android-samples)
+3. [Community](#community)
+4. [Additional Android Samples](#additional-android-samples)
 
 # Description
 
@@ -68,11 +69,14 @@ G[Favorite Screen]
 |            |            | State                   |
 
 ## Domain Model
-The Domain Model pattern is shown here in a very simple way. 
-You will find only a few entities such as: `Movie` and `TomatoMeter`.
+The Domain Model pattern is shown here in a very simple way.   
+This project is trying to follow the ideas explained in [Domain-Driven Design book of Eric Evans](https://a.co/d/hnmkp9y).  
+Yet, there are only a few entities, so far, such as: `Movie` and `TomatoMeter`.
 
 ## Architecture
-Read the Clean Code blog: https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
+It's strongly recommended to read [Clean Architecture book of Robert C. Martin](https://a.co/d/2zkv7YX) 
+for a better understanding and avoiding misconceptions out there.   
+As a glimpse, read Clean Code blog: https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html
 ![CleanArchitecture](screenshots/CleanArchitecture.jpg "Clean Architecture")
 
 # Resources

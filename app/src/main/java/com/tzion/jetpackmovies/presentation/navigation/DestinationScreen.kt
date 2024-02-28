@@ -3,9 +3,9 @@ package com.tzion.jetpackmovies.presentation.navigation
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
-import com.tzion.jetpackmovies.presentation.findmovies.FindMovieScreen
+import com.tzion.jetpackmovies.presentation.favorites.FavoriteMoviesScreen
 import com.tzion.jetpackmovies.presentation.moviedetail.MovieDetailScreen
-import com.tzion.jetpackmovies.ui.favoriteMovies.FavoriteMoviesScreen
+import com.tzion.jetpackmovies.presentation.search.FindMovieScreen
 
 @ExperimentalAnimationApi
 fun NavGraphBuilder.findMovie(

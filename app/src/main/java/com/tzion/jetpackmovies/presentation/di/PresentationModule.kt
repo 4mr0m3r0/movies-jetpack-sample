@@ -1,11 +1,11 @@
 package com.tzion.jetpackmovies.presentation.di
 
-import com.tzion.jetpackmovies.presentation.findmovies.SearchMovieIntent
-import com.tzion.jetpackmovies.presentation.findmovies.TapOnAMovieIntent
-import com.tzion.jetpackmovies.presentation.findmovies.intenthandler.FindIntentHandler
-import com.tzion.jetpackmovies.presentation.findmovies.intenthandler.SearchKeyboard
-import com.tzion.jetpackmovies.presentation.findmovies.intenthandler.SearchTopBar
-import com.tzion.jetpackmovies.presentation.findmovies.intenthandler.TapCard
+import com.tzion.jetpackmovies.presentation.search.SearchMovieIntent
+import com.tzion.jetpackmovies.presentation.search.TapOnAMovieIntent
+import com.tzion.jetpackmovies.presentation.search.intenthandler.FindIntentHandler
+import com.tzion.jetpackmovies.presentation.search.intenthandler.SearchKeyboard
+import com.tzion.jetpackmovies.presentation.search.intenthandler.SearchTopBar
+import com.tzion.jetpackmovies.presentation.search.intenthandler.TapCard
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

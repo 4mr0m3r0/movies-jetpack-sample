@@ -1,7 +1,7 @@
 package com.tzion.jetpackmovies.presentation.moviedetail
 
 import com.tzion.jetpackmovies.domain.SeeMovieDetail
-import com.tzion.jetpackmovies.presentation.favoritemovies.UserIntent
+import com.tzion.jetpackmovies.presentation.favorites.UserIntent
 
 
 class EnterDetailSection(private val seeMovieDetail: SeeMovieDetail) : UserIntent {

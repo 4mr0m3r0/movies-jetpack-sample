@@ -104,7 +104,11 @@ As a glimpse, read Clean Code blog: https://blog.cleancoder.com/uncle-bob/2012/0
 # Additional Android Samples
 For more samples in this series of Android Development, please, feel free to check them. Each one of them 
 cover a specific topic.
-* **Modularization by layers.** _Skills: MVI, RxJava._ 👉 https://github.com/4mr0m3r0/movies-mvi-sample
-* **Modularization by features.** _Skills: MVI, Coroutines, Flow._ 👉 https://github.com/4mr0m3r0/movies-modularization-sample
-* **Implementing a Design System.** _Skills: Jetpack Compose, Atomic Design Methodology._ 👉 https://github.com/4mr0m3r0/atomic-design-sample
-* **Android Services.** _Skills: Services, Broadcast Receivers, Content Providers._ 👉 https://github.com/4mr0m3r0/android-services-sample
+* **Modularization by layers.** _Skills: MVI, RxJava._  
+  👉 https://github.com/4mr0m3r0/movies-mvi-sample
+* **Modularization by features.** _Skills: MVI, Coroutines, Flow._  
+  👉 https://github.com/4mr0m3r0/movies-modularization-sample
+* **Implementing a Design System.** _Skills: Jetpack Compose, Atomic Design Methodology._  
+  👉 https://github.com/4mr0m3r0/atomic-design-sample
+* **Android Services.** _Skills: Services, Broadcast Receivers, Content Providers._  
+  👉 https://github.com/4mr0m3r0/android-services-sample

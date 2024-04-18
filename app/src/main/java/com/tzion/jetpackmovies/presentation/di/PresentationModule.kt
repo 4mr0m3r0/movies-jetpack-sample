@@ -1,5 +1,6 @@
 package com.tzion.jetpackmovies.presentation.di
 
+import com.tzion.jetpackmovies.domain.posters.FindMoviePosters
 import com.tzion.jetpackmovies.presentation.search.SearchMovieIntent
 import com.tzion.jetpackmovies.presentation.search.TapOnAMovieIntent
 import com.tzion.jetpackmovies.presentation.search.intenthandler.FindIntentHandler
@@ -16,13 +17,13 @@ import dagger.hilt.android.components.ViewModelComponent
 object PresentationModule {
 
     @Provides
-    fun providesChainOfFindIntentHandler(): FindIntentHandler {
+    fun providesChainOfFindIntentHandler(findMoviePosters: FindMoviePosters): FindIntentHandler {
         val searchTopBar: FindIntentHandler = SearchTopBar(
-            userIntent = SearchMovieIntent()
+            userIntent = SearchMovieIntent(findMoviePosters)
         )
         val searchKeyboard: FindIntentHandler = SearchKeyboard(
             successor = searchTopBar,
-            userIntent = SearchMovieIntent()
+            userIntent = SearchMovieIntent(findMoviePosters)
         )
         return TapCard(
             successor = searchKeyboard,

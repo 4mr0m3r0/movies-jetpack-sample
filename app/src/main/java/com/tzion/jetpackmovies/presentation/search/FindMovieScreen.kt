@@ -16,6 +16,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import androidx.paging.compose.collectAsLazyPagingItems
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.presentation.search.FindSideEffect.NavigateToDetail
 import com.tzion.jetpackmovies.presentation.search.composable.DefaultDisplay
@@ -71,12 +72,13 @@ private fun FindMovieContent(
     onTapDetail: (movieId: String) -> Unit = {}
 ) {
     val uiState by viewModel.screenState.collectAsStateWithLifecycle()
+    val posters = viewModel.posters.collectAsLazyPagingItems()
     when  {
         uiState.isEmptyScreen -> DefaultDisplay()
         uiState.thereAreNoResults -> println(">>> There are no results")
         uiState.errorMessage != null -> ErrorMessage(message = uiState.errorMessage)
         else -> MoviesDisplay(
-            screenState = uiState,
+            posters = posters,
             paddingValues = paddingValues,
             intentHandler = viewModel.intentHandler,
             sendUserIntent = viewModel.sendUserIntent,

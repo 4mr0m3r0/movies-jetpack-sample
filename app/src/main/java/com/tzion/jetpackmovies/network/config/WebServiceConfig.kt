@@ -3,6 +3,7 @@ package com.tzion.jetpackmovies.network.config
 object WebServiceConfig {
     const val BASE_URL = "http://www.omdbapi.com"
     const val SEARCH_CRITERIA = "s"
+    const val PAGE = "page"
     const val ID_CRITERIA = "i"
     const val PLOT_CRITERIA = "plot"
     const val PLOT_FULL = "full"

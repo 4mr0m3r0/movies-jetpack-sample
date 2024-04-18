@@ -1,11 +1,11 @@
 [versions]
 accompanist = "0.32.0" #https://github.com/google/accompanist/releases
-activityCompose = "1.8.1"
+activityCompose = "1.8.2"
 androidGradlePlugin = "8.1.0"
 appCompat = "1.4.0" #https://developer.android.com/jetpack/androidx/releases/appcompat
 archCoreTesting = "2.1.0"
 assertJ = "3.16.1"
-composeBoM = "2023.10.01"
+composeBoM = "2024.04.00"
 compose-compiler = "1.5.4" #https://developer.android.com/jetpack/androidx/releases/compose-kotlin
 dagger = "2.48" #https://github.com/google/dagger/releases/
 coreKtx = "1.7.0"
@@ -27,7 +27,7 @@ material = "1.1.0" #legacy
 mockk = "1.13.8"
 navigation = "2.7.5" #https://developer.android.com/jetpack/androidx/releases/navigation
 okHttp = "4.9.0"
-paging = "2.1.2"
+paging = "3.2.1"
 preference = "1.1.0" #legacy
 retrofit = "2.9.0"
 robolectric = "4.7.3"
@@ -47,8 +47,8 @@ compose-foundation = { group = "androidx.compose.foundation", name = "foundation
 compose-material3 = { group = "androidx.compose.material3", name = "material3" }
 compose-material-icons-core = { group = "androidx.compose.material", name = "material-icons-core" }
 compose-material-icons-extended = { group = "androidx.compose.material", name = "material-icons-extended" }
-compose-ui-main = { group = "androidx.compose.ui", name = "ui" }
-compose-ui-tooling-main = { group = "androidx.compose.ui", name = "ui-tooling" }
+compose-ui = { group = "androidx.compose.ui", name = "ui" }
+compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutinesAndroid" }
@@ -67,10 +67,11 @@ lifecycle-viewmodel-compose = { group = "androidx.lifecycle", name = "lifecycle-
 lifecycle-compose = { group = "androidx.lifecycle", name = "lifecycle-runtime-compose", version.ref = "lifecycle" }
 lottie = "com.airbnb.android:lottie-compose:5.0.3"
 navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
-okhttp-main = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp" }
+okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okHttp" }
 okhttp-logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okHttp" }
-paging = { group = "androidx.paging", name = "paging-runtime", version.ref = "paging" }
-retrofit-main = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+paging = { module = "androidx.paging:paging-runtime", version.ref = "paging" }
+paging-compose = { module = "androidx.paging:paging-compose", version = "3.3.0-beta01" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
 retrofit-converter-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
@@ -88,13 +89,10 @@ navigation-fragment-ktx = { group = "androidx.navigation", name = "navigation-fr
 navigation-ui-ktx = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 preference-ktx = { group = "androidx.preference", name = "preference-ktx", version.ref = "preference" }
-#testing
-test-compose-ui = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-test-compose-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
-test-junit = { group = "junit", name = "junit", version.ref = "jUnit" }
+
 test-kotlin-junit = { group = "org.jetbrains.kotlin", name = "kotlin-test-junit", version.ref = "kotlin" }
 test-assertj-core = { group = "org.assertj", name = "assertj-core", version.ref = "assertJ" }
-test-mockk-main = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+test-mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
 test-mockk-android = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
 test-mockk-agent = { group = "io.mockk", name = "mockk-agent", version.ref = "mockk" }
 test-core = { group = "androidx.test", name = "core", version.ref = "testCore" }
@@ -103,11 +101,29 @@ test-room = { group = "androidx.room", name = "room-testing", version.ref = "roo
 test-robolectric = { group = "org.robolectric", name = "robolectric", version.ref = "robolectric" }
 test-hilt-android = { group = "com.google.dagger", name = "hilt-android-testing", version.ref = "dagger" }
 test-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "dagger" }
+android-test-compose-ui = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+android-test-compose-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 android-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 android-test-ext = { group = "androidx.test.ext", name = "junit", version.ref = "extJUnit" }
 android-test-rules = { group = "androidx.test", name = "rules", version.ref = "rules" }
 android-test-runner = { group = "androidx.test", name = "runner", version.ref = "runner" }
 android-test-espresso-contrib = { group = "androidx.test.espresso", name = "espresso-contrib", version.ref = "espressoCore" }
+android-test-paging = { module = "androidx.paging:paging-common", version.ref = "paging" }
+
+[bundles]
+compose = [
+    "activity-compose", "compose-foundation", "compose-material3", "compose-material-icons-core",
+    "compose-ui", "compose-ui-tooling-preview"
+]
+lifecycle = [
+    "lifecycle-viewmodel-compose", "lifecycle-runtime", "lifecycle-viewmodel-ktx", "lifecycle-compose"
+]
+network = [
+    "okhttp", "okhttp-logging-interceptor", "retrofit", "retrofit-converter-gson"
+]
+unitTesting = [
+    "test-kotlin-junit", "test-mockk"
+]
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

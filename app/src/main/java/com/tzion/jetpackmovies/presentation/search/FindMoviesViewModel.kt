@@ -4,6 +4,10 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import com.tzion.jetpackmovies.domain.entities.Movie
+import com.tzion.jetpackmovies.domain.posters.command.SearchPostersCommand
+import com.tzion.jetpackmovies.presentation.search.SearchUserIntent.Search
+import com.tzion.jetpackmovies.presentation.search.SearchUserIntent.SelectPosterAsFavorite
+import com.tzion.jetpackmovies.presentation.search.SearchUserIntent.TapOnPoster
 import com.tzion.jetpackmovies.presentation.search.intenthandler.FindIntentHandler
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -33,6 +37,8 @@ class FindMoviesViewModel @Inject constructor(val intentHandler: FindIntentHandl
         )
     private var job: Job? = null
     val sendUserIntent: (userIntent: FindUserIntent) -> Unit = { processUserIntent(userIntent = it) }
+    val userIntent = MutableSharedFlow<SearchUserIntent>()
+
 //    val screenState = stateMachine.screenState
 //        .buffer(DEFAULT_CAPACITY)
 //        .stateIn(
@@ -96,6 +102,7 @@ class FindMoviesViewModel @Inject constructor(val intentHandler: FindIntentHandl
     private fun processUserIntent(userIntent: FindUserIntent, coroutineScope: CoroutineScope = viewModelScope) {
         job?.cancel()
         job = coroutineScope.launch {
+
             try {
                 userIntent.execute()
                 if (userIntent is SearchMovieIntent) {
@@ -104,6 +111,14 @@ class FindMoviesViewModel @Inject constructor(val intentHandler: FindIntentHandl
             } catch (e: Exception) {
                 _screenState.update { FindUserInterface(errorMessage = e.localizedMessage) }
             }
+        }
+    }
+
+    private fun identifyUserIntents(userIntent: SearchUserIntent) {
+        when (userIntent) {
+            is Search -> SearchPostersCommand().also { it.execute() }
+            SelectPosterAsFavorite -> TODO("Domain command")
+            is TapOnPoster -> TODO("Navigate")
         }
     }
 

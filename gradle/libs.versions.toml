@@ -16,7 +16,6 @@ extJUnit = "1.1.3" #https://developer.android.com/jetpack/androidx/releases/test
 fragmentKtx = "1.4.0" #https://developer.android.com/jetpack/androidx/releases/fragment
 glide = "4.12.0"
 gson = "2.8.6"
-hiltNav = "1.1.0" #https://developer.android.com/jetpack/androidx/releases/hilt
 hiltViewModel = "1.0.0" #https://developer.android.com/jetpack/androidx/releases/hilt
 jUnit = "4.13"
 kotlin = "1.9.20"
@@ -59,7 +58,7 @@ dagger-android-processor = { group = "com.google.dagger", name = "dagger-android
 detekt-formatting = { group = "io.gitlab.arturbosch.detekt", name = "detekt-formatting", version.ref = "detekt" }
 glide-compiler = { group = "com.github.bumptech.glide", name = "compiler", version.ref = "glide" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "dagger" }
-hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNav" }
+hilt-navigation-compose = { group = "androidx.hilt", name = "hilt-navigation-compose", version = "1.2.0" } #https://developer.android.com/jetpack/androidx/releases/hilt
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "dagger" }
 landscapist = { group = "com.github.skydoves", name = "landscapist-glide", version.ref = "landscapist" }
 lifecycle-compiler = { group = "androidx.lifecycle", name = "lifecycle-compiler", version.ref = "lifecycle" }

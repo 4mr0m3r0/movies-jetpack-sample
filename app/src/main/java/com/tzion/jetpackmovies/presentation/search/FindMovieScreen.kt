@@ -19,11 +19,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.tzion.jetpackmovies.R
 import com.tzion.jetpackmovies.presentation.search.FindSideEffect.NavigateToDetail
+import com.tzion.jetpackmovies.presentation.search.SearchUserIntent.FindByTitle
+import com.tzion.jetpackmovies.presentation.search.SearchUserIntent.TapOnPoster
 import com.tzion.jetpackmovies.presentation.search.composable.DefaultDisplay
 import com.tzion.jetpackmovies.presentation.search.composable.ErrorMessage
 import com.tzion.jetpackmovies.presentation.search.composable.FindMovieTopAppBar
 import com.tzion.jetpackmovies.presentation.search.composable.MoviesDisplay
-import com.tzion.jetpackmovies.presentation.search.intenthandler.FindRequest
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -47,10 +48,7 @@ fun FindMovieScreen(
                     }
                 },
                 onSearchEvent = { querySearch ->
-                    viewModel.intentHandler.handleRequest(
-                        request = FindRequest.SearchButton(query = querySearch),
-                        sendUserIntent = viewModel.sendUserIntent
-                    )
+                    viewModel.processUserIntent(FindByTitle(query = querySearch))
                 },
                 scrollBehavior = scrollBehavior
             )
@@ -71,7 +69,7 @@ private fun FindMovieContent(
     paddingValues: PaddingValues,
     onTapDetail: (movieId: String) -> Unit = {}
 ) {
-    val uiState by viewModel.screenState.collectAsStateWithLifecycle()
+    val uiState by viewModel.userInterface.collectAsStateWithLifecycle()
     val posters = viewModel.posters.collectAsLazyPagingItems()
     when  {
         uiState.isEmptyScreen -> DefaultDisplay()
@@ -80,8 +78,9 @@ private fun FindMovieContent(
         else -> MoviesDisplay(
             posters = posters,
             paddingValues = paddingValues,
-            intentHandler = viewModel.intentHandler,
-            sendUserIntent = viewModel.sendUserIntent,
+            onTapCard = {
+                viewModel.processUserIntent(userIntent = TapOnPoster(posterId = it))
+            },
         )
     }
 

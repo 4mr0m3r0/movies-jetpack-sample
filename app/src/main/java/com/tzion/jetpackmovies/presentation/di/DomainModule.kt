@@ -6,7 +6,7 @@ import com.tzion.jetpackmovies.domain.boundary.DataGateway
 import com.tzion.jetpackmovies.domain.boundary.RemoteFacade
 import com.tzion.jetpackmovies.domain.entities.Movie
 import com.tzion.jetpackmovies.domain.entities.TomatoMeter
-import com.tzion.jetpackmovies.domain.posters.FindMoviePosters
+import com.tzion.jetpackmovies.domain.posters.PosterService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,7 +22,7 @@ object DomainModule {
     fun providesMovieEntity(tomatoMeter: TomatoMeter) = Movie(tomatoMeter = tomatoMeter)
 
     @Provides
-    fun providesFindMoviesByNameUseCase(remoteFacade: RemoteFacade, movie: Movie) = FindMoviePosters(
+    fun providesFindMoviesByNameUseCase(remoteFacade: RemoteFacade, movie: Movie) = PosterService(
         remoteFacade = remoteFacade,
         movie = movie
     )

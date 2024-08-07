@@ -17,9 +17,6 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import com.tzion.jetpackmovies.domain.entities.Movie
-import com.tzion.jetpackmovies.presentation.search.FindUserIntent
-import com.tzion.jetpackmovies.presentation.search.intenthandler.FindIntentHandler
-import com.tzion.jetpackmovies.presentation.search.intenthandler.FindRequest
 import com.tzion.jetpackmovies.uicomponent.card.MovieCard
 import com.tzion.jetpackmovies.uicomponent.progress.TopLoading
 import java.util.Locale
@@ -28,8 +25,7 @@ import java.util.Locale
 fun MoviesDisplay(
     posters: LazyPagingItems<Movie.Poster>,
     paddingValues: PaddingValues,
-    intentHandler: FindIntentHandler,
-    sendUserIntent: (userIntent: FindUserIntent) -> Unit,
+    onTapCard: (posterId: String) -> Unit = {},
 ) {
     LazyVerticalStaggeredGrid(
         columns = StaggeredGridCells.Fixed(2),
@@ -43,7 +39,9 @@ fun MoviesDisplay(
         ).fillMaxSize()
     ) {
         if (posters.loadState.refresh == LoadState.Loading) {
-            item { TopLoading(modifier = Modifier.fillMaxWidth()) }
+            item {
+                TopLoading(modifier = Modifier.fillMaxWidth())
+            }
         }
         items(count = posters.itemCount) { index ->
             posters[index]?.let { poster ->
@@ -52,12 +50,7 @@ fun MoviesDisplay(
                     supportingText = poster.type capitalizedAndConcatenatedWith poster.title,
                     contentDescription = poster.title,
                     image = poster.image,
-                    modifier = Modifier.clickable {
-                        intentHandler.handleRequest(
-                            request = FindRequest.TapCard(movieId = poster.movieId),
-                            sendUserIntent = sendUserIntent
-                        )
-                    }
+                    modifier = Modifier.clickable { onTapCard(poster.movieId) }
                 )
             }
         }

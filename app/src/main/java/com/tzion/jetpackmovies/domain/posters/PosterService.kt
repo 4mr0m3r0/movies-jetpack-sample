@@ -9,7 +9,7 @@ import com.tzion.jetpackmovies.domain.posters.pager.PostingPagingSource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.emptyFlow
 
-class FindMoviePosters(
+class PosterService(
     private val remoteFacade: RemoteFacade,
     private val movie: Movie,
 ) {

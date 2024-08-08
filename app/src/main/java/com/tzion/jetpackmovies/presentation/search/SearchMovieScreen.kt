@@ -28,10 +28,10 @@ import com.tzion.jetpackmovies.presentation.search.composable.MoviesDisplay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FindMovieScreen(
+fun SearchMovieScreen(
     onMenu: () -> Unit,
     onTapDetail: (movieId: String) -> Unit = {},
-    viewModel: FindMoviesViewModel = hiltViewModel<FindMoviesViewModel>()
+    viewModel: SearchMoviesViewModel = hiltViewModel<SearchMoviesViewModel>()
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
     Scaffold(
@@ -54,7 +54,7 @@ fun FindMovieScreen(
             )
         },
         content = { paddingValues ->
-            FindMovieContent(
+            SearchMovieContent(
                 viewModel = viewModel,
                 paddingValues = paddingValues,
                 onTapDetail = onTapDetail
@@ -64,8 +64,8 @@ fun FindMovieScreen(
 }
 
 @Composable
-private fun FindMovieContent(
-    viewModel: FindMoviesViewModel,
+private fun SearchMovieContent(
+    viewModel: SearchMoviesViewModel,
     paddingValues: PaddingValues,
     onTapDetail: (movieId: String) -> Unit = {}
 ) {
@@ -73,7 +73,7 @@ private fun FindMovieContent(
     val posters = viewModel.posters.collectAsLazyPagingItems()
     when  {
         uiState.isEmptyScreen -> DefaultDisplay()
-        uiState.thereAreNoResults -> println(">>> There are no results")
+        uiState.noResults -> println(">>> There are no results")
         uiState.errorMessage != null -> ErrorMessage(message = uiState.errorMessage)
         else -> MoviesDisplay(
             posters = posters,

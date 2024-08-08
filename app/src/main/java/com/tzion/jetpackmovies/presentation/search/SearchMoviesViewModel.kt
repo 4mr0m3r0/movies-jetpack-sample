@@ -23,7 +23,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class FindMoviesViewModel @Inject constructor(private val posterService: PosterService) : ViewModel() {
+class SearchMoviesViewModel @Inject constructor(private val posterService: PosterService) : ViewModel() {
     var posters: Flow<PagingData<Movie.Poster>> = emptyFlow()
         private set
     private val _userInterface = MutableStateFlow(SearchUserInterface.defaultUi())

@@ -5,10 +5,10 @@ import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import com.tzion.jetpackmovies.presentation.favorites.FavoriteMoviesScreen
 import com.tzion.jetpackmovies.presentation.moviedetail.MovieDetailScreen
-import com.tzion.jetpackmovies.presentation.search.FindMovieScreen
+import com.tzion.jetpackmovies.presentation.search.SearchMovieScreen
 
 @ExperimentalAnimationApi
-fun NavGraphBuilder.findMovie(
+fun NavGraphBuilder.searchMovie(
     onMenu: () -> Unit,
     navActions: NavActions
 ) = composable(
@@ -18,7 +18,7 @@ fun NavGraphBuilder.findMovie(
     popEnterTransition = { popEnterTransition },
     popExitTransition = { popExitTransition }
 ) {
-    FindMovieScreen(
+    SearchMovieScreen(
         onMenu = onMenu,
         onTapDetail = { navActions.movieDetail(movieId = it) }
     )

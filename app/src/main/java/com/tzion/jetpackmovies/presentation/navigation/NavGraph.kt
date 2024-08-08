@@ -98,7 +98,7 @@ fun MovieNavHost(
         navController = navController,
         startDestination = startDestination.route
     ) {
-        findMovie(
+        searchMovie(
             onMenu = { scope.launch { drawerState.open() } },
             navActions = navActions
         )

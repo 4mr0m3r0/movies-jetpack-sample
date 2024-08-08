@@ -102,7 +102,7 @@ fun MovieNavHost(
             onMenu = { scope.launch { drawerState.open() } },
             navActions = navActions
         )
-        movieDetail(navActions)
+        goToMovieDetail(navActions)
         favoriteMovie(navActions)
     }
 }

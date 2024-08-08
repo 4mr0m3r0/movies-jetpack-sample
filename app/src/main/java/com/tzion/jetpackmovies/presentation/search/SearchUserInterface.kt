@@ -8,8 +8,6 @@ import kotlinx.coroutines.flow.emptyFlow
 data class SearchUserInterface(
     val isLoading: Boolean = false,
     val posters: Flow<PagingData<Movie.Poster>> = emptyFlow(),
-    val noResults: Boolean = false,
-    val errorMessage: String? = null,
     val isEmptyScreen: Boolean = false,
 ) {
     companion object {

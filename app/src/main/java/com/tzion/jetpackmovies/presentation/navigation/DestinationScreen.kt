@@ -20,12 +20,12 @@ fun NavGraphBuilder.searchMovie(
 ) {
     SearchMovieScreen(
         onMenu = onMenu,
-        onTapDetail = { navActions.movieDetail(movieId = it) }
+        navActions = navActions
     )
 }
 
 @ExperimentalAnimationApi
-fun NavGraphBuilder.movieDetail(navActions: NavActions) = composable(
+fun NavGraphBuilder.goToMovieDetail(navActions: NavActions) = composable(
     route = Destination.MovieDetail.route,
 //    arguments = listOf(navArgument(Argument.Name.MOVIE_ID) { type = NavType.StringType }),
     enterTransition = { enterTransition },

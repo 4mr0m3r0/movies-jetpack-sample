@@ -1,0 +1,52 @@
+@startuml
+' skinparam groupInheritance 2
+
+struct UserInterface {
+    + isLoading
+    + posters
+    + noResults
+    + errorMessage
+    + emptyScreen
+}
+class StateMachine { }
+interface StateMachineActions {
+    + searchPosters()
+    + notifyNoPosters()
+    + updatePagingPosters(posters: Flow<PagingData<T>>)
+}
+class StateContext {
+    + search(query: String)
+    + emptiness()
+    + posters(posters: Flow<PagingData<T>>)
+}
+interface State {
+    + search(query: String)
+    + emptiness()
+    + posters(posters: Flow<PagingData<T>>)
+}
+class PagingPosters {
+    + search(query: String) 
+}
+class Failure {}
+class Emptiness {
+    + search(query: String)
+}
+class Searching {
+    + emptiness()
+    + posters()
+}
+
+StateMachine .right.|> StateContext
+StateMachineActions <|.. StateContext
+StateContext -right-> State
+' State <|.down. States
+PagingPosters .up..|> State
+Failure .up..|> State
+Emptiness .up..|> State
+Searching .up..|> State
+' FindContext <-- Posters
+' FindContext <-- Failure
+' FindContext <-- NoResults
+' FindContext <-- Searching
+hide empty members
+@enduml

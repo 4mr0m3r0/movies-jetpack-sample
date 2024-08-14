@@ -23,7 +23,6 @@ class MovieDetailViewModel @Inject constructor(
     private val movieId = savedStateHandle.get<String>(Destination.Argument.Name.MOVIE_ID)
 
     suspend fun getMovieInformation(): DetailUserInterface = try {
-        println(">>> MovieDetailViewModel movieId = $movieId")
         val information = seeMovieDetail.getMovieDetailById(movieId)
         DetailUserInterface(attributes = with(mapper) { information.toAttributes() })
     } catch (e: Exception) {

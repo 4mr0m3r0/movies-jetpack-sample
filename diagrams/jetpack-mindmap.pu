@@ -1,0 +1,26 @@
+@startmindmap
++ Android Jetpack 
+-- Activity
+-- Ads
+-- Annotation
+++ Benchmark
+-- Biometric
+-- Bluetooth
+++[#LightYellow] Compose
++++[#LightYellow] Animation
+++++[#LightYellow] Shared elements
++++[#lightgreen] Components
+++++[#lightgreen] Navigation drawer
+++++[#lightgreen] Lists and Grids
++++[#lightgreen] Theming
+++++[#lightgreen] Material Design 3
+++ Datastore
+++[#lightgreen] Hilt
+++[#lightgreen] Navigation
+++[#lightgreen] Paging
+++[#lightgreen] Room
+++ Startup
+++ Test
+++ WorkManager
+
+@endmindmap

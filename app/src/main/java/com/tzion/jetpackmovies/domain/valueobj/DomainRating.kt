@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.domain.model
+package com.tzion.jetpackmovies.domain.valueobj
 
 data class DomainRating(
     val source: String?,

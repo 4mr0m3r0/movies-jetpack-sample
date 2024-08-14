@@ -1,9 +1,9 @@
 package com.tzion.jetpackmovies.domain.entities
 
 class Movie(private val tomatoMeter: TomatoMeter) {
-    fun verifyAndGetCleanedName(name: String?): String {
-        require(!name.isNullOrEmpty())
-        return name.trim()
+    fun verifyTitleAndGetTrimValue(title: String?): String {
+        require(!title.isNullOrEmpty())
+        return title.trim()
     }
 
     fun updateWithTomatoMeter(information: Information): Information = information

@@ -15,7 +15,7 @@ class NavActions(private val navHostController: NavHostController) {
         navHostController.navigate(route = Destination.FindMovies.route)
     }
 
-    fun movieDetail(movieId: String) {
+    fun goToMovieDetail(movieId: String) {
         navHostController.navigate(route = Destination.MovieDetail.routeWithIdArgument(movieId))
     }
 

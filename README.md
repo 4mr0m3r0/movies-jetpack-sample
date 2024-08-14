@@ -22,9 +22,25 @@
 
 # Description
 
-With this demo app you may search movies by name, see the details of it, or mark it as a favorite
-one.
-Moreover, you will find a section listing favorite movies you chose.
+This is a sample project with the main objective of integrating [Jetpack components](https://developer.android.com/jetpack) 
+as much as possible in a single app.  
+Additionally, the project try to implement ideas from Domain-Drive Design, Design Patterns, and 
+Clean Architecture mainly focused on the Dependency Inversion principle.  
+
+
+The app topic is Movies and you may find functionalities such as: 
+* search movies by name. 
+* see the movie extra details. 
+* mark the movie as favorite. 
+* listing favorite movies.
+
+## Jetpack components map
+Legend:  
+🟩 Implemented in the app.  
+🟨 Implementing (WIP).  
+⬜ Not yet implemented.
+
+![Default Screen](diagrams/jetpack-mindmap.png)
 
 ## Screenshots
 

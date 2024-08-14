@@ -2,8 +2,8 @@ package com.tzion.jetpackmovies.presentation.di
 
 import com.tzion.jetpackmovies.domain.boundary.RemoteFacade
 import com.tzion.jetpackmovies.network.MovieNetwork
+import com.tzion.jetpackmovies.network.config.RetrofitWebServiceBuilder
 import com.tzion.jetpackmovies.network.config.WebServiceConfig
-import com.tzion.jetpackmovies.network.factory.RetrofitWebServiceBuilder
 import com.tzion.jetpackmovies.network.retrofit.WebServiceRetrofit
 import dagger.Binds
 import dagger.Module

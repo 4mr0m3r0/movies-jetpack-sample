@@ -1,4 +1,4 @@
-package com.tzion.jetpackmovies.network.factory
+package com.tzion.jetpackmovies.network.config
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
